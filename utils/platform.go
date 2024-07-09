@@ -4,12 +4,12 @@ import "runtime"
 
 func GetPlatform() string {
 	if runtime.GOOS == "windows" {
-		return "WINDOWS"
+		return "windows"
 	} else if runtime.GOOS == "linux" {
-		return "LINUX"
+		return "linux"
 	} else if runtime.GOOS == "darwin" {
-		return "MACOS"
+		return "darwin"
 	} else {
-		return "UNKNOWN"
+		return "unknown"
 	}
 }

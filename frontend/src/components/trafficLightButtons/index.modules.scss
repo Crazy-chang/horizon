@@ -1,0 +1,49 @@
+.traffic-ligh-buttons-layout {
+  height: 100%;
+  padding-left: 16px;
+
+  .button-box {
+    width: 40px;
+    align-items: center;
+    height: 100%;
+    display: flex;
+
+    .button {
+      width: 13px;
+      height: 13px;
+      background: #ec6a5e;
+      border-radius: 50%;
+      border: 1px solid #d04d3f;
+      display: flex;
+
+      .icon {
+        display: none;
+        width: 14px;
+        height: 14px;
+        color: black;
+      }
+
+      &:last-child {
+        margin-left: 10px;
+        background: #f4bf4f;
+        border: 1px solid #d7a34b;
+      }
+
+      &:active {
+        background: #d04d3f;
+      }
+
+      &:last-child:active {
+        background: #d7a34b;
+      }
+    }
+
+    &:hover {
+      .button {
+        .icon {
+          display: block;
+        }
+      }
+    }
+  }
+}

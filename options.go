@@ -7,6 +7,7 @@ import (
 	"github.com/wailsapp/wails/v2/pkg/options"
 	"github.com/wailsapp/wails/v2/pkg/options/assetserver"
 	"github.com/wailsapp/wails/v2/pkg/options/mac"
+	"github.com/wailsapp/wails/v2/pkg/options/windows"
 )
 
 //go:embed all:frontend/dist
@@ -17,6 +18,7 @@ var icon []byte
 
 func AppOptions(app *services.App) *options.App {
 	dw, dh := utils.GetDisplaySize()
+	platform := utils.GetPlatform()
 
 	return &options.App{
 		Title:         "horizon",
@@ -32,6 +34,15 @@ func AppOptions(app *services.App) *options.App {
 		Bind: []interface{}{
 			app,
 			app.Info,
+		},
+		Frameless: platform == "windows",
+		Windows: &windows.Options{
+			WebviewIsTransparent:              true,
+			WindowIsTranslucent:               true,
+			BackdropType:                      windows.Acrylic,
+			DisableWindowIcon:                 true,
+			Theme:                             windows.Dark,
+			DisableFramelessWindowDecorations: false,
 		},
 		Mac: &mac.Options{
 			TitleBar:             mac.TitleBarHiddenInset(),
