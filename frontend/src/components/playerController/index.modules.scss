@@ -1,0 +1,12 @@
+.play-controller-layout {
+  width: 100vw;
+  height: 69px;
+  // position: fixed;
+  // box-shadow: 0 -2px 2px -2px #cecece;
+  border-top: 1px solid #646464;
+  bottom: 0;
+  // background: #646464a0;
+  background: rgba(22, 22, 23, 0.8);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+}
