@@ -30,7 +30,7 @@
 
       .nickname {
         max-width: 120px;
-        font-weight: 300;
+        font-weight: 600;
         overflow: hidden;
         display: -webkit-box;
         line-clamp: 1;
@@ -38,7 +38,7 @@
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 1;
 
-        font-family: 'Nunito';
+        font-family: 'Barlow';
         font-size: 20px;
       }
     }

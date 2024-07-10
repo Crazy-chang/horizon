@@ -1,0 +1,39 @@
+.about-layout {
+  .about-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    margin-bottom: 24px;
+
+    .logo {
+      width: 200px;
+      height: 200px;
+      background: red;
+    }
+  }
+
+  h3 {
+    font-family: 'Barlow';
+    font-size: 48px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  p {
+    font-family: 'Barlow';
+    text-align: center;
+    margin-bottom: 12px;
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 48px;
+
+    button {
+      cursor: pointer;
+    }
+  }
+}
