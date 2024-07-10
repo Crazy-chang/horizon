@@ -14,18 +14,25 @@
       position: absolute;
       transition: 0.3s;
     }
-    .origin_pic {
-      z-index: 10;
 
+    .origin_pic {
       &:hover + .shadow {
         opacity: 1;
       }
     }
 
     .shadow {
+      width: 100%;
+      height: 100%;
       opacity: 0;
-      filter: blur(10px);
+      position: absolute;
+      z-index: -1;
+      filter: blur(12px);
+      -webkit-filter: blur(12px);
       top: 12px;
+      transform: scale(0.92, 0.96);
+      transition: 0.3s;
+      will-change: transform, filter;
     }
   }
 }
