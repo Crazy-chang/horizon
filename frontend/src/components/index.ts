@@ -4,6 +4,7 @@ import { Player } from './player'
 import { NavLogo } from './navLogo'
 import { NavUser } from './navUser'
 import { TrafficLightButtons } from './trafficLightButtons'
+import { ColorfulShadow } from './colorfulShadow'
 
 export {
   DraggableBar,
@@ -12,4 +13,5 @@ export {
   NavLogo,
   NavUser,
   TrafficLightButtons,
+  ColorfulShadow,
 }

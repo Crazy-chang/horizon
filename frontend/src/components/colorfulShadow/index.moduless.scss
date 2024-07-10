@@ -1,0 +1,31 @@
+.colorful-shadow-layout {
+  width: 200px;
+  height: 200px;
+  .pic-box {
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    img {
+      border-radius: 6px;
+      width: 100%;
+      height: 100%;
+      display: block;
+      position: absolute;
+      transition: 0.3s;
+    }
+    .origin_pic {
+      z-index: 10;
+
+      &:hover + .shadow {
+        opacity: 1;
+      }
+    }
+
+    .shadow {
+      opacity: 0;
+      filter: blur(10px);
+      top: 12px;
+    }
+  }
+}
