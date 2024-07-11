@@ -30,7 +30,7 @@ export const Root = () => {
                 <span className="icon-box">
                   <GlobeIcon className="icon" />
                 </span>
-                <span>发现</span>
+                发现
               </NavLink>
             </li>
             <li>
@@ -43,7 +43,7 @@ export const Root = () => {
                 <span className="icon-box">
                   <MagnifyingGlassIcon className="icon" />
                 </span>
-                <span>搜索</span>
+                搜索
               </NavLink>
             </li>
             <li>
@@ -56,7 +56,7 @@ export const Root = () => {
                 <span className="icon-box">
                   <CardStackIcon className="icon" />
                 </span>
-                <span>订阅</span>
+                订阅
               </NavLink>
             </li>
             <li>
@@ -82,7 +82,7 @@ export const Root = () => {
                 <span className="icon-box">
                   <InfoCircledIcon className="icon" />
                 </span>
-                <span>关于</span>
+                关于
               </NavLink>
             </li>
           </ul>
