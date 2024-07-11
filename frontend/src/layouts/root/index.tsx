@@ -5,11 +5,10 @@ import {
   InfoCircledIcon,
   StarIcon,
 } from '@radix-ui/react-icons'
+import { ScrollArea } from '@radix-ui/themes'
 import { NavLink, Outlet } from 'react-router-dom'
 import { PlayController, NavLogo, NavUser } from '@/components'
-import { Scrollbars } from 'react-custom-scrollbars'
 import './index.modules.scss'
-import { CSSProperties } from 'react'
 
 export const Root = () => {
   return (
@@ -90,18 +89,9 @@ export const Root = () => {
         </nav>
 
         <div className="outlet-layout">
-          <Scrollbars
-            autoHide
-            renderThumbVertical={() => {
-              const thumbStyle: CSSProperties = {
-                backgroundColor: 'rgba(255, 255, 255, 0.5)',
-                borderRadius: '6px',
-              }
-              return <div style={{ ...thumbStyle }} />
-            }}
-          >
+          <ScrollArea type="scroll">
             <Outlet />
-          </Scrollbars>
+          </ScrollArea>
         </div>
       </div>
 
