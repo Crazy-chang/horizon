@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react'
 import { ShowVersion } from '../../../wailsjs/go/utils/AppInfo'
 import { Environment, BrowserOpenURL } from '../../../wailsjs/runtime'
 import { envType } from '@/types/env'
-import { VscGithubInverted } from 'react-icons/vsc'
-import { Button, Tooltip } from '@radix-ui/themes'
+import { Button, Link, Tooltip } from '@radix-ui/themes'
+import { GitHubLogoIcon } from '@radix-ui/react-icons'
 import './index.modules.scss'
 
 export const About = () => {
@@ -23,26 +23,40 @@ export const About = () => {
   return (
     <div className="about-layout">
       <div className="about-logo">
-        <div className="logo">logo</div>
+        <div className="logo">logo_placeholder</div>
       </div>
 
       <h3>horizon</h3>
       <p>
         v{version}_{envInfo?.platform}_{envInfo?.arch}
       </p>
+      <p>
+        <Button variant="soft">检查更新</Button>
+      </p>
       <p>第三方小宇宙桌面客户端，支持 Windows / macOS</p>
+      <p>
+        接口服务：
+        <Link
+          style={{ cursor: 'pointer' }}
+          onClick={() => {
+            BrowserOpenURL('https://github.com/ultrazg/xyz')
+          }}
+        >
+          xyz
+        </Link>
+      </p>
 
       <div className="buttons">
         <Tooltip content="GitHub">
           <Button
             color="gray"
             variant="ghost"
-            size="4"
+            size="3"
             onClick={() => {
               BrowserOpenURL('https://github.com/ultrazg/horizon')
             }}
           >
-            <VscGithubInverted />
+            <GitHubLogoIcon style={{ width: 25, height: 25 }} />
           </Button>
         </Tooltip>
       </div>
