@@ -13,11 +13,11 @@ const drawerStyles: DrawerStyles = {
   header: {
     '--wails-draggable': 'drag',
     cursor: 'default',
-    'user-select': 'none',
+    userSelect: 'none'
   } as any,
   content: {
-    opacity: 0.5, // FIXME
-  },
+    opacity: 0.5 // FIXME
+  }
 }
 
 export const Player: React.FC<IProps> = ({ open, onClose }) => {

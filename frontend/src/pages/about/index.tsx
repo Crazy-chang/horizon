@@ -10,7 +10,9 @@ export const About = () => {
   const [version, setVersion] = useState<string>()
   const [envInfo, setEnvInfo] = useState<envType>()
 
-  const checkUpdate = () => {}
+  const checkUpdate = () => {
+    // TODO:  check update
+  }
 
   useEffect(() => {
     Version().then((res: string) => {
@@ -33,7 +35,14 @@ export const About = () => {
         v{version}_{envInfo?.platform}_{envInfo?.arch}
       </p>
       <p>
-        <Button variant="soft">检查更新</Button>
+        <Button
+          variant="soft"
+          onClick={() => {
+            checkUpdate()
+          }}
+        >
+          检查更新
+        </Button>
       </p>
       <p>第三方小宇宙桌面客户端，支持 Windows / macOS</p>
       <p>

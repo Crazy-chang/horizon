@@ -1,7 +1,7 @@
 import { createHashRouter, createBrowserRouter } from 'react-router-dom'
 
 import { Home, Login, About } from '@/pages'
-import { Root, Player } from '@/layouts'
+import { Root } from '@/layouts'
 
 export const router = createHashRouter([
   {
@@ -10,16 +10,16 @@ export const router = createHashRouter([
     children: [
       {
         index: true,
-        element: <Home />,
+        element: <Home />
       },
       {
         path: 'about',
-        element: <About />,
-      },
-    ],
+        element: <About />
+      }
+    ]
   },
   {
     path: '/login',
-    element: <Login />,
-  },
+    element: <Login />
+  }
 ])

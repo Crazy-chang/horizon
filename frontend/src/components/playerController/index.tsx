@@ -1,23 +1,26 @@
 import React from 'react'
 import { Player } from '@/components'
-import { Button } from '@radix-ui/themes'
+import { EpisodeCover } from './components/episodeCover'
+import { VolumeController } from './components/volumeController'
 import './index.modules.scss'
 
 export const PlayController = () => {
   const [open, setOpen] = React.useState<boolean>(false)
 
-  const onOpen = () => {
-    setOpen(true)
-  }
-
   return (
     <>
       <div className="play-controller-layout">
         <div className="left">
-          <div className="episode-cover-layout">节目封面</div>
+          <EpisodeCover onOpen={() => {
+            setOpen(true)
+          }} />
         </div>
+
         <div className="middle">2</div>
-        <div className="right">3</div>
+
+        <div className="right">
+          <VolumeController />
+        </div>
       </div>
 
       <Player
