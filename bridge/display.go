@@ -1,4 +1,4 @@
-package utils
+package bridge
 
 import "github.com/kbinani/screenshot"
 

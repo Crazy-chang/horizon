@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import { ShowVersion } from '../../../wailsjs/go/utils/AppInfo'
-import { Environment, BrowserOpenURL } from '../../../wailsjs/runtime'
+import { Version } from 'wailsjs/go/bridge/App'
+import { Environment, BrowserOpenURL } from 'wailsjs/runtime'
 import { envType } from '@/types/env'
 import { Button, Link, Tooltip } from '@radix-ui/themes'
 import { GitHubLogoIcon } from '@radix-ui/react-icons'
@@ -10,8 +10,10 @@ export const About = () => {
   const [version, setVersion] = useState<string>()
   const [envInfo, setEnvInfo] = useState<envType>()
 
+  const checkUpdate = () => {}
+
   useEffect(() => {
-    ShowVersion().then((res: string) => {
+    Version().then((res: string) => {
       setVersion(res)
     })
 

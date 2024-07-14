@@ -13,14 +13,11 @@ export const PlayController = () => {
   return (
     <>
       <div className="play-controller-layout">
-        PlayController
-        <Button
-          onClick={() => {
-            onOpen()
-          }}
-        >
-          OPEN
-        </Button>
+        <div className="left">
+          <div className="episode-cover-layout">节目封面</div>
+        </div>
+        <div className="middle">2</div>
+        <div className="right">3</div>
       </div>
 
       <Player

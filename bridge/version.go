@@ -1,4 +1,4 @@
-package consts
+package bridge
 
 import "fmt"
 
@@ -8,6 +8,6 @@ var (
 	patch byte = 1
 )
 
-func Version() string {
+func (a *App) Version() string {
 	return fmt.Sprintf("%v.%v.%v", major, minor, patch)
 }

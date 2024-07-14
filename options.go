@@ -2,8 +2,7 @@ package main
 
 import (
 	"embed"
-	"github.com/ultrazg/horizon/services"
-	"github.com/ultrazg/horizon/utils"
+	"github.com/ultrazg/horizon/bridge"
 	"github.com/wailsapp/wails/v2/pkg/options"
 	"github.com/wailsapp/wails/v2/pkg/options/assetserver"
 	"github.com/wailsapp/wails/v2/pkg/options/mac"
@@ -16,9 +15,9 @@ var assets embed.FS
 //go:embed build/appicon.png
 var icon []byte
 
-func AppOptions(app *services.App) *options.App {
-	dw, dh := utils.GetDisplaySize()
-	platform := utils.GetPlatform()
+func AppOptions(app *bridge.App) *options.App {
+	dw, dh := bridge.GetDisplaySize()
+	platform := bridge.GetPlatform()
 
 	return &options.App{
 		Title:         "horizon",
@@ -33,7 +32,7 @@ func AppOptions(app *services.App) *options.App {
 		OnStartup: app.Start,
 		Bind: []interface{}{
 			app,
-			app.Info,
+			//app.Info,
 		},
 		Frameless: platform == "windows",
 		Windows: &windows.Options{
@@ -54,6 +53,9 @@ func AppOptions(app *services.App) *options.App {
 				Message: "© 2024 2bit",
 				Icon:    icon,
 			},
+		},
+		Debug: options.Debug{
+			OpenInspectorOnStartup: true,
 		},
 	}
 }

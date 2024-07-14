@@ -16,3 +16,5 @@ lerna-debug.log*
 
 .idea
 .vscode
+
+package.json.md5
