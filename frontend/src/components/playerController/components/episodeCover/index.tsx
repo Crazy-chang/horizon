@@ -1,12 +1,15 @@
-import React from 'react'
-import { CaretUpIcon } from '@radix-ui/react-icons'
+import React, { useState } from 'react'
+import { CaretUpIcon, PlayIcon, PauseIcon } from '@radix-ui/react-icons'
 import './index.modules.scss'
+import { Button } from '@radix-ui/themes'
 
 interface IProps {
-  onOpen: () => void,
+  onOpen: () => void
 }
 
 export const EpisodeCover: React.FC<IProps> = (props) => {
+  const [isPlay, setIsPlay] = useState<boolean>(false)
+
   return (
     <>
       <div className="episode-cover-layout">
@@ -16,15 +19,29 @@ export const EpisodeCover: React.FC<IProps> = (props) => {
             alt="episode-cover"
             draggable={false}
           />
-          <div className="mask" onClick={() => {
-            props.onOpen()
-          }}>
+          <div
+            className="mask"
+            onClick={() => {
+              props.onOpen()
+            }}
+          >
             <CaretUpIcon style={{ width: 50, height: 50 }} />
           </div>
         </div>
         <div className="episode-info">
           <div className="episode-title">
             <h4>Episode Title</h4>
+          </div>
+          <div className="controller-button">
+            <Button
+              size="1"
+              variant="soft"
+              onClick={() => {
+                setIsPlay(!isPlay)
+              }}
+            >
+              {isPlay ? <PauseIcon /> : <PlayIcon />}
+            </Button>
           </div>
         </div>
       </div>
