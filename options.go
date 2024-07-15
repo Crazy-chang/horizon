@@ -18,7 +18,6 @@ var icon []byte
 
 func AppOptions(app *bridge.App) *options.App {
 	dw, dh := bridge.GetDisplaySize()
-	// platform := bridge.GetPlatform()
 
 	return &options.App{
 		Title:         "horizon",
@@ -33,7 +32,6 @@ func AppOptions(app *bridge.App) *options.App {
 		Bind: []interface{}{
 			app,
 		},
-		// Frameless: platform == "windows",
 		Windows: &windows.Options{
 			WebviewIsTransparent:              true,
 			WindowIsTranslucent:               true,
