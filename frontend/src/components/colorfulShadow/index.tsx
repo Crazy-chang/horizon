@@ -1,6 +1,10 @@
 import React from 'react'
-import { ColorfulShadowType } from '@/types/colorfulShadow'
 import './index.modules.scss'
+
+interface ColorfulShadowType {
+  style?: React.CSSProperties
+  src: string
+}
 
 export const ColorfulShadow: React.FC<ColorfulShadowType> = (
   props

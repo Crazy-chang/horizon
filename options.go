@@ -2,6 +2,7 @@ package main
 
 import (
 	"embed"
+
 	"github.com/ultrazg/horizon/bridge"
 	"github.com/wailsapp/wails/v2/pkg/options"
 	"github.com/wailsapp/wails/v2/pkg/options/assetserver"
@@ -17,7 +18,7 @@ var icon []byte
 
 func AppOptions(app *bridge.App) *options.App {
 	dw, dh := bridge.GetDisplaySize()
-	platform := bridge.GetPlatform()
+	// platform := bridge.GetPlatform()
 
 	return &options.App{
 		Title:         "horizon",
@@ -28,18 +29,16 @@ func AppOptions(app *bridge.App) *options.App {
 			Assets: assets,
 		},
 		//BackgroundColour: &options.RGBA{R: 67, G: 67, B: 67, A: 1},
-		//BackgroundColour: options.NewRGBA(255, 0, 0, 128),
 		OnStartup: app.Start,
 		Bind: []interface{}{
 			app,
-			//app.Info,
 		},
-		Frameless: platform == "windows",
+		// Frameless: platform == "windows",
 		Windows: &windows.Options{
 			WebviewIsTransparent:              true,
 			WindowIsTranslucent:               true,
 			BackdropType:                      windows.Acrylic,
-			DisableWindowIcon:                 true,
+			DisableWindowIcon:                 false,
 			Theme:                             windows.Dark,
 			DisableFramelessWindowDecorations: false,
 		},
