@@ -38,35 +38,12 @@ export const EpisodeCover: React.FC<IProps> = (props) => {
           <div className="episode-title">
             <h4>Episode Title</h4>
           </div>
-          <div className="controller-button-layout">
-            <Flex gap="3">
-              <Box width="25px">
-                <Button
-                  size="1"
-                  variant="ghost"
-                  onClick={() => {
-                    setIsPlay(!isPlay)
-                  }}
-                >
-                  {isPlay ? <PauseIcon /> : <PlayIcon />}
-                </Button>
-              </Box>
-              <Box width="25px">
-                <Button
-                  size="1"
-                  variant="ghost"
-                  onClick={() => {
-                    setIsPlay(!isPlay)
-                  }}
-                >
-                  {isPlay ? (
-                    <HeartIcon />
-                  ) : (
-                    <HeartFilledIcon style={{ color: '#E5484D' }} />
-                  )}
-                </Button>
-              </Box>
-            </Flex>
+          <div className="episode-info">
+            <div>
+              <span>0:00</span>
+              <span>/</span>
+              <span>12:00</span>
+            </div>
           </div>
         </div>
       </div>

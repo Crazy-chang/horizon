@@ -2,7 +2,7 @@ import React from 'react'
 import { Player } from '@/components'
 import { EpisodeCover } from './components/episodeCover'
 import { VolumeController } from './components/volumeController'
-import { ProgressBar } from './components/progressBar'
+import { PlayerButtons } from './components/playerButtons'
 import './index.modules.scss'
 
 export const PlayController = () => {
@@ -20,7 +20,7 @@ export const PlayController = () => {
         </div>
 
         <div className="middle">
-          <ProgressBar />
+          <PlayerButtons />
         </div>
 
         <div className="right">

@@ -44,14 +44,18 @@
       -webkit-line-clamp: 1;
     }
 
-    .controller-button-layout {
-      padding-top: 10px;
-      padding-left: 5px;
+    .episode-info {
+      margin-top: 5px;
+      padding-top: 5px;
 
-      button {
-        svg {
-          width: 15px;
-          height: 15px;
+      div {
+        font-size: 14px;
+        color: var(--white-a6);
+
+        span {
+          &:nth-child(2) {
+            padding: 0 4px;
+          }
         }
       }
     }
