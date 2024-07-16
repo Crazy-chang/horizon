@@ -11,9 +11,11 @@ export const PlayController = () => {
     <>
       <div className="play-controller-layout">
         <div className="left">
-          <EpisodeCover onOpen={() => {
-            setOpen(true)
-          }} />
+          <EpisodeCover
+            onOpen={() => {
+              setOpen(true)
+            }}
+          />
         </div>
 
         <div className="middle">2</div>

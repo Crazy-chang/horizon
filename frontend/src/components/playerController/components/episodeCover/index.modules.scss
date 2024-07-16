@@ -44,14 +44,15 @@
       -webkit-line-clamp: 1;
     }
 
-    .controller-button {
-      //background: rgba(255, 192, 203, 0.2);
-      padding-top: 5px;
-      //height: 100%;
+    .controller-button-layout {
+      padding-top: 10px;
+      padding-left: 5px;
 
-      svg {
-        width: 15px;
-        height: 15px;
+      button {
+        svg {
+          width: 15px;
+          height: 15px;
+        }
       }
     }
   }

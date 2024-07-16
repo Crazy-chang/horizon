@@ -1,7 +1,13 @@
 import React, { useState } from 'react'
-import { CaretUpIcon, PlayIcon, PauseIcon } from '@radix-ui/react-icons'
+import {
+  CaretUpIcon,
+  PlayIcon,
+  PauseIcon,
+  HeartIcon,
+  HeartFilledIcon,
+} from '@radix-ui/react-icons'
 import './index.modules.scss'
-import { Button } from '@radix-ui/themes'
+import { Button, Flex, Box } from '@radix-ui/themes'
 
 interface IProps {
   onOpen: () => void
@@ -32,16 +38,35 @@ export const EpisodeCover: React.FC<IProps> = (props) => {
           <div className="episode-title">
             <h4>Episode Title</h4>
           </div>
-          <div className="controller-button">
-            <Button
-              size="1"
-              variant="soft"
-              onClick={() => {
-                setIsPlay(!isPlay)
-              }}
-            >
-              {isPlay ? <PauseIcon /> : <PlayIcon />}
-            </Button>
+          <div className="controller-button-layout">
+            <Flex gap="3">
+              <Box width="25px">
+                <Button
+                  size="1"
+                  variant="ghost"
+                  onClick={() => {
+                    setIsPlay(!isPlay)
+                  }}
+                >
+                  {isPlay ? <PauseIcon /> : <PlayIcon />}
+                </Button>
+              </Box>
+              <Box width="25px">
+                <Button
+                  size="1"
+                  variant="ghost"
+                  onClick={() => {
+                    setIsPlay(!isPlay)
+                  }}
+                >
+                  {isPlay ? (
+                    <HeartIcon />
+                  ) : (
+                    <HeartFilledIcon style={{ color: '#E5484D' }} />
+                  )}
+                </Button>
+              </Box>
+            </Flex>
           </div>
         </div>
       </div>
