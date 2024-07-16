@@ -6,7 +6,7 @@
 
     ul {
       li {
-        padding: 0px 14px;
+        padding: 0 14px;
         height: 48px;
         line-height: 48px;
         display: flex;
@@ -37,6 +37,7 @@
             height: 100%;
             justify-content: center;
             align-items: center;
+
             .icon {
               display: inline-block;
               width: 20px;
@@ -49,10 +50,11 @@
         }
 
         .active {
-          background: rgba(255, 255, 255, 0.2);
+          background: var(--purple-6);
+          color: var(--purple-11);
         }
 
-        &:last-child() {
+        &:last-child {
           margin-bottom: 0;
         }
       }
