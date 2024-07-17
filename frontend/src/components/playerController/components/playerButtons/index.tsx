@@ -1,29 +1,47 @@
 import * as React from 'react'
-import { Box, Button, Flex } from '@radix-ui/themes'
+import { Button } from '@radix-ui/themes'
+import {
+  BsPlayFill,
+  BsSkipBackwardFill,
+  BsSkipForwardFill,
+} from 'react-icons/bs'
+import { HeartIcon } from '@radix-ui/react-icons'
 import './index.modules.scss'
 
 export const PlayerButtons = () => {
   return (
     <div className="player-buttons-layout">
       <div className="buttons">
-        <Flex gap="3">
-          <Box width="25px">
-            <Button
-              size="1"
-              variant="ghost"
-            >
-              1
-            </Button>
-          </Box>
-          <Box width="25px">
-            <Button
-              size="1"
-              variant="ghost"
-            >
-              2
-            </Button>
-          </Box>
-        </Flex>
+        <div className="button">
+          {/* <Button variant="soft"> */}
+          <HeartIcon />
+          {/* </Button> */}
+        </div>
+
+        <div className="button">
+          {/* <Button
+            size="1"
+            variant="soft"
+          > */}
+          <BsSkipBackwardFill />
+          {/* </Button> */}
+        </div>
+        <div className="button">
+          {/* <Button
+            size="1"
+            variant="classic"
+          > */}
+          <BsPlayFill />
+          {/* </Button> */}
+        </div>
+        <div className="button">
+          {/* <Button
+            size="1"
+            variant="soft"
+          > */}
+          <BsSkipForwardFill />
+          {/* </Button> */}
+        </div>
       </div>
     </div>
   )

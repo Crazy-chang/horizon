@@ -4,8 +4,59 @@
   justify-content: center;
   align-items: center;
   display: flex;
-  //background: pink;
 
   .buttons {
+    display: flex;
+    .button {
+      width: 45px;
+      height: 45px;
+      margin-right: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 6px;
+      transition: 0.2s;
+      cursor: pointer;
+
+      &:hover {
+        background: var(--purple-6);
+        color: var(--purple-11);
+      }
+
+      &:active {
+        background: var(--purple-5);
+        color: var(--purple-11);
+      }
+
+      &:nth-child(1) {
+        svg {
+          width: 22px;
+          height: 22px;
+        }
+      }
+
+      &:nth-child(2) {
+        svg {
+          width: 26px;
+          height: 26px;
+        }
+      }
+
+      &:nth-child(3) {
+        svg {
+          width: 44px;
+          height: 44px;
+        }
+      }
+
+      &:last-child {
+        margin-right: 0;
+
+        svg {
+          width: 26px;
+          height: 26px;
+        }
+      }
+    }
   }
 }
