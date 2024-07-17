@@ -3,6 +3,7 @@ import {
   BsSkipBackwardFill,
   BsSkipForwardFill,
 } from 'react-icons/bs'
+import { Tooltip } from '@radix-ui/themes'
 import { HeartIcon } from '@radix-ui/react-icons'
 import './index.modules.scss'
 
@@ -10,21 +11,29 @@ export const PlayerButtons = () => {
   return (
     <div className="player-buttons-layout">
       <div className="buttons">
-        <div className="button">
-          <HeartIcon />
-        </div>
+        <Tooltip content="收藏">
+          <div className="button">
+            <HeartIcon />
+          </div>
+        </Tooltip>
 
-        <div className="button">
-          <BsSkipBackwardFill />
-        </div>
+        <Tooltip content="向后15秒">
+          <div className="button">
+            <BsSkipBackwardFill />
+          </div>
+        </Tooltip>
 
-        <div className="button">
-          <BsPlayFill />
-        </div>
+        <Tooltip content="播放">
+          <div className="button">
+            <BsPlayFill />
+          </div>
+        </Tooltip>
 
-        <div className="button">
-          <BsSkipForwardFill />
-        </div>
+        <Tooltip content="向前15秒">
+          <div className="button">
+            <BsSkipForwardFill />
+          </div>
+        </Tooltip>
       </div>
     </div>
   )
