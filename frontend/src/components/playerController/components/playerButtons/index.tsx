@@ -11,7 +11,7 @@ export const PlayerButtons = () => {
   return (
     <div className="player-buttons-layout">
       <div className="buttons">
-        <Tooltip content="收藏">
+        <Tooltip content="喜欢">
           <div className="button">
             <HeartIcon />
           </div>

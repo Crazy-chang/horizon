@@ -3,7 +3,6 @@ import { PlayController } from './playerController'
 import { Player } from './player'
 import { NavLogo } from './navLogo'
 import { NavUser } from './navUser'
-import { TrafficLightButtons } from './trafficLightButtons'
 import { ColorfulShadow } from './colorfulShadow'
 
 export {
@@ -12,6 +11,5 @@ export {
   Player,
   NavLogo,
   NavUser,
-  TrafficLightButtons,
   ColorfulShadow,
 }

@@ -1,13 +1,6 @@
 import React, { useState } from 'react'
-import {
-  CaretUpIcon,
-  PlayIcon,
-  PauseIcon,
-  HeartIcon,
-  HeartFilledIcon,
-} from '@radix-ui/react-icons'
+import { CaretUpIcon } from '@radix-ui/react-icons'
 import './index.modules.scss'
-import { Button, Flex, Box } from '@radix-ui/themes'
 
 interface IProps {
   onOpen: () => void
