@@ -1,0 +1,27 @@
+.popular-layout {
+  background: rgba(255, 0, 0, 0.2);
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  .popular-content {
+    background: rgba(255, 192, 203, 0.2);
+    display: flex;
+    margin-top: 0.7rem;
+
+    .popular-item {
+      flex: 1;
+      background: rgba(255, 255, 0, 0.2);
+      padding-right: 0.3rem;
+
+      &:last-child {
+        padding-right: 0;
+      }
+
+      .popular-info {
+        background: rgba(0, 0, 255, 0.2);
+      }
+    }
+  }
+}

@@ -1,8 +1,7 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
 
 const httpRequest: AxiosInstance = axios.create({
-  // baseURL: import.meta.env.VITE_BASE_URL,
-  baseURL: 'http://localhost:8080',
+  baseURL: import.meta.env.VITE_BASE_URL,
   timeout: 15000,
 })
 

@@ -2,6 +2,7 @@ package bridge
 
 import (
 	"context"
+	"github.com/ultrazg/xyz/server"
 )
 
 func NewApp() *App {
@@ -11,5 +12,6 @@ func NewApp() *App {
 func (a *App) Start(ctx context.Context) {
 	a.ctx = ctx
 
-	Init()
+	//Init()
+	server.Start()
 }

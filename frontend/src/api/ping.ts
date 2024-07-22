@@ -1,3 +1,3 @@
 import { httpRequest } from '@/utils'
 
-export const ping = () => httpRequest.post('/ping')
+export const ping = () => httpRequest.get('/ping')
