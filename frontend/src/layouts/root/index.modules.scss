@@ -50,8 +50,7 @@
         }
 
         .active {
-          background: var(--purple-6);
-          color: var(--purple-11);
+          background: rgba(255, 255, 255, 0.1);
         }
 
         &:last-child {
