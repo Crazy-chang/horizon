@@ -14,7 +14,7 @@ interface ColorfulShadowType {
  * @param style React.CSSProperties
  * @param src 封面 url
  * @param mask 是否展示遮罩
- * @param curPointer 光标指针是否展示为“手型”
+ * @param curPointer 光标指针是否展示为「手型」
  * @returns
  */
 export const ColorfulShadow: React.FC<ColorfulShadowType> = ({

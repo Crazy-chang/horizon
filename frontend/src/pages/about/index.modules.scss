@@ -1,11 +1,15 @@
+@import '@/assets/global/_common.scss';
+
 .about-layout {
+  @include no-select;
+
   .about-logo {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 200px;
-    margin-bottom: 5%;
-    padding-top: 5%;
+    margin-bottom: 2.2rem;
+    padding-top: 2.2rem;
 
     .logo {
       width: 200px;
@@ -15,22 +19,22 @@
   }
 
   h3 {
-    font-size: 48px;
+    font-size: 3.2rem;
     font-weight: bold;
     text-align: center;
   }
 
   p {
     text-align: center;
-    margin-bottom: 12px;
-    font-weight: 300;
+    margin-bottom: 1rem;
+    font-weight: normal;
   }
 
   .buttons {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 48px;
+    margin-top: 3rem;
 
     button {
       cursor: pointer;
