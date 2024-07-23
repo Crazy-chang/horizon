@@ -8,20 +8,32 @@ html {
   overflow: hidden;
 }
 
-body {
-  font-family: 'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
-    'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+.radix-themes {
+  --default-font-family: 'PuHui';
+  --heading-font-family: 'PuHui';
+  --strong-font-family: 'PuHui';
 }
 
 @font-face {
-  font-family: 'Barlow';
+  font-family: 'PuHui';
   font-weight: normal;
-  src: local(''), url('assets/fonts/Barlow-Regular.woff2') format('woff2');
+  src:
+    local(''),
+    url('assets/fonts/AlibabaPuHuiTi-Regular.woff2') format('woff2');
 }
 
 @font-face {
-  font-family: 'Barlow';
+  font-family: 'PuHui';
+  font-weight: lighter;
+  src:
+    local(''),
+    url('assets/fonts/AlibabaPuHuiTi-Thin.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'PuHui';
   font-weight: bold;
-  src: local(''), url('assets/fonts/Barlow-Bold.woff2') format('woff2');
+  src:
+    local(''),
+    url('assets/fonts/AlibabaPuHuiTi-Bold.woff2') format('woff2');
 }

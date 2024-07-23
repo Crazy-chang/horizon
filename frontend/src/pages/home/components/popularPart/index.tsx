@@ -1,4 +1,6 @@
-import React from 'react'
+import { ColorfulShadow } from '@/components'
+import { QuoteIcon, ReloadIcon } from '@radix-ui/react-icons'
+import { Button } from '@radix-ui/themes'
 import './index.modules.scss'
 
 const mockData = [
@@ -43,9 +45,31 @@ const PopularPart = () => {
             className="popular-item"
             key={item.id}
           >
-            <div className="popular-info">info</div>
+            <div className="popular-info">
+              <div className="cover-box">
+                <ColorfulShadow src={item.episode_img} />
+              </div>
+              <div className="info-box">
+                <p>{item.podcast}</p>
+                <p>{item.title}</p>
+                <p>
+                  <QuoteIcon />
+                  {item.description}
+                </p>
+              </div>
+            </div>
           </div>
         ))}
+      </div>
+
+      <div className="reload-button">
+        <Button
+          size="1"
+          variant="soft"
+        >
+          <ReloadIcon />
+          换一换
+        </Button>
       </div>
     </div>
   )
