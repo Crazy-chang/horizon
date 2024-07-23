@@ -1,10 +1,10 @@
-import PopularPart from '@/pages/home/components/popularPart'
+import Popular from '@/pages/home/components/popular'
 import './index.modules.scss'
 
 export const Home = () => {
   return (
     <div className="home-layout">
-      <PopularPart />
+      <Popular />
     </div>
   )
 }
