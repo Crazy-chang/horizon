@@ -1,5 +1,5 @@
 import { ColorfulShadow } from '@/components'
-import { QuoteIcon, ReloadIcon } from '@radix-ui/react-icons'
+import { QuoteIcon, UpdateIcon } from '@radix-ui/react-icons'
 import { Button } from '@radix-ui/themes'
 import './index.modules.scss'
 
@@ -71,7 +71,7 @@ const PopularPart = () => {
           size="1"
           variant="soft"
         >
-          <ReloadIcon />
+          <UpdateIcon />
           换一换
         </Button>
       </div>

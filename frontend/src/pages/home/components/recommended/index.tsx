@@ -28,7 +28,7 @@ const mockData = [
     description: '评论数 99+',
   },
   {
-    id: 3,
+    id: 4,
     episode_img:
       'https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?&w=256&h=256&q=70&crop=focalpoint&fp-x=0.5&fp-y=0.3&fp-z=1&fit=crop',
     title: '搞笑女01. 《奇葩说》选手的跨国恋情笑料分享会',
@@ -36,7 +36,7 @@ const mockData = [
     description: '评论数 99+',
   },
   {
-    id: 3,
+    id: 5,
     episode_img:
       'https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?&w=256&h=256&q=70&crop=focalpoint&fp-x=0.5&fp-y=0.3&fp-z=1&fit=crop',
     title: '搞笑女01. 《奇葩说》选手的跨国恋情笑料分享会',
@@ -44,7 +44,7 @@ const mockData = [
     description: '评论数 99+',
   },
   {
-    id: 3,
+    id: 6,
     episode_img:
       'https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?&w=256&h=256&q=70&crop=focalpoint&fp-x=0.5&fp-y=0.3&fp-z=1&fit=crop',
     title: '搞笑女01. 《奇葩说》选手的跨国恋情笑料分享会',
@@ -52,7 +52,7 @@ const mockData = [
     description: '评论数 99+',
   },
   {
-    id: 3,
+    id: 7,
     episode_img:
       'https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?&w=256&h=256&q=70&crop=focalpoint&fp-x=0.5&fp-y=0.3&fp-z=1&fit=crop',
     title: '搞笑女01. 《奇葩说》选手的跨国恋情笑料分享会',
@@ -60,7 +60,7 @@ const mockData = [
     description: '评论数 99+',
   },
   {
-    id: 3,
+    id: 8,
     episode_img:
       'https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?&w=256&h=256&q=70&crop=focalpoint&fp-x=0.5&fp-y=0.3&fp-z=1&fit=crop',
     title: '搞笑女01. 《奇葩说》选手的跨国恋情笑料分享会',
@@ -68,7 +68,7 @@ const mockData = [
     description: '评论数 99+',
   },
   {
-    id: 3,
+    id: 9,
     episode_img:
       'https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?&w=256&h=256&q=70&crop=focalpoint&fp-x=0.5&fp-y=0.3&fp-z=1&fit=crop',
     title: '搞笑女01. 《奇葩说》选手的跨国恋情笑料分享会',
@@ -80,7 +80,7 @@ const mockData = [
 const Recommended = () => {
   return (
     <div className="recommended-layout">
-      <h3>精选</h3>
+      <h3>精选节目</h3>
 
       <div className="recommended-content">
         <ScrollArea
