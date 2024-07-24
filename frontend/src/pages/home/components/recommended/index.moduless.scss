@@ -10,12 +10,12 @@
   }
 
   .recommended-content {
-    height: 16.8rem;
+    height: 13.8rem;
     margin-top: 0.7rem;
 
     .recommended-item {
       width: 12rem;
-      height: 16rem;
+      height: 13rem;
       margin-right: 1rem;
 
       .cover-box {
@@ -29,10 +29,12 @@
           height: 9rem;
         }
       }
+
       .podcast-info {
         width: 12rem;
         display: flex;
         justify-content: center;
+
 
         .podcast-title {
           width: 9rem;
