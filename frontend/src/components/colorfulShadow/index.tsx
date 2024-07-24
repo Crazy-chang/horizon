@@ -3,6 +3,7 @@ import './index.modules.scss'
 import { PlayIcon } from '@radix-ui/react-icons'
 
 interface ColorfulShadowType {
+  className?: string
   style?: React.CSSProperties
   src: string
   mask?: boolean
@@ -11,6 +12,7 @@ interface ColorfulShadowType {
 
 /**
  * 封面展示组件
+ * @param className 类名
  * @param style React.CSSProperties
  * @param src 封面 url
  * @param mask 是否展示遮罩
@@ -18,6 +20,7 @@ interface ColorfulShadowType {
  * @returns
  */
 export const ColorfulShadow: React.FC<ColorfulShadowType> = ({
+  className,
   style,
   src,
   mask = false,
@@ -25,7 +28,7 @@ export const ColorfulShadow: React.FC<ColorfulShadowType> = ({
 }): JSX.Element => {
   return (
     <div
-      className="colorful-shadow-layout"
+      className={`colorful-shadow-layout ${className}`}
       style={style}
     >
       <div
