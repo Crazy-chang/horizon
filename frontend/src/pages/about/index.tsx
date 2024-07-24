@@ -2,8 +2,7 @@ import { useEffect, useState } from 'react'
 import { Version } from 'wailsjs/go/bridge/App'
 import { Environment, BrowserOpenURL } from 'wailsjs/runtime'
 import { envType } from '@/types/env'
-import { Button, Link, Tooltip } from '@radix-ui/themes'
-import { GitHubLogoIcon } from '@radix-ui/react-icons'
+import { Button, Flex, Separator } from '@radix-ui/themes'
 import './index.modules.scss'
 
 export const About = () => {
@@ -47,29 +46,50 @@ export const About = () => {
       <p>第三方小宇宙桌面客户端，支持 Windows / macOS</p>
       <p>
         接口服务：
-        <Link
+        <Button
+          size="2"
+          variant="ghost"
           style={{ cursor: 'pointer' }}
           onClick={() => {
             BrowserOpenURL('https://github.com/ultrazg/xyz')
           }}
         >
           xyz
-        </Link>
+        </Button>
       </p>
 
       <div className="buttons">
-        <Tooltip content="GitHub">
+        <Flex
+          gap="3"
+          align="center"
+        >
           <Button
-            color="gray"
             variant="ghost"
-            size="3"
             onClick={() => {
               BrowserOpenURL('https://github.com/ultrazg/horizon')
             }}
           >
-            <GitHubLogoIcon style={{ width: 25, height: 25 }} />
+            Source Code (GitHub)
           </Button>
-        </Tooltip>
+          <Separator orientation="vertical" />
+          <Button
+            variant="ghost"
+            onClick={() => {
+              BrowserOpenURL('https://opensource.org/license/mit')
+            }}
+          >
+            MIT License
+          </Button>
+          <Separator orientation="vertical" />
+          <Button
+            variant="ghost"
+            onClick={() => {
+              BrowserOpenURL('https://github.com/ultrazg/horizon/issues')
+            }}
+          >
+            Bug report & Issue
+          </Button>
+        </Flex>
       </div>
     </div>
   )
