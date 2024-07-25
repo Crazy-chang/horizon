@@ -21,8 +21,8 @@ func AppOptions(app *bridge.App) *options.App {
 
 	return &options.App{
 		Title:         "horizon",
-		Width:         int(float32(dw) * 0.75),
-		Height:        int(float32(dh) * 0.8),
+		Width:         int(float32(dw) * 0.6),
+		Height:        int(float32(dh) * 0.7),
 		DisableResize: true,
 		AssetServer: &assetserver.Options{
 			Assets: assets,

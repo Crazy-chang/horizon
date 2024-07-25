@@ -92,8 +92,8 @@ const EditorRecommended = () => {
                     maxWidth="300px"
                     style={{
                       background: 'var(--black-a9)',
-                      backdropFilter: 'blur(12px)',
-                      WebkitBackdropFilter: 'blur(12px)',
+                      backdropFilter: 'blur(20px)',
+                      WebkitBackdropFilter: 'blur(20px)',
                     }}
                   >
                     <Flex gap="1">
