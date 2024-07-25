@@ -33,7 +33,7 @@ export const Root = () => {
         className="root-layout"
       >
         <nav className="nav-layout">
-          <NavLogo />
+          {/* <NavLogo /> */}
 
           <NavUser />
 
@@ -107,7 +107,7 @@ export const Root = () => {
         </nav>
 
         <div className="outlet-layout">
-          <ScrollArea type="scroll">
+          <ScrollArea type="hover">
             <Outlet />
           </ScrollArea>
         </div>
