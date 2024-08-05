@@ -1,0 +1,9 @@
+@import '@/assets/global/_common.scss';
+
+.search-layout {
+  @include no-select;
+
+  h3 {
+    font-size: 1.8rem;
+  }
+}
