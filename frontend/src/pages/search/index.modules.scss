@@ -3,7 +3,25 @@
 .search-layout {
   @include no-select;
 
+  padding: 0 14px;
+
   h3 {
     font-size: 1.8rem;
+  }
+
+  .search-content {
+    .search-input {
+      display: flex;
+      justify-items: center;
+      padding: 3rem 12rem;
+
+      .left {
+        flex: 6;
+      }
+      .right {
+        margin-left: 1rem;
+        flex: 1;
+      }
+    }
   }
 }
