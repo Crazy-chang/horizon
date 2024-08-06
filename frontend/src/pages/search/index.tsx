@@ -27,6 +27,19 @@ export const Search = () => {
             <Button size="3">搜索</Button>
           </div>
         </div>
+
+        <div className="search-for-you">
+          <div>搜搜看</div>
+          <div>
+            <span>one</span>
+            <span>two</span>
+            <span>three</span>
+            <span>four</span>
+            <span>five</span>
+          </div>
+        </div>
+
+        <div className="search-result">result</div>
       </div>
     </div>
   )
