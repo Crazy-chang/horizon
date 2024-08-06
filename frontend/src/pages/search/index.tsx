@@ -1,5 +1,5 @@
 import './index.modules.scss'
-import { Button, TextField } from '@radix-ui/themes'
+import { Box, Button, Tabs, TextField, Text } from '@radix-ui/themes'
 import { MagnifyingGlassIcon } from '@radix-ui/react-icons'
 
 export const Search = () => {
@@ -39,7 +39,31 @@ export const Search = () => {
           </div>
         </div>
 
-        <div className="search-result">result</div>
+        <div className="search-result">
+          <Tabs.Root defaultValue="1">
+            <Tabs.List size="2">
+              <Tabs.Trigger value="1">节目</Tabs.Trigger>
+              <Tabs.Trigger value="2">单集</Tabs.Trigger>
+              <Tabs.Trigger value="3">用户</Tabs.Trigger>
+            </Tabs.List>
+
+            <Box pt="3">
+              <Tabs.Content value="1">
+                <Text size="2">Make changes to your account.</Text>
+              </Tabs.Content>
+
+              <Tabs.Content value="2">
+                <Text size="2">Access and update your documents.</Text>
+              </Tabs.Content>
+
+              <Tabs.Content value="3">
+                <Text size="2">
+                  Edit your profile or update contact information.
+                </Text>
+              </Tabs.Content>
+            </Box>
+          </Tabs.Root>
+        </div>
       </div>
     </div>
   )
