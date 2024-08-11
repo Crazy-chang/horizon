@@ -28,17 +28,6 @@ export const Search = () => {
           </div>
         </div>
 
-        <div className="search-for-you">
-          <div>搜搜看</div>
-          <div>
-            <span>one</span>
-            <span>two</span>
-            <span>three</span>
-            <span>four</span>
-            <span>five</span>
-          </div>
-        </div>
-
         <div className="search-result">
           <Tabs.Root defaultValue="1">
             <Tabs.List size="2">
