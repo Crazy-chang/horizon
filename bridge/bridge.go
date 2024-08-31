@@ -2,7 +2,8 @@ package bridge
 
 import (
 	"context"
-	"github.com/ultrazg/xyz/server"
+	"fmt"
+	"github.com/ultrazg/xyz/service"
 )
 
 func NewApp() *App {
@@ -13,5 +14,8 @@ func (a *App) Start(ctx context.Context) {
 	a.ctx = ctx
 
 	//Init()
-	server.Start()
+	err := service.Start()
+	if err != nil {
+		fmt.Println(err.Error())
+	}
 }

@@ -1,0 +1,54 @@
+@import '@/assets/global/_common.scss';
+
+.search-layout {
+  @include no-select;
+
+  padding: 0 14px;
+
+  h3 {
+    font-size: 1.8rem;
+  }
+
+  .search-content {
+    padding: 0 12rem;
+    .search-input {
+      display: flex;
+      justify-items: center;
+      padding: 1rem 0;
+
+      .left {
+        flex: 5;
+      }
+      .right {
+        margin-left: 1rem;
+        flex: 1;
+      }
+    }
+
+    .search-for-you {
+      margin-bottom: 1rem;
+
+      span {
+        color: var(--white-a5);
+        padding-right: 0.7rem;
+        transition: 0.3s;
+        cursor: pointer;
+        display: inline-block;
+
+        &:hover {
+          color: var(--white-a12);
+        }
+
+        &:last-child {
+          padding-right: 0;
+        }
+      }
+    }
+
+    .search-result {
+      // background: rgba(255, 166, 0, 0.1);
+      display: block;
+      height: 100%;
+    }
+  }
+}
