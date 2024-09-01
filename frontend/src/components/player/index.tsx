@@ -13,15 +13,15 @@ const drawerStyles: DrawerStyles = {
   header: {
     '--wails-draggable': 'drag',
     cursor: 'default',
-    userSelect: 'none'
+    userSelect: 'none',
   } as any,
-  content: {
-    opacity: 0.5 // FIXME
-  }
+  // content: {
+  //   opacity: 0.5, // FIXME
+  // },
 }
 
 export const Player: React.FC<IProps> = ({ open, onClose }) => {
-  const [height, _] = React.useState<number>(useDisplayInfo().Height)
+  const [height, _] = React.useState<number>(useDisplayInfo().Height - 35)
 
   return (
     <Drawer
@@ -31,6 +31,8 @@ export const Player: React.FC<IProps> = ({ open, onClose }) => {
       placement="bottom"
       height={height}
       styles={drawerStyles}
+      maskClosable={false}
+      mask={false}
     >
       <p>player</p>
     </Drawer>

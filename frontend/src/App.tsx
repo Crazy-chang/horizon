@@ -1,6 +1,6 @@
 import { RouterProvider } from 'react-router-dom'
 import { router } from './router/routes'
-import { DraggableBar } from './components'
+import { DraggableBar, TitleBar } from './components'
 import { Environment } from 'wailsjs/runtime'
 import { useEffect, useState } from 'react'
 import { envType } from './types/env'
@@ -16,7 +16,8 @@ function App() {
 
   return (
     <>
-      {envInfo?.platform !== 'windows' && <DraggableBar />}
+      <TitleBar />
+      {/* {envInfo?.platform !== 'windows' && <DraggableBar />} */}
       <RouterProvider router={router} />
     </>
   )

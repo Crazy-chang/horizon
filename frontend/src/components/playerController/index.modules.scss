@@ -1,7 +1,7 @@
 .play-controller-layout {
   width: 100vw;
   height: 69px;
-  // position: fixed;
+  position: fixed;
   // box-shadow: 0 -2px 2px -2px #cecece;
   border-top: 1px solid #646464;
   bottom: 0;
@@ -11,7 +11,7 @@
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   display: flex;
-  position: relative;
+  // position: relative;
 
   .left {
     display: flex;

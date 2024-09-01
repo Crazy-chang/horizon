@@ -32,6 +32,7 @@ func AppOptions(app *bridge.App) *options.App {
 		Bind: []interface{}{
 			app,
 		},
+		Frameless: true,
 		Windows: &windows.Options{
 			WebviewIsTransparent:              true,
 			WindowIsTranslucent:               true,
