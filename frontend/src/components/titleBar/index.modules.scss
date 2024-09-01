@@ -10,6 +10,7 @@
   // background: rgba(255, 192, 203, 0.1);
   display: flex;
   align-items: center;
+  font-weight: bold;
 
   .title-bar-text {
     // background: cyan;
@@ -51,5 +52,25 @@
         }
       }
     }
+  }
+}
+
+.title-bar-mac-layout {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  height: 35px;
+  cursor: default;
+  user-select: none;
+  -webkit-user-select: none;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+
+  .title-bar-text {
+    padding-left: 10px;
+    width: 100%;
+    text-align: center;
   }
 }

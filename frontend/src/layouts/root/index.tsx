@@ -9,29 +9,22 @@ import { ScrollArea } from '@radix-ui/themes'
 import { NavLink, Outlet } from 'react-router-dom'
 import { PlayController, NavLogo, NavUser } from '@/components'
 import './index.modules.scss'
-import { useEffect, useState } from 'react'
-import { envType } from '@/types/env'
-import { Environment } from 'wailsjs/runtime'
+// import { useEffect, useState } from 'react'
+// import { envType } from '@/types/env'
+// import { Environment } from 'wailsjs/runtime'
 
 export const Root = () => {
-  const [envInfo, setEnvInfo] = useState<envType>()
+  // const [envInfo, setEnvInfo] = useState<envType>()
 
-  useEffect(() => {
-    Environment().then((res: envType) => {
-      setEnvInfo(res)
-    })
-  }, [])
+  // useEffect(() => {
+  //   Environment().then((res: envType) => {
+  //     setEnvInfo(res)
+  //   })
+  // }, [])
 
   return (
     <>
-      <div
-        style={
-          envInfo?.platform === 'windows'
-            ? { height: 'calc(100vh - 70px)' }
-            : { height: 'calc(100vh - 110px)' }
-        }
-        className="root-layout"
-      >
+      <div className="root-layout">
         <nav className="nav-layout">
           {/* <NavLogo /> */}
 

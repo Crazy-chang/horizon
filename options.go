@@ -2,6 +2,7 @@ package main
 
 import (
 	"embed"
+	"runtime"
 
 	"github.com/ultrazg/horizon/bridge"
 	"github.com/wailsapp/wails/v2/pkg/options"
@@ -32,7 +33,7 @@ func AppOptions(app *bridge.App) *options.App {
 		Bind: []interface{}{
 			app,
 		},
-		Frameless: true,
+		Frameless: runtime.GOOS == "windows",
 		Windows: &windows.Options{
 			WebviewIsTransparent:              true,
 			WindowIsTranslucent:               true,
@@ -48,7 +49,7 @@ func AppOptions(app *bridge.App) *options.App {
 			WindowIsTranslucent:  true,
 			About: &mac.AboutInfo{
 				Title:   "horizon",
-				Message: "© 2024 2bit",
+				Message: "© 2024 Hexdream",
 				Icon:    icon,
 			},
 		},
