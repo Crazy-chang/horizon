@@ -12,7 +12,7 @@ export const Search = () => {
           <div className="left">
             <TextField.Root
               size="3"
-              placeholder="Search the docs…"
+              placeholder="输入关键字"
             >
               <TextField.Slot>
                 <MagnifyingGlassIcon
