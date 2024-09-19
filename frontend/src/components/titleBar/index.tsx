@@ -30,7 +30,7 @@ export const TitleBar = () => {
           } as any
         }
       >
-        title
+        horizon
       </div>
       {envInfo?.platform !== 'darwin' && (
         <div className="title-bar-button">
