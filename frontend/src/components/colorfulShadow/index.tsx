@@ -2,12 +2,13 @@ import React from 'react'
 import './index.modules.scss'
 import { PlayIcon } from '@radix-ui/react-icons'
 
-interface ColorfulShadowType {
+type ColorfulShadowType = {
   className?: string
   style?: React.CSSProperties
   src: string
   mask?: boolean
   curPointer?: boolean
+  onClick?: () => void
 }
 
 /**
@@ -17,6 +18,7 @@ interface ColorfulShadowType {
  * @param src 封面 url
  * @param mask 是否展示遮罩
  * @param curPointer 光标指针是否展示为「手型」
+ * @param onClick 点击事件
  * @returns
  */
 export const ColorfulShadow: React.FC<ColorfulShadowType> = ({
@@ -25,11 +27,13 @@ export const ColorfulShadow: React.FC<ColorfulShadowType> = ({
   src,
   mask = false,
   curPointer = false,
+  onClick,
 }): JSX.Element => {
   return (
     <div
       className={`colorful-shadow-layout ${className}`}
       style={style}
+      onClick={onClick}
     >
       <div
         className="pic-box"
