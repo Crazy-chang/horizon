@@ -6,7 +6,6 @@
 
   padding: 0 14px;
   height: 100%;
-  // background: red;
 
   h3 {
     font-size: 1.8rem;
@@ -53,23 +52,17 @@
     }
 
     .search-result {
-      // background: rgba(255, 166, 0, 0.1);
       display: block;
-      // height: 100%;
 
       .search-result-podcast-layout {
-        // background: pink;
         height: 30rem;
-        // overflow: scroll;
 
         .search-result-podcast-item {
           display: flex;
-          // background: lightcyan;
           height: 10rem;
           margin-bottom: 1.7rem;
 
           .left {
-            // background: red;
             flex: 1;
             display: flex;
 
@@ -103,19 +96,42 @@
                 &:last-child {
                   position: absolute;
                   bottom: 0;
-                  // position: fixed;
                   color: $secondary-font-color;
                 }
               }
             }
           }
           .right {
-            // background: green;
             width: 7rem;
 
             button {
               width: 100%;
             }
+          }
+        }
+      }
+
+      .search-result-user-layout {
+        height: 30rem;
+
+        .search-result-user-item {
+          display: flex;
+          height: 7rem;
+          margin-bottom: 1.7rem;
+
+          .user-avatar {
+            width: 7rem;
+
+            .avatar-box {
+              width: 7rem;
+              height: 7rem;
+              cursor: pointer;
+            }
+          }
+          .user-info {
+            flex: 1;
+            padding-left: 0.7rem;
+            font-size: 1.2rem;
           }
         }
       }

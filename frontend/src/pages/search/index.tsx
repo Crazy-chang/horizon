@@ -6,6 +6,7 @@ import {
   TextField,
   Text,
   ScrollArea,
+  Avatar,
 } from '@radix-ui/themes'
 import { MagnifyingGlassIcon, PlusIcon } from '@radix-ui/react-icons'
 import { ColorfulShadow } from '@/components'
@@ -175,9 +176,68 @@ export const Search = () => {
                 </Tabs.Content>
 
                 <Tabs.Content value="3">
-                  <Text size="2">
-                    Edit your profile or update contact information.
-                  </Text>
+                  <div className="search-result-user-layout">
+                    <div className="search-result-user-item">
+                      <div className="user-avatar">
+                        <Avatar
+                          className="avatar-box"
+                          src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?&w=256&h=256&q=70&crop=focalpoint&fp-x=0.5&fp-y=0.3&fp-z=1&fit=crop"
+                          fallback="A"
+                        />
+                      </div>
+                      <div className="user-info">小米</div>
+                    </div>
+                    <div className="search-result-user-item">
+                      <div className="user-avatar">
+                        <Avatar
+                          className="avatar-box"
+                          src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?&w=256&h=256&q=70&crop=focalpoint&fp-x=0.5&fp-y=0.3&fp-z=1&fit=crop"
+                          fallback="A"
+                        />
+                      </div>
+                      <div className="user-info">小米</div>
+                    </div>
+                    <div className="search-result-user-item">
+                      <div className="user-avatar">
+                        <Avatar
+                          className="avatar-box"
+                          src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?&w=256&h=256&q=70&crop=focalpoint&fp-x=0.5&fp-y=0.3&fp-z=1&fit=crop"
+                          fallback="A"
+                        />
+                      </div>
+                      <div className="user-info">小米</div>
+                    </div>
+                    <div className="search-result-user-item">
+                      <div className="user-avatar">
+                        <Avatar
+                          className="avatar-box"
+                          src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?&w=256&h=256&q=70&crop=focalpoint&fp-x=0.5&fp-y=0.3&fp-z=1&fit=crop"
+                          fallback="A"
+                        />
+                      </div>
+                      <div className="user-info">小米</div>
+                    </div>
+                    <div className="search-result-user-item">
+                      <div className="user-avatar">
+                        <Avatar
+                          className="avatar-box"
+                          src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?&w=256&h=256&q=70&crop=focalpoint&fp-x=0.5&fp-y=0.3&fp-z=1&fit=crop"
+                          fallback="A"
+                        />
+                      </div>
+                      <div className="user-info">小米</div>
+                    </div>
+                    <div className="search-result-user-item">
+                      <div className="user-avatar">
+                        <Avatar
+                          className="avatar-box"
+                          src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?&w=256&h=256&q=70&crop=focalpoint&fp-x=0.5&fp-y=0.3&fp-z=1&fit=crop"
+                          fallback="A"
+                        />
+                      </div>
+                      <div className="user-info">小米</div>
+                    </div>
+                  </div>
                 </Tabs.Content>
               </ScrollArea>
             </Box>
