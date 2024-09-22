@@ -1,6 +1,6 @@
-import { createHashRouter, createBrowserRouter } from 'react-router-dom'
+import { createHashRouter } from 'react-router-dom'
 
-import { Home, Login, About, Search, Subscription } from '@/pages'
+import { Home, Login, About, Search, Subscription, Favorites } from '@/pages'
 import { Root } from '@/layouts'
 
 export const router = createHashRouter([
@@ -23,6 +23,10 @@ export const router = createHashRouter([
       {
         path: 'subscription',
         element: <Subscription />,
+      },
+      {
+        path: 'favorites',
+        element: <Favorites />,
       },
     ],
   },

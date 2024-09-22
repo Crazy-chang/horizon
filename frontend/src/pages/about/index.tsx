@@ -40,7 +40,7 @@ export const About = () => {
             checkUpdate()
           }}
         >
-          检查更新
+          检查更新...
         </Button>
       </p>
       <p>第三方小宇宙桌面客户端，支持 Windows / macOS</p>

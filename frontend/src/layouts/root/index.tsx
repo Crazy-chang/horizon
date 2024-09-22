@@ -72,7 +72,7 @@ export const Root = () => {
             </li>
             <li>
               <NavLink
-                to="login"
+                to="favorites"
                 className={({ isActive, isPending }) =>
                   isPending ? 'pending' : isActive ? 'active' : ''
                 }

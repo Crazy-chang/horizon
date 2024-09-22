@@ -1,5 +1,5 @@
 import './index.modules.scss'
-import { Card, Inset, Text, Button } from '@radix-ui/themes'
+import { Card, Inset, Text } from '@radix-ui/themes'
 
 export const Subscription = () => {
   return (
@@ -20,7 +20,7 @@ export const Subscription = () => {
                   display: 'block',
                   objectFit: 'cover',
                   width: '100%',
-                  height: 250,
+                  height: 200,
                   backgroundColor: 'var(--gray-5)',
                 }}
               />

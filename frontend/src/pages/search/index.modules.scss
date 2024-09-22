@@ -12,7 +12,7 @@
   }
 
   .search-content {
-    padding: 0 12rem;
+    padding: 0 5rem;
     .search-input {
       display: flex;
       justify-items: center;
@@ -31,32 +31,10 @@
       }
     }
 
-    .search-for-you {
-      margin-bottom: 1rem;
-
-      span {
-        color: var(--white-a5);
-        padding-right: 0.7rem;
-        transition: 0.3s;
-        cursor: pointer;
-        display: inline-block;
-
-        &:hover {
-          color: var(--white-a12);
-        }
-
-        &:last-child {
-          padding-right: 0;
-        }
-      }
-    }
-
     .search-result {
       display: block;
 
       .search-result-podcast-layout {
-        height: 30rem;
-
         .search-result-podcast-item {
           display: flex;
           height: 10rem;
