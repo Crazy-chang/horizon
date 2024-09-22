@@ -1,0 +1,40 @@
+@import '@/assets/global/_common.scss';
+@import '@/assets/global/_variables.scss';
+
+.subscription-layout {
+  @include no-select;
+
+  padding: 0 14px;
+  height: 100%;
+
+  h3 {
+    font-size: 1.8rem;
+  }
+
+  .subscription-content {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 0.7rem;
+
+    .subscription-item {
+      flex: 0 0 25%;
+      box-sizing: border-box;
+      cursor: pointer;
+      padding: 0 1rem 1rem 0;
+
+      .podcast-title {
+        font-weight: bold;
+        overflow: hidden;
+        display: -webkit-box;
+        line-clamp: 2;
+        box-orient: vertical;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+      }
+
+      .podcast-update-time {
+        color: $secondary-font-color;
+      }
+    }
+  }
+}
