@@ -22,6 +22,14 @@
       cursor: pointer;
       padding: 0 1rem 1rem 0;
 
+      .podcast-cover {
+        transition: 0.2s;
+        &:hover {
+          transform: translateY(-3px) scale(1.01);
+          box-shadow: var(--shadow-4);
+        }
+      }
+
       .podcast-title {
         font-weight: bold;
         overflow: hidden;
