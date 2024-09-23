@@ -82,12 +82,10 @@
     }
 
     .favorites-comment-item {
+      margin-bottom: 1.7rem;
       .top {
         display: flex;
 
-        .comment-avatar {
-          flex: 1;
-        }
         .comment-info {
           flex: 12;
           padding-left: 0.7em;
@@ -101,13 +99,9 @@
               font-size: 0.8rem;
               color: $secondary-font-color;
             }
-
-            &:last-child {
-            }
           }
         }
         .comment-like {
-          flex: 2;
           cursor: pointer;
 
           svg {
@@ -117,6 +111,19 @@
       }
 
       .bottom {
+        display: flex;
+
+        .episode-info {
+          padding-left: 0.7em;
+
+          p {
+            font-size: 0.7rem;
+
+            &:last-child {
+              color: $secondary-font-color;
+            }
+          }
+        }
       }
     }
   }

@@ -151,7 +151,7 @@ export const Favorites = () => {
                 <div className="top">
                   <div className="comment-avatar">
                     <Avatar
-                      size="3"
+                      size="4"
                       src="https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?&w=64&h=64&dpr=2&q=70&crop=focalpoint&fp-x=0.67&fp-y=0.5&fp-z=1.4&fit=crop"
                       radius="full"
                       fallback="T"
@@ -173,7 +173,61 @@ export const Favorites = () => {
                   size="4"
                 />
 
-                <div className="bottom"></div>
+                <div className="bottom">
+                  <div className="episode-cover">
+                    <Avatar
+                      size="2"
+                      src="https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?&w=64&h=64&dpr=2&q=70&crop=focalpoint&fp-x=0.67&fp-y=0.5&fp-z=1.4&fit=crop"
+                      radius="small"
+                      fallback="T"
+                    />
+                  </div>
+                  <div className="episode-info">
+                    <p>132.GGGG卑卑卑卑：聊聊自信与自卑</p>
+                    <p>不开玩笑 Jokes Aside</p>
+                  </div>
+                </div>
+              </Card>
+              <Card className="favorites-comment-item">
+                <div className="top">
+                  <div className="comment-avatar">
+                    <Avatar
+                      size="4"
+                      src="https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?&w=64&h=64&dpr=2&q=70&crop=focalpoint&fp-x=0.67&fp-y=0.5&fp-z=1.4&fit=crop"
+                      radius="full"
+                      fallback="T"
+                    />
+                  </div>
+                  <div className="comment-info">
+                    <p>谷谷鸟鸟</p>
+                    <p>09/12 上海</p>
+                    <p>你就是干这个的！</p>
+                  </div>
+                  <div className="comment-like">
+                    <SlLike />
+                    389
+                  </div>
+                </div>
+
+                <Separator
+                  my="3"
+                  size="4"
+                />
+
+                <div className="bottom">
+                  <div className="episode-cover">
+                    <Avatar
+                      size="2"
+                      src="https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?&w=64&h=64&dpr=2&q=70&crop=focalpoint&fp-x=0.67&fp-y=0.5&fp-z=1.4&fit=crop"
+                      radius="small"
+                      fallback="T"
+                    />
+                  </div>
+                  <div className="episode-info">
+                    <p>132.GGGG卑卑卑卑：聊聊自信与自卑</p>
+                    <p>不开玩笑 Jokes Aside</p>
+                  </div>
+                </div>
               </Card>
             </Tabs.Content>
           </Box>
