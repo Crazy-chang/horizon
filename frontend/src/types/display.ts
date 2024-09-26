@@ -1,4 +1,4 @@
-interface useDisplayInfoType {
+type useDisplayInfoType = {
   Height: number
   Width: number
 }

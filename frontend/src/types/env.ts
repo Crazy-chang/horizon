@@ -1,4 +1,4 @@
-interface envType {
+type envType = {
   buildType: string
   platform: string
   arch: string
