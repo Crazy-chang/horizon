@@ -1,2 +1,47 @@
+@import '@/assets/global/_variables.scss';
+
 .profile-layout {
+  padding: 0 14px;
+  height: 100%;
+  .profile-content {
+    display: flex;
+    .profile-avatar {
+      // flex: 1;
+      // background: pink;
+    }
+
+    .profile-info {
+      flex: 2;
+      // background: blue;
+      padding-left: 1rem;
+      .profile-nickname {
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+
+      .profile-bio {
+        margin-top: 0.7rem;
+      }
+
+      .profile-follow {
+        display: flex;
+
+        .chunk {
+          p {
+            &:first-child {
+              font-size: 1.3rem;
+              font-weight: bold;
+            }
+            &:last-child {
+              color: $secondary-font-color;
+            }
+          }
+        }
+
+        .spearator {
+          margin: 0 0.5rem;
+        }
+      }
+    }
+  }
 }
