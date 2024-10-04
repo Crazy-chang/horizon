@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import { Avatar, Flex, Separator, Card } from '@radix-ui/themes'
+import { ChevronRightIcon } from '@radix-ui/react-icons'
 import './index.modules.scss'
 
 export const Profile = () => {
@@ -62,6 +63,18 @@ export const Profile = () => {
             <span className="num">143</span>时<span className="num">18</span>分
           </div>
           <div>总收听时长</div>
+        </Card>
+      </div>
+
+      <div className="sticker-content">
+        <h3>我的贴纸库</h3>
+
+        <Card className="sticker-card">
+          <div>
+            7张贴纸
+            <ChevronRightIcon />
+          </div>
+          <div>最新：过了一个播客日</div>
         </Card>
       </div>
     </div>

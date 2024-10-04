@@ -58,4 +58,24 @@
       }
     }
   }
+
+  .sticker-content {
+    margin-top: 1.7rem;
+    h3 {
+      font-size: 1.8rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .sticker-card {
+      font-size: 1.2rem;
+      padding: 2rem 4rem;
+      cursor: pointer;
+
+      div {
+        &:last-child {
+          color: $secondary-font-color;
+        }
+      }
+    }
+  }
 }
