@@ -19,7 +19,7 @@ export const Profile = () => {
         <div className="profile-info">
           <div className="profile-nickname">hexdream</div>
           <Separator
-            my="3"
+            my="1"
             size="4"
           />
           <div className="profile-follow">
@@ -52,6 +52,7 @@ export const Profile = () => {
             </Flex>
           </div>
           <div className="profile-bio">还没有设置签名</div>
+          <div className="profile-ip">IP属地：广东</div>
         </div>
       </div>
 
