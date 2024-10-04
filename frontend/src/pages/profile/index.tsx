@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { Avatar, Flex, Separator } from '@radix-ui/themes'
+import { Avatar, Flex, Separator, Card } from '@radix-ui/themes'
 import './index.modules.scss'
 
 export const Profile = () => {
@@ -52,6 +52,17 @@ export const Profile = () => {
           </div>
           <div className="profile-bio">还没有设置签名</div>
         </div>
+      </div>
+
+      <div className="time-content">
+        <h3>收听时长</h3>
+
+        <Card className="time-card">
+          <div>
+            <span className="num">143</span>时<span className="num">18</span>分
+          </div>
+          <div>总收听时长</div>
+        </Card>
       </div>
     </div>
   )
