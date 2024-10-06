@@ -78,6 +78,10 @@ export const Profile = () => {
           <div>最新：过了一个播客日</div>
         </Card>
       </div>
+
+      <div className="history-content">
+        <h3>最近听过</h3>
+      </div>
     </div>
   )
 }
