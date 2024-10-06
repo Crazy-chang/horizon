@@ -21,17 +21,13 @@ export const TitleBar = () => {
           ? 'title-bar-mac-layout'
           : 'title-bar-windows-layout'
       }
+      style={
+        {
+          '--wails-draggable': 'drag',
+        } as any
+      }
     >
-      <div
-        className="title-bar-text"
-        style={
-          {
-            '--wails-draggable': 'drag',
-          } as any
-        }
-      >
-        horizon
-      </div>
+      <div className="title-bar-text" />
       {envInfo?.platform !== 'darwin' && (
         <div className="title-bar-button">
           <div
