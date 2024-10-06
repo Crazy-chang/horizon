@@ -27,7 +27,6 @@ export const TitleBar = () => {
         } as any
       }
     >
-      <div className="title-bar-text" />
       {envInfo?.platform !== 'darwin' && (
         <div className="title-bar-button">
           <div
