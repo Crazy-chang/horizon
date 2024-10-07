@@ -28,22 +28,25 @@ export const TitleBar = () => {
       }
     >
       {envInfo?.platform !== 'darwin' && (
-        <div className="title-bar-button">
-          <div
-            onClick={() => {
-              WindowMinimise()
-            }}
-          >
-            <MinusIcon />
+        <>
+          <div className="title-bar-text">horizon</div>
+          <div className="title-bar-button">
+            <div
+              onClick={() => {
+                WindowMinimise()
+              }}
+            >
+              <MinusIcon />
+            </div>
+            <div
+              onClick={() => {
+                Quit()
+              }}
+            >
+              <Cross1Icon />
+            </div>
           </div>
-          <div
-            onClick={() => {
-              Quit()
-            }}
-          >
-            <Cross1Icon />
-          </div>
-        </div>
+        </>
       )}
     </div>
   )
