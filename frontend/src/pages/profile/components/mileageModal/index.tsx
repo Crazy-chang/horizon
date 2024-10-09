@@ -1,33 +1,35 @@
-import React from 'react'
-import { Modal } from 'antd'
-import { Box, Tabs, Text, Button } from '@radix-ui/themes'
+import React, { useState } from 'react'
+import { Modal } from '@/components'
+import { modalType } from '@/types/modal'
 import './index.modules.scss'
-
-type IProps = {
-  open: boolean
-  onClose: () => void
-}
+import { Button, Dialog, Flex } from '@radix-ui/themes'
 
 /**
  * 收听数据弹窗
  */
-export const MileageModal: React.FC<IProps> = ({ open, onClose }) => {
+export const MileageModal: React.FC<modalType> = ({ open, onClose }) => {
+  const [content, setContent] = useState('')
   return (
     <Modal
-      open={open}
-      maskClosable={false}
-      onCancel={onClose}
-      footer={false}
       title="收听数据"
-      width={'50%'}
-      loading={false}
+      open={open}
+      onClose={onClose}
     >
-      <div className="tagline-layout">
-        <div>144小时52分钟</div>
-        <div>谷神星自转了15圈</div>
-      </div>
-
-      <div>lists</div>
+      {content || <div>暂无数据</div>}
+      <Flex
+        gap="3"
+        mt="4"
+        justify="end"
+      >
+        <Dialog.Close>
+          <Button
+            variant="soft"
+            color="gray"
+          >
+            关闭
+          </Button>
+        </Dialog.Close>
+      </Flex>
     </Modal>
   )
 }
