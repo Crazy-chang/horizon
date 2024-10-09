@@ -2,7 +2,12 @@ import { Avatar, Flex, Separator, Card } from '@radix-ui/themes'
 import { ChevronRightIcon } from '@radix-ui/react-icons'
 import './index.modules.scss'
 import { ColorfulShadow } from '@/components'
-import { SlBubble, SlEarphones } from 'react-icons/sl'
+import {
+  SlBubble,
+  SlEarphones,
+  SlSymbleFemale,
+  SlSymbolMale,
+} from 'react-icons/sl'
 
 export const Profile = () => {
   // const elementRef = useRef(null)
@@ -18,7 +23,19 @@ export const Profile = () => {
           />
         </div>
         <div className="profile-info">
-          <div className="profile-nickname">hexdream</div>
+          <div className="profile-nickname">
+            hexdream
+            <span className="gender">
+              <SlSymbleFemale
+                fontSize="18"
+                color="pink"
+              />
+              {/* <SlSymbolMale
+                fontSize="18"
+                color="royalblue"
+              /> */}
+            </span>
+          </div>
           <Separator
             my="1"
             size="4"
