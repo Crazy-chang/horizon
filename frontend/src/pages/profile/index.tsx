@@ -1,4 +1,14 @@
-import { Avatar, Flex, Separator, Card } from '@radix-ui/themes'
+import { useState } from 'react'
+import {
+  Avatar,
+  Flex,
+  Separator,
+  Card,
+  Dialog,
+  TextField,
+  Button,
+  Text,
+} from '@radix-ui/themes'
 import { ChevronRightIcon } from '@radix-ui/react-icons'
 import './index.modules.scss'
 import { ColorfulShadow } from '@/components'
@@ -9,8 +19,11 @@ import {
   SlSymbolMale,
 } from 'react-icons/sl'
 
+import { MileageModal } from './components/mileageModal'
+
 export const Profile = () => {
   // const elementRef = useRef(null)
+  const [mileageModalOpen, setMileageModalOpen] = useState<boolean>(false)
 
   return (
     <div className="profile-layout">
@@ -77,11 +90,19 @@ export const Profile = () => {
       <div className="time-content">
         <h3>收听时长</h3>
 
-        <Card className="time-card">
+        <Card
+          className="time-card"
+          onClick={() => {
+            setMileageModalOpen(true)
+          }}
+        >
           <div>
             <span className="num">143</span>时<span className="num">18</span>分
           </div>
-          <div>总收听时长</div>
+          <div>
+            总收听时长
+            <ChevronRightIcon />
+          </div>
         </Card>
       </div>
 
@@ -126,6 +147,77 @@ export const Profile = () => {
           </div>
         </div>
       </div>
+
+      <MileageModal
+        open={mileageModalOpen}
+        onClose={() => {
+          setMileageModalOpen(false)
+        }}
+      />
+
+      <Dialog.Root>
+        <Dialog.Content maxWidth="450px">
+          <Dialog.Title>Edit profile</Dialog.Title>
+          <Dialog.Description
+            size="2"
+            mb="4"
+          >
+            Make changes to your profile.
+          </Dialog.Description>
+
+          <Flex
+            direction="column"
+            gap="3"
+          >
+            <label>
+              <Text
+                as="div"
+                size="2"
+                mb="1"
+                weight="bold"
+              >
+                Name
+              </Text>
+              <TextField.Root
+                defaultValue="Freja Johnsen"
+                placeholder="Enter your full name"
+              />
+            </label>
+            <label>
+              <Text
+                as="div"
+                size="2"
+                mb="1"
+                weight="bold"
+              >
+                Email
+              </Text>
+              <TextField.Root
+                defaultValue="freja@example.com"
+                placeholder="Enter your email"
+              />
+            </label>
+          </Flex>
+
+          <Flex
+            gap="3"
+            mt="4"
+            justify="end"
+          >
+            <Dialog.Close>
+              <Button
+                variant="soft"
+                color="gray"
+              >
+                Cancel
+              </Button>
+            </Dialog.Close>
+            <Dialog.Close>
+              <Button>Save</Button>
+            </Dialog.Close>
+          </Flex>
+        </Dialog.Content>
+      </Dialog.Root>
     </div>
   )
 }
