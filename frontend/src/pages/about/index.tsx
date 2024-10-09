@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react'
-import { Version } from 'wailsjs/go/bridge/App'
 import { Environment, BrowserOpenURL } from 'wailsjs/runtime'
 import { envType } from '@/types/env'
 import { Button, Flex, Separator } from '@radix-ui/themes'
+import { APP_NAME, APP_VERSION } from '@/utils'
 import './index.modules.scss'
 
 export const About = () => {
-  const [version, setVersion] = useState<string>()
   const [envInfo, setEnvInfo] = useState<envType>()
 
   const checkUpdate = () => {
@@ -14,10 +13,6 @@ export const About = () => {
   }
 
   useEffect(() => {
-    Version().then((res: string) => {
-      setVersion(res)
-    })
-
     Environment().then((res: envType) => {
       setEnvInfo(res)
     })
@@ -29,9 +24,9 @@ export const About = () => {
         <div className="logo">logo_placeholder</div>
       </div>
 
-      <h3>horizon</h3>
+      <h3>{APP_NAME}</h3>
       <p>
-        v{version}_{envInfo?.platform}_{envInfo?.arch}
+        v{APP_VERSION}_{envInfo?.platform}_{envInfo?.arch}
       </p>
       <p>
         <Button
