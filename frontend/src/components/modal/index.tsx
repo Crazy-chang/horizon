@@ -1,5 +1,5 @@
 import React from 'react'
-import { Dialog, Flex, Spinner } from '@radix-ui/themes'
+import { Dialog } from '@radix-ui/themes'
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
 import { modalType } from '@/types/modal'
 
@@ -8,7 +8,6 @@ export const Modal: React.FC<modalType> = ({
   open,
   onClose,
   children,
-  loading,
 }) => {
   // https://github.com/radix-ui/primitives/discussions/1997
   const avoidDefaultDomBehavior = (e: Event) => {
@@ -33,13 +32,7 @@ export const Modal: React.FC<modalType> = ({
           />
         </VisuallyHidden.Root>
 
-        {loading ? (
-          <Flex justify="center">
-            <Spinner size="3" />
-          </Flex>
-        ) : (
-          children
-        )}
+        {children}
       </Dialog.Content>
     </Dialog.Root>
   )
