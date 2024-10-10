@@ -2,8 +2,8 @@ import {
   MagnifyingGlassIcon,
   GlobeIcon,
   CardStackIcon,
-  InfoCircledIcon,
   StarIcon,
+  GearIcon,
 } from '@radix-ui/react-icons'
 import { ScrollArea } from '@radix-ui/themes'
 import { NavLink, Outlet } from 'react-router-dom'
@@ -85,15 +85,15 @@ export const Root = () => {
             </li>
             <li>
               <NavLink
-                to="about"
+                to="setting"
                 className={({ isActive, isPending }) =>
                   isPending ? 'pending' : isActive ? 'active' : ''
                 }
               >
                 <span className="icon-box">
-                  <InfoCircledIcon className="icon" />
+                  <GearIcon className="icon" />
                 </span>
-                关于
+                设置
               </NavLink>
             </li>
           </ul>

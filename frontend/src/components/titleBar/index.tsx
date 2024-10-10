@@ -30,9 +30,7 @@ export const TitleBar = () => {
     >
       {envInfo?.platform !== 'darwin' && (
         <>
-          <div className="title-bar-text">
-            {APP_NAME}_v{APP_VERSION}
-          </div>
+          <div className="title-bar-text">{APP_NAME}</div>
           <div
             className="title-bar-button"
             style={

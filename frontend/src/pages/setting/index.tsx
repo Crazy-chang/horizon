@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
-import { Environment, BrowserOpenURL } from 'wailsjs/runtime'
+import { Environment } from 'wailsjs/runtime'
 import { envType } from '@/types/env'
-import { Button, Flex, Separator } from '@radix-ui/themes'
+import { Box, Card, Flex, Separator, Switch } from '@radix-ui/themes'
+import { ChevronRightIcon } from '@radix-ui/react-icons'
 import { APP_NAME, APP_VERSION } from '@/utils'
 import './index.modules.scss'
 
-export const About = () => {
+export const Setting = () => {
   const [envInfo, setEnvInfo] = useState<envType>()
 
   const checkUpdate = () => {
@@ -19,8 +20,43 @@ export const About = () => {
   }, [])
 
   return (
-    <div className="about-layout">
-      <div className="about-logo">
+    <div className="setting-layout">
+      <h3>设置</h3>
+
+      <h4>通用</h4>
+      <Card>
+        <Flex>
+          <Box width="100%">启动时检查更新</Box>
+          <Box>
+            <Switch />
+          </Box>
+        </Flex>
+        <Separator
+          my="3"
+          size="4"
+        />
+        <Flex style={{ cursor: 'pointer' }}>
+          <Box width="100%">关于</Box>
+          <Box>
+            <ChevronRightIcon />
+          </Box>
+        </Flex>
+      </Card>
+
+      <h4>隐私设置</h4>
+
+      <div className="app-logo">
+        <div className="logo">logo_placeholder</div>
+      </div>
+
+      <div className="app-info">
+        <div>{APP_NAME}</div>
+        <p>
+          v{APP_VERSION}_{envInfo?.platform}_{envInfo?.arch}
+        </p>
+      </div>
+
+      {/* <div className="app-logo">
         <div className="logo">logo_placeholder</div>
       </div>
 
@@ -85,7 +121,7 @@ export const About = () => {
             Bug report & Issue
           </Button>
         </Flex>
-      </div>
+      </div> */}
     </div>
   )
 }

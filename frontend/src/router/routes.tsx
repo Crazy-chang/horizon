@@ -3,7 +3,7 @@ import { createHashRouter } from 'react-router-dom'
 import {
   Home,
   Login,
-  About,
+  Setting,
   Search,
   Subscription,
   Favorites,
@@ -21,8 +21,8 @@ export const router = createHashRouter([
         element: <Home />,
       },
       {
-        path: 'about',
-        element: <About />,
+        path: 'setting',
+        element: <Setting />,
       },
       {
         path: 'search',
