@@ -1,13 +1,16 @@
 import { useEffect, useState } from 'react'
 import { Environment } from 'wailsjs/runtime'
 import { envType } from '@/types/env'
-import { Box, Card, Flex, Separator, Switch } from '@radix-ui/themes'
+import { Box, Card, Flex, Separator, Switch, Button } from '@radix-ui/themes'
 import { ChevronRightIcon } from '@radix-ui/react-icons'
 import { APP_NAME, APP_VERSION } from '@/utils'
+import { useNavigateTo } from '@/hooks'
 import './index.modules.scss'
 
 export const Setting = () => {
   const [envInfo, setEnvInfo] = useState<envType>()
+
+  const goAbout = useNavigateTo('/about')
 
   const checkUpdate = () => {
     // TODO:  check update
@@ -23,8 +26,109 @@ export const Setting = () => {
     <div className="setting-layout">
       <h3>设置</h3>
 
-      <h4>通用</h4>
+      <h4>账号绑定</h4>
       <Card>
+        <Flex>
+          <Box width="100%">手机号</Box>
+          <Box className="content_text">13111111111</Box>
+        </Flex>
+        <Separator
+          my="3"
+          size="4"
+        />
+        <Flex>
+          <Box width="100%">微信</Box>
+          <Box className="content_text">WECHAT_NAME</Box>
+        </Flex>
+        <Separator
+          my="3"
+          size="4"
+        />
+        <Flex>
+          <Box width="100%">即刻</Box>
+          <Box className="content_text">JIKE_NAME</Box>
+        </Flex>
+      </Card>
+
+      <h4>隐私设置</h4>
+      <Card>
+        <Flex>
+          <Box width="100%">不让他人看到我的收听记录</Box>
+          <Box>
+            <Switch />
+          </Box>
+        </Flex>
+        <Separator
+          my="3"
+          size="4"
+        />
+        <Flex>
+          <Box width="100%">不在评论区展示收听时长标签</Box>
+          <Box>
+            <Switch />
+          </Box>
+        </Flex>
+        <Separator
+          my="3"
+          size="4"
+        />
+        <Flex>
+          <Box width="100%">不让他人看到我的贴纸库</Box>
+          <Box>
+            <Switch />
+          </Box>
+        </Flex>
+        <Separator
+          my="3"
+          size="4"
+        />
+        <Flex>
+          <Box width="100%">不让他人看到我的贴纸装扮</Box>
+          <Box>
+            <Switch />
+          </Box>
+        </Flex>
+        <Separator
+          my="3"
+          size="4"
+        />
+        <Flex>
+          <Box width="100%">接受热门内容推送</Box>
+          <Box>
+            <Switch />
+          </Box>
+        </Flex>
+        <Separator
+          my="3"
+          size="4"
+        />
+        <Flex>
+          <Box width="100%">个性化推荐</Box>
+          <Box>
+            <Switch />
+          </Box>
+        </Flex>
+      </Card>
+
+      <h4>其他</h4>
+      <Card>
+        <Flex>
+          <Box width="100%">更新</Box>
+          <Box>
+            <Button
+              size={'1'}
+              variant={'soft'}
+              style={{ width: '100px' }}
+              onClick={checkUpdate}
+            >
+              检查更新...
+            </Button>
+          </Box>
+        </Flex>
+        <Separator
+          my="3"
+          size="4"
+        />
         <Flex>
           <Box width="100%">启动时检查更新</Box>
           <Box>
@@ -35,15 +139,16 @@ export const Setting = () => {
           my="3"
           size="4"
         />
-        <Flex style={{ cursor: 'pointer' }}>
+        <Flex
+          style={{ cursor: 'pointer' }}
+          onClick={goAbout}
+        >
           <Box width="100%">关于</Box>
           <Box>
             <ChevronRightIcon />
           </Box>
         </Flex>
       </Card>
-
-      <h4>隐私设置</h4>
 
       <div className="app-logo">
         <div className="logo">logo_placeholder</div>
@@ -55,73 +160,6 @@ export const Setting = () => {
           v{APP_VERSION}_{envInfo?.platform}_{envInfo?.arch}
         </p>
       </div>
-
-      {/* <div className="app-logo">
-        <div className="logo">logo_placeholder</div>
-      </div>
-
-      <h3>{APP_NAME}</h3>
-      <p>
-        v{APP_VERSION}_{envInfo?.platform}_{envInfo?.arch}
-      </p>
-      <p>
-        <Button
-          variant="soft"
-          onClick={() => {
-            checkUpdate()
-          }}
-        >
-          检查更新...
-        </Button>
-      </p>
-      <p>第三方小宇宙桌面客户端，支持 Windows / macOS</p>
-      <p>
-        接口服务：
-        <Button
-          size="2"
-          variant="ghost"
-          style={{ cursor: 'pointer' }}
-          onClick={() => {
-            BrowserOpenURL('https://github.com/ultrazg/xyz')
-          }}
-        >
-          xyz
-        </Button>
-      </p>
-
-      <div className="buttons">
-        <Flex
-          gap="3"
-          align="center"
-        >
-          <Button
-            variant="ghost"
-            onClick={() => {
-              BrowserOpenURL('https://github.com/ultrazg/horizon')
-            }}
-          >
-            Source Code (GitHub)
-          </Button>
-          <Separator orientation="vertical" />
-          <Button
-            variant="ghost"
-            onClick={() => {
-              BrowserOpenURL('https://opensource.org/license/mit')
-            }}
-          >
-            MIT License
-          </Button>
-          <Separator orientation="vertical" />
-          <Button
-            variant="ghost"
-            onClick={() => {
-              BrowserOpenURL('https://github.com/ultrazg/horizon/issues')
-            }}
-          >
-            Bug report & Issue
-          </Button>
-        </Flex>
-      </div> */}
     </div>
   )
 }

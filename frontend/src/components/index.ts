@@ -6,6 +6,7 @@ import { NavUser } from './navUser'
 import { ColorfulShadow } from './colorfulShadow'
 import { TitleBar } from './titleBar'
 import { Modal } from './modal'
+import { NavBackButton } from './navBackButton'
 
 export {
   DraggableBar,
@@ -16,4 +17,5 @@ export {
   ColorfulShadow,
   TitleBar,
   Modal,
+  NavBackButton,
 }

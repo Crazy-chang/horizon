@@ -1,7 +1,7 @@
 @import '@/assets/global/_common.scss';
 @import '@/assets/global/_variables.scss';
 
-.setting-layout {
+.about-layout {
   @include no-select;
 
   padding: 0 14px;
@@ -12,27 +12,16 @@
     margin-bottom: 0.7rem;
   }
 
-  h4 {
-    margin: 0.7em 0;
-    color: $secondary-font-color;
-  }
-
-  .content_text {
-    color: $secondary-font-color;
-    @include allow-select;
-  }
-
   .app-logo {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 200px;
+    height: 14rem;
     margin-bottom: 1.5rem;
-    padding-top: 2.2rem;
 
     .logo {
-      width: 200px;
-      height: 200px;
+      width: 14rem;
+      height: 14rem;
       background: rgba(255, 0, 0, 0.1);
     }
   }
@@ -42,10 +31,9 @@
     flex-direction: column;
     align-items: center;
     margin-bottom: 2rem;
+  }
 
-    div {
-      font-size: 1.9rem;
-      font-weight: bold;
-    }
+  button {
+    cursor: pointer;
   }
 }
