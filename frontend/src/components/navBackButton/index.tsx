@@ -10,7 +10,8 @@ export const NavBackButton = () => {
       <Button
         onClick={back}
         size="1"
-        variant={'outline'}
+        variant={'ghost'}
+        mt={'1'}
         mb={'2'}
       >
         <ArrowLeftIcon />

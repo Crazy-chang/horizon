@@ -3,7 +3,6 @@ import './index.modules.scss'
 import { APP_NAME } from '@/utils'
 import { BrowserOpenURL } from 'wailsjs/runtime'
 import { Text, Heading, Button, Flex, Separator } from '@radix-ui/themes'
-import { ArrowTopRightIcon } from '@radix-ui/react-icons'
 
 export const About = () => {
   return (
@@ -27,15 +26,13 @@ export const About = () => {
         <Text mb={'9'}>
           接口服务：
           <Button
-            ml={'2'}
-            size={'3'}
+            ml={'1'}
             variant={'ghost'}
             onClick={() => {
               BrowserOpenURL('https://github.com/ultrazg/xyz')
             }}
           >
             xyz
-            <ArrowTopRightIcon />
           </Button>
         </Text>
 
