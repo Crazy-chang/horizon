@@ -10,3 +10,12 @@
     user-select: none !important;
   }
 }
+
+.player-drawer-layout {
+  margin-top: 35px;
+  background: rgba(255, 255, 255, 1);
+  position: fixed;
+  z-index: 99;
+  left: 0;
+  transition: 0.7s ease-in-out;
+}
