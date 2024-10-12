@@ -23,7 +23,7 @@ export const Modal: React.FC<modalType> = ({
         onPointerDownOutside={avoidDefaultDomBehavior}
         onInteractOutside={avoidDefaultDomBehavior}
       >
-        <Dialog.Title>{title}</Dialog.Title>
+        <Dialog.Title style={{ userSelect: 'none' }}>{title}</Dialog.Title>
 
         <VisuallyHidden.Root>
           <Dialog.Description
