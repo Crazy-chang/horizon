@@ -1,21 +1,16 @@
-.my-drawer {
-  .ant-drawer-header {
-    border-bottom: none;
-    user-select: none !important;
-    // padding: 7px 24px 10px 24px;
-  }
-
-  .ant-drawer-header-title {
-    // padding-left: 60px;
-    user-select: none !important;
-  }
-}
-
 .player-drawer-layout {
   margin-top: 35px;
-  background: rgba(255, 255, 255, 1);
+  background: rgb(38, 38, 38);
   position: fixed;
   z-index: 99;
   left: 0;
   transition: 0.7s ease-in-out;
+
+  .close-button {
+    padding: 0.5rem 3rem;
+  }
+
+  .content {
+    padding: 0 3rem;
+  }
 }

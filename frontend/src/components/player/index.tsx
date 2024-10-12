@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button } from '@radix-ui/themes'
+import { CaretDownIcon } from '@radix-ui/react-icons'
 import { useDisplayInfo } from '@/hooks'
 import './index.modules.scss'
 
@@ -21,8 +22,20 @@ export const Player: React.FC<IProps> = ({ open, onClose }) => {
       }
       className="player-drawer-layout"
     >
-      drawer-{height}
-      <Button onClick={onClose}>close</Button>
+      <div className="close-button">
+        <Button
+          onClick={onClose}
+          variant={'ghost'}
+          mt={'1'}
+        >
+          <CaretDownIcon
+            width={30}
+            height={30}
+          />
+        </Button>
+      </div>
+
+      <div className="content">content</div>
     </div>
   )
 }
