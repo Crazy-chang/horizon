@@ -9,6 +9,8 @@ import {
   Flex,
   Grid,
   ScrollArea,
+  Separator,
+  Text,
 } from '@radix-ui/themes'
 import './index.modules.scss'
 import { useDisplayInfo } from '@/hooks'
@@ -17,7 +19,29 @@ import { useDisplayInfo } from '@/hooks'
  * 我的贴纸库弹窗
  */
 export const StickerModal: React.FC<modalType> = ({ open, onClose }) => {
-  const [height, _] = useState(useDisplayInfo().Height * 0.4)
+  const [height] = useState(useDisplayInfo().Height * 0.6)
+  const count = [1]
+  const [activeImg, setActiveImg] = useState<any>()
+  const [transformStyle, setTransformStyle] = useState({})
+  const [maskOpen, setMaskOpen] = useState<boolean>(false)
+
+  const handleClick = (event: any, index: number) => {
+    const img = event.target
+    const rect = img.getBoundingClientRect()
+    const windowWidth = window.innerWidth
+    const windowHeight = window.innerHeight
+
+    const translateX = windowWidth / 2 - (rect.left + rect.width / 2)
+    const translateY = windowHeight / 2 - (rect.top + rect.height / 2) - 100
+
+    setTransformStyle({
+      transform: `translate(${translateX}px, ${translateY}px) rotateY(360deg) scale(3)`,
+      transition: 'transform 0.8s ease-out-in',
+    })
+
+    setActiveImg(index)
+    setMaskOpen(true)
+  }
 
   return (
     <Modal
@@ -25,40 +49,110 @@ export const StickerModal: React.FC<modalType> = ({ open, onClose }) => {
       open={open}
       onClose={onClose}
     >
-      <div className="total">共 8 张贴纸</div>
+      <div className="total">共 1 张贴纸</div>
 
       <ScrollArea
         type="auto"
         scrollbars="vertical"
-        style={{ maxHeight: height }}
+        style={{ height }}
       >
         <Grid
           columns="3"
           mt="3"
           gap="3"
-          rows="repeat(2, 30px)"
           width="auto"
         >
-          <Box
-            width="100%"
-            height="20rem"
-            mb="4"
-          >
-            {/* <AspectRatio ratio={8 / 8}> */}
-            <img
-              src="https://image.xyzcdn.net/stickers/statics/2024.png@large"
-              alt="A house in a forest"
-              style={{
-                objectFit: 'cover',
-                width: '100%',
-                height: '100%',
-                borderRadius: 'var(--radius-2)',
-              }}
-            />
-            {/* </AspectRatio> */}
-          </Box>
+          {count.map((item: any, index: number) => (
+            <Box
+              width="100%"
+              key={item}
+              className="sticker-box"
+            >
+              <AspectRatio ratio={8 / 8}>
+                <img
+                  src="https://image.xyzcdn.net/stickers/statics/2024.png@large"
+                  alt="A house in a forest"
+                  className={`sticker-image ${activeImg === index ? 'active' : ''}`}
+                  onClick={(event) => {
+                    if (!maskOpen) {
+                      handleClick(event, index)
+                    } else {
+                      setMaskOpen(false)
+                      setActiveImg(undefined)
+                    }
+                  }}
+                  style={activeImg === index ? transformStyle : {}}
+                />
+              </AspectRatio>
+              <Text className="sticker-name">2024年快乐</Text>
+            </Box>
+          ))}
         </Grid>
       </ScrollArea>
+
+      {maskOpen && (
+        <div className="sticker-mask">
+          <div className="sticker-info">
+            <Text
+              as="p"
+              size="8"
+              mb="1"
+            >
+              2024年快乐
+            </Text>
+            <Text
+              as="p"
+              className="secondary"
+            >
+              希望播客能让你快乐
+            </Text>
+
+            <div className="sticker-copy">
+              <Flex
+                mt="5"
+                gap="3"
+                align="center"
+              >
+                <Flex direction="column">
+                  <Text size="3">小宇宙</Text>
+                  <Text
+                    size="2"
+                    className="secondary"
+                  >
+                    发行方
+                  </Text>
+                </Flex>
+                <Separator
+                  orientation="vertical"
+                  size="2"
+                />
+                <Flex direction="column">
+                  <Text size="3">2024.03.13</Text>
+                  <Text
+                    size="2"
+                    className="secondary"
+                  >
+                    收集日期
+                  </Text>
+                </Flex>
+                <Separator
+                  orientation="vertical"
+                  size="2"
+                />
+                <Flex direction="column">
+                  <Text size="3">AN-246353965</Text>
+                  <Text
+                    size="2"
+                    className="secondary"
+                  >
+                    编号
+                  </Text>
+                </Flex>
+              </Flex>
+            </div>
+          </div>
+        </div>
+      )}
 
       <Flex
         gap="3"
