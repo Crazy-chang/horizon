@@ -23,7 +23,11 @@ export const Modal: React.FC<modalType> = ({
         onPointerDownOutside={avoidDefaultDomBehavior}
         onInteractOutside={avoidDefaultDomBehavior}
       >
-        <Dialog.Title style={{ userSelect: 'none' }}>{title}</Dialog.Title>
+        <Dialog.Title
+          style={{ '--wails-draggable': 'drag', userSelect: 'none' } as any}
+        >
+          {title}
+        </Dialog.Title>
 
         <VisuallyHidden.Root>
           <Dialog.Description

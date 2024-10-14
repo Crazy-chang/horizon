@@ -1,14 +1,5 @@
 import { useState } from 'react'
-import {
-  Avatar,
-  Flex,
-  Separator,
-  Card,
-  Dialog,
-  TextField,
-  Button,
-  Text,
-} from '@radix-ui/themes'
+import { Avatar, Flex, Separator, Card } from '@radix-ui/themes'
 import { ChevronRightIcon } from '@radix-ui/react-icons'
 import './index.modules.scss'
 import { ColorfulShadow } from '@/components'
@@ -20,10 +11,12 @@ import {
 } from 'react-icons/sl'
 
 import { MileageModal } from './components/mileageModal'
+import { StickerModal } from './components/stickerModal'
 
 export const Profile = () => {
   // const elementRef = useRef(null)
   const [mileageModalOpen, setMileageModalOpen] = useState<boolean>(false)
+  const [stickerModalOpen, setStickerModalOpen] = useState<boolean>(false)
 
   return (
     <div className="profile-layout">
@@ -109,7 +102,12 @@ export const Profile = () => {
       <div className="sticker-content">
         <h3>我的贴纸库</h3>
 
-        <Card className="sticker-card">
+        <Card
+          className="sticker-card"
+          onClick={() => {
+            setStickerModalOpen(true)
+          }}
+        >
           <div>
             7张贴纸
             <ChevronRightIcon />
@@ -152,6 +150,13 @@ export const Profile = () => {
         open={mileageModalOpen}
         onClose={() => {
           setMileageModalOpen(false)
+        }}
+      />
+
+      <StickerModal
+        open={stickerModalOpen}
+        onClose={() => {
+          setStickerModalOpen(false)
         }}
       />
     </div>
