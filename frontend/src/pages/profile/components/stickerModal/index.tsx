@@ -20,7 +20,7 @@ import { useDisplayInfo } from '@/hooks'
  */
 export const StickerModal: React.FC<modalType> = ({ open, onClose }) => {
   const [height] = useState(useDisplayInfo().Height * 0.6)
-  const count = [1]
+  const count = [1, 2, 3, 4, 5]
   const [activeImg, setActiveImg] = useState<any>()
   const [transformStyle, setTransformStyle] = useState({})
   const [maskOpen, setMaskOpen] = useState<boolean>(false)
@@ -32,7 +32,7 @@ export const StickerModal: React.FC<modalType> = ({ open, onClose }) => {
     const windowHeight = window.innerHeight
 
     const translateX = windowWidth / 2 - (rect.left + rect.width / 2)
-    const translateY = windowHeight / 2 - (rect.top + rect.height / 2) - 100
+    const translateY = windowHeight / 2 - (rect.top + rect.height / 2) - 50
 
     setTransformStyle({
       transform: `translate(${translateX}px, ${translateY}px) rotateY(360deg) scale(3)`,
@@ -57,7 +57,7 @@ export const StickerModal: React.FC<modalType> = ({ open, onClose }) => {
         style={{ height }}
       >
         <Grid
-          columns="3"
+          columns="4"
           mt="3"
           gap="3"
           width="auto"
@@ -68,7 +68,7 @@ export const StickerModal: React.FC<modalType> = ({ open, onClose }) => {
               key={item}
               className="sticker-box"
             >
-              <AspectRatio ratio={8 / 8}>
+              <AspectRatio ratio={6 / 6}>
                 <img
                   src="https://image.xyzcdn.net/stickers/statics/2024.png@large"
                   alt="A house in a forest"
@@ -95,7 +95,7 @@ export const StickerModal: React.FC<modalType> = ({ open, onClose }) => {
           <div className="sticker-info">
             <Text
               as="p"
-              size="8"
+              size="6"
               mb="1"
             >
               2024年快乐

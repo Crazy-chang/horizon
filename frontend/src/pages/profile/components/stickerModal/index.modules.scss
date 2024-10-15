@@ -22,6 +22,7 @@
   .sticker-name {
     display: flex;
     justify-content: center;
+    color: $secondary-font-color;
   }
 }
 
@@ -38,7 +39,7 @@
 
   .sticker-info {
     position: absolute;
-    bottom: 5rem;
+    bottom: 2rem;
     text-align: center;
     width: 100%;
 
