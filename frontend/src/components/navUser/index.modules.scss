@@ -3,6 +3,12 @@
   display: flex;
   cursor: pointer;
 
+  &:hover {
+    .nickname {
+      text-shadow: 0 0 5px #fff;
+    }
+  }
+
   .left {
     flex: 1;
 
@@ -38,6 +44,7 @@
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 1;
         font-size: 20px;
+        transition: 0.3s;
       }
     }
   }
