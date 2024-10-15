@@ -19,7 +19,7 @@ import { useDisplayInfo } from '@/hooks'
  * 收听数据弹窗
  */
 export const MileageModal: React.FC<modalType> = ({ open, onClose }) => {
-  const [height, _] = useState(useDisplayInfo().Height * 0.4)
+  const [height] = useState(useDisplayInfo().Height * 0.4)
 
   return (
     <Modal

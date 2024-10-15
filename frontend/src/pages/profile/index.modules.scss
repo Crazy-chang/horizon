@@ -30,6 +30,7 @@
         display: flex;
 
         .chunk {
+          cursor: pointer;
           p {
             &:first-child {
               font-size: 1.3rem;

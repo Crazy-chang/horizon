@@ -10,13 +10,39 @@ import {
   SlSymbolMale,
 } from 'react-icons/sl'
 
+import { useNavigateTo } from '@/hooks'
+
 import { MileageModal } from './components/mileageModal'
 import { StickerModal } from './components/stickerModal'
+import { FollowModal } from './components/followModal'
 
 export const Profile = () => {
   // const elementRef = useRef(null)
   const [mileageModalOpen, setMileageModalOpen] = useState<boolean>(false)
   const [stickerModalOpen, setStickerModalOpen] = useState<boolean>(false)
+  const [followModal, setFollowModal] = useState<{
+    type: 'FOLLOWING' | 'FOLLOWER'
+    open: boolean
+  }>({
+    type: 'FOLLOWING',
+    open: false,
+  })
+
+  const goMySubscribe = useNavigateTo('/subscription')
+
+  const onFollowHandle = (type: 'FOLLOWING' | 'FOLLOWER') => {
+    if (type === 'FOLLOWING') {
+      setFollowModal({
+        type: 'FOLLOWING',
+        open: true,
+      })
+    } else {
+      setFollowModal({
+        type: 'FOLLOWER',
+        open: true,
+      })
+    }
+  }
 
   return (
     <div className="profile-layout">
@@ -51,7 +77,12 @@ export const Profile = () => {
               gap="3"
               align="center"
             >
-              <div className="chunk">
+              <div
+                className="chunk"
+                onClick={() => {
+                  onFollowHandle('FOLLOWING')
+                }}
+              >
                 <p>1</p>
                 <p>关注</p>
               </div>
@@ -60,7 +91,12 @@ export const Profile = () => {
                 size="2"
                 orientation="vertical"
               />
-              <div className="chunk">
+              <div
+                className="chunk"
+                onClick={() => {
+                  onFollowHandle('FOLLOWER')
+                }}
+              >
                 <p>0</p>
                 <p>粉丝</p>
               </div>
@@ -69,7 +105,12 @@ export const Profile = () => {
                 size="2"
                 orientation="vertical"
               />
-              <div className="chunk">
+              <div
+                className="chunk"
+                onClick={() => {
+                  goMySubscribe()
+                }}
+              >
                 <p>9</p>
                 <p>订阅</p>
               </div>
@@ -157,6 +198,17 @@ export const Profile = () => {
         open={stickerModalOpen}
         onClose={() => {
           setStickerModalOpen(false)
+        }}
+      />
+
+      <FollowModal
+        type={followModal.type}
+        open={followModal.open}
+        onClose={() => {
+          setFollowModal({
+            type: 'FOLLOWING',
+            open: false,
+          })
         }}
       />
     </div>
