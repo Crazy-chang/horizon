@@ -7,6 +7,12 @@
 .sticker-box {
   cursor: pointer;
 
+  &:hover {
+    .sticker-name {
+      color: $primary-font-color;
+    }
+  }
+
   .sticker-image {
     transition: 0.8s;
     width: 100%;
@@ -23,6 +29,7 @@
     display: flex;
     justify-content: center;
     color: $secondary-font-color;
+    transition: 0.3s;
   }
 }
 

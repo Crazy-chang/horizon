@@ -35,7 +35,7 @@ export const StickerModal: React.FC<modalType> = ({ open, onClose }) => {
     const translateY = windowHeight / 2 - (rect.top + rect.height / 2) - 50
 
     setTransformStyle({
-      transform: `translate(${translateX}px, ${translateY}px) rotateY(360deg) scale(3)`,
+      transform: `translate(${translateX}px, ${translateY}px) rotateY(360deg) scale(4)`,
       transition: 'transform 0.8s ease-out-in',
     })
 
