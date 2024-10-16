@@ -26,7 +26,8 @@ func AppOptions(app *bridge.App) *options.App {
 		Height:        int(float32(dh) * 0.7),
 		DisableResize: true,
 		AssetServer: &assetserver.Options{
-			Assets: assets,
+			Assets:  assets,
+			Handler: bridge.NewHttpRequest(),
 		},
 		//BackgroundColour: &options.RGBA{R: 67, G: 67, B: 67, A: 1},
 		OnStartup: app.Start,

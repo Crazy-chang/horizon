@@ -1,7 +1,7 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
 
 const httpRequest: AxiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_BASE_URL,
+  baseURL: '/',
   timeout: 15000,
 })
 
@@ -41,7 +41,7 @@ httpRequest.interceptors.response.use(
       // message.error('网络开小差了~')
       return Promise.reject(response.data)
     }
-  }
+  },
 )
 
 httpRequest.interceptors.request.use(
@@ -62,7 +62,7 @@ httpRequest.interceptors.request.use(
   (err) => {
     console.log(err)
     return Promise.reject(err)
-  }
+  },
 )
 
 export default httpRequest
