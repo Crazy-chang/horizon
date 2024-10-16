@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Environment } from 'wailsjs/runtime'
 import { envType } from '@/types/env'
 import { Box, Card, Flex, Separator, Switch, Button } from '@radix-ui/themes'
-import { ChevronRightIcon } from '@radix-ui/react-icons'
+import { ChevronRightIcon, ExitIcon } from '@radix-ui/react-icons'
 import { APP_NAME, APP_VERSION } from '@/utils'
 import { useNavigateTo } from '@/hooks'
 import './index.modules.scss'
@@ -146,6 +146,24 @@ export const Setting = () => {
           <Box width="100%">关于</Box>
           <Box>
             <ChevronRightIcon />
+          </Box>
+        </Flex>
+      </Card>
+
+      <h4>账户</h4>
+      <Card>
+        <Flex>
+          <Box width="100%">登出</Box>
+          <Box>
+            <Button
+              size={'1'}
+              variant="soft"
+              style={{ width: '100px' }}
+              onClick={checkUpdate}
+              color="red"
+            >
+              <ExitIcon /> 退出登录
+            </Button>
           </Box>
         </Flex>
       </Card>

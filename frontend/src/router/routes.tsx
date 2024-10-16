@@ -9,6 +9,7 @@ import {
   Favorites,
   Profile,
   About,
+  PodcastDetail,
 } from '@/pages'
 import { Root } from '@/layouts'
 
@@ -44,6 +45,10 @@ export const router = createHashRouter([
       {
         path: 'about',
         element: <About />,
+      },
+      {
+        path: 'podcast/detail',
+        element: <PodcastDetail />,
       },
     ],
   },

@@ -1,8 +1,8 @@
-import './index.modules.scss'
 import { Box, Button, Tabs, TextField, Avatar } from '@radix-ui/themes'
 import { MagnifyingGlassIcon, PlusIcon } from '@radix-ui/react-icons'
 import { SlEarphones, SlBubble } from 'react-icons/sl'
 import { ColorfulShadow } from '@/components'
+import './index.modules.scss'
 
 export const Search = () => {
   return (

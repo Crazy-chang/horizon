@@ -1,6 +1,7 @@
 import { Box, Flex, ScrollArea } from '@radix-ui/themes'
 import './index.moduless.scss'
 import { ColorfulShadow } from '@/components'
+import { useNavigate } from 'react-router-dom'
 
 const mockData = [
   {
@@ -78,6 +79,15 @@ const mockData = [
 ]
 
 const Recommended = () => {
+  const navigateTo = useNavigate()
+  const goPodcastDetail = (id: string) => {
+    navigateTo('/podcast/detail', {
+      state: {
+        id,
+      },
+    })
+  }
+
   return (
     <div className="recommended-layout">
       <h3>精选节目</h3>
@@ -100,6 +110,9 @@ const Recommended = () => {
                       className="cover"
                       src={item.episode_img}
                       curPointer
+                      onClick={() => {
+                        goPodcastDetail(item.id)
+                      }}
                     />
                   </div>
 

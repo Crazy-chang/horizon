@@ -6,5 +6,16 @@ import { Subscription } from './subscription'
 import { Favorites } from './favorites'
 import { Profile } from './profile'
 import { About } from './about'
+import { PodcastDetail } from './podcastDetail'
 
-export { Home, Login, Setting, Search, Subscription, Favorites, Profile, About }
+export {
+  Home,
+  Login,
+  Setting,
+  Search,
+  Subscription,
+  Favorites,
+  Profile,
+  About,
+  PodcastDetail,
+}

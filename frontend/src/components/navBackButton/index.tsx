@@ -1,6 +1,6 @@
 import { useBack } from '@/hooks'
 import { Button } from '@radix-ui/themes'
-import { ArrowLeftIcon } from '@radix-ui/react-icons'
+import { ChevronLeftIcon } from '@radix-ui/react-icons'
 
 export const NavBackButton = () => {
   const back = useBack()
@@ -14,7 +14,7 @@ export const NavBackButton = () => {
         mt={'1'}
         mb={'2'}
       >
-        <ArrowLeftIcon />
+        <ChevronLeftIcon />
       </Button>
     </div>
   )
