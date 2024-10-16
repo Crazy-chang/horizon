@@ -65,6 +65,7 @@ export const FollowModal: React.FC<IProps> = ({ type, onClose, open }) => {
                   <Button
                     variant="soft"
                     color="gray"
+                    size="1"
                   >
                     <CheckIcon />
                     已关注
