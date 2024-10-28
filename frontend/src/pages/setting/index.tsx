@@ -5,6 +5,7 @@ import { Box, Card, Flex, Separator, Switch, Button } from '@radix-ui/themes'
 import { ChevronRightIcon, ExitIcon } from '@radix-ui/react-icons'
 import { APP_NAME, APP_VERSION } from '@/utils'
 import { useNavigateTo } from '@/hooks'
+import APP_ICON from '@/assets/images/logo.png'
 import './index.modules.scss'
 
 export const Setting = () => {
@@ -169,7 +170,12 @@ export const Setting = () => {
       </Card>
 
       <div className="app-logo">
-        <div className="logo">logo_placeholder</div>
+        <div className="logo">
+          <img
+            src={APP_ICON}
+            alt="app_icon"
+          />
+        </div>
       </div>
 
       <div className="app-info">

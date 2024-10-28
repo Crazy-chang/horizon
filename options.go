@@ -50,7 +50,7 @@ func AppOptions(app *bridge.App) *options.App {
 			WindowIsTranslucent:  true,
 			About: &mac.AboutInfo{
 				Title:   "horizon",
-				Message: "© 2024 Hexdream",
+				Message: "© 2024 hexdream",
 				Icon:    icon,
 			},
 		},

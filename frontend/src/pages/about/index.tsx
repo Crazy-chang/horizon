@@ -3,6 +3,7 @@ import './index.modules.scss'
 import { APP_NAME } from '@/utils'
 import { BrowserOpenURL } from 'wailsjs/runtime'
 import { Text, Heading, Button, Flex, Separator } from '@radix-ui/themes'
+import APP_ICON from '@/assets/images/logo.png'
 
 export const About = () => {
   return (
@@ -10,7 +11,12 @@ export const About = () => {
       <NavBackButton />
 
       <div className="app-logo">
-        <div className="logo">logo_placeholder</div>
+        <div className="logo">
+          <img
+            alt="app_icon"
+            src={APP_ICON}
+          />
+        </div>
       </div>
 
       <div className="app-info">
@@ -21,7 +27,7 @@ export const About = () => {
           {APP_NAME}
         </Heading>
         <Text mb={'3'}>
-          {APP_NAME} 是一款第三方小宇宙桌面客户端，支持 Windows / macOS
+          {APP_NAME} 是一款第三方小宇宙桌面客户端，支持 Windows 与 macOS
         </Text>
         <Text mb={'9'}>
           接口服务：
