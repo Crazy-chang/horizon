@@ -7,6 +7,7 @@ import { ColorfulShadow } from './colorfulShadow'
 import { TitleBar } from './titleBar'
 import { Modal } from './modal'
 import { NavBackButton } from './navBackButton'
+import { ProfileModal } from './profileModal'
 
 export {
   DraggableBar,
@@ -18,4 +19,5 @@ export {
   TitleBar,
   Modal,
   NavBackButton,
+  ProfileModal,
 }

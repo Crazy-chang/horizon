@@ -3,6 +3,14 @@ import { Dialog } from '@radix-ui/themes'
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
 import { modalType } from '@/types/modal'
 
+/**
+ * @description 模态框
+ * @param title 标题
+ * @param open 是否打开
+ * @param onClose 关闭回调
+ * @param children 子元素
+ * @constructor
+ */
 export const Modal: React.FC<modalType> = ({
   title,
   open,
@@ -23,17 +31,20 @@ export const Modal: React.FC<modalType> = ({
         onPointerDownOutside={avoidDefaultDomBehavior}
         onInteractOutside={avoidDefaultDomBehavior}
       >
-        <Dialog.Title
-          style={{ '--wails-draggable': 'drag', userSelect: 'none' } as any}
-        >
-          {title}
-        </Dialog.Title>
+        {title ? (
+          <Dialog.Title
+            style={{ '--wails-draggable': 'drag', userSelect: 'none' } as any}
+          >
+            {title}
+          </Dialog.Title>
+        ) : (
+          <VisuallyHidden.Root>
+            <Dialog.Title />
+          </VisuallyHidden.Root>
+        )}
 
         <VisuallyHidden.Root>
-          <Dialog.Description
-            size="2"
-            mb="4"
-          />
+          <Dialog.Description />
         </VisuallyHidden.Root>
 
         {children}

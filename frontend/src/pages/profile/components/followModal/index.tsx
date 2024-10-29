@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Modal } from '@/components'
+import { Modal, ProfileModal } from '@/components'
 import { modalType } from '@/types/modal'
 import {
   Avatar,
@@ -13,13 +13,21 @@ import {
 } from '@radix-ui/themes'
 import { CheckIcon } from '@radix-ui/react-icons'
 import { useDisplayInfo } from '@/hooks'
+import './index.modules.scss'
 
 type IProps = {
   type: 'FOLLOWING' | 'FOLLOWER'
 } & modalType
 
 export const FollowModal: React.FC<IProps> = ({ type, onClose, open }) => {
-  const [height] = useState(useDisplayInfo().Height * 0.4)
+  const [height] = useState<number>(useDisplayInfo().Height * 0.4)
+  const [profileModal, setProfileModal] = useState<{
+    open: boolean
+    uid: string
+  }>({
+    open: false,
+    uid: '',
+  })
   const count = [1]
 
   return (
@@ -28,7 +36,7 @@ export const FollowModal: React.FC<IProps> = ({ type, onClose, open }) => {
       open={open}
       onClose={onClose}
     >
-      <div>
+      <div className="follow-modal">
         <ScrollArea
           type="hover"
           scrollbars="vertical"
@@ -43,19 +51,25 @@ export const FollowModal: React.FC<IProps> = ({ type, onClose, open }) => {
           >
             {count.map((item: any, index: number) => (
               <Box
-                width="100%"
-                height="3rem"
+                className="chunk"
                 mb="4"
                 key={index}
               >
                 <Flex gap="2">
                   <Avatar
-                    style={{ width: '3rem', height: '3rem' }}
+                    className="avatar"
                     src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?&w=256&h=256&q=70&crop=focalpoint&fp-x=0.5&fp-y=0.3&fp-z=1&fit=crop"
                     fallback="A"
+                    onClick={() => {
+                      setProfileModal({
+                        open: true,
+                        uid: '123',
+                      })
+                    }}
                   />
                   <Box>
                     <Text
+                      className="nickname"
                       mb="1"
                       size="3"
                     >
@@ -91,6 +105,17 @@ export const FollowModal: React.FC<IProps> = ({ type, onClose, open }) => {
           </Button>
         </Dialog.Close>
       </Flex>
+
+      <ProfileModal
+        uid={profileModal.uid}
+        open={profileModal.open}
+        onClose={() => {
+          setProfileModal({
+            open: false,
+            uid: '',
+          })
+        }}
+      />
     </Modal>
   )
 }
