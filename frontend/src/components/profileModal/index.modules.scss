@@ -1,0 +1,29 @@
+.profile-modal-layout {
+  .close-button {
+    position: absolute;
+    top: 1rem;
+    z-index: 9;
+  }
+
+  .profile-avatar-layout {
+    width: 100%;
+    height: 12rem;
+    //background: rgba(255, 192, 203, 0.2);
+    position: relative;
+    display: flex;
+    justify-content: center;
+
+    .background-image {
+      width: 100%;
+      height: 9rem;
+      //background: rgba(255, 0, 0, 0.3);
+    }
+
+    .profile-avatar {
+      position: absolute;
+      width: 8rem;
+      height: 8rem;
+      bottom: 0;
+    }
+  }
+}
