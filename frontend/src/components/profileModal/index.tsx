@@ -107,6 +107,7 @@ export const ProfileModal: React.FC<IProps> = ({ uid, open, onClose }) => {
                   as="div"
                   align="center"
                   size="2"
+                  mt="2"
                 >
                   还没有设置签名
                 </Text>
