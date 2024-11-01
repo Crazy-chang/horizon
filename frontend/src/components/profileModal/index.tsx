@@ -19,7 +19,7 @@ import { modalType } from '@/types/modal'
 import { useDisplayInfo } from '@/hooks'
 import './index.modules.scss'
 import { StickerModal } from '@/pages/profile/components/stickerModal'
-import { ColorfulShadow } from '@/components'
+import { ColorfulShadow, MyDropdownMenu } from '@/components'
 import { SlBubble, SlEarphones } from 'react-icons/sl'
 
 type IProps = {
@@ -30,6 +30,7 @@ export const ProfileModal: React.FC<IProps> = ({ uid, open, onClose }) => {
   const [width] = useState<number>(useDisplayInfo().Width * 0.5)
   const [height] = useState<number>(useDisplayInfo().Height * 0.7)
   const [stickerModalOpen, setStickerModalOpen] = useState<boolean>(false)
+  const [dropDownMenuOpen, setDropDownMenuOpen] = useState<boolean>(false)
 
   const avoidDefaultDomBehavior = (e: Event) => {
     e.preventDefault()
@@ -66,15 +67,28 @@ export const ProfileModal: React.FC<IProps> = ({ uid, open, onClose }) => {
                 <Cross1Icon />
               </IconButton>
 
-              <IconButton
-                className="more-button"
-                onClick={onClose}
-                variant="soft"
-                radius="full"
-                color="gray"
+              <MyDropdownMenu
+                open={dropDownMenuOpen}
+                onClose={() => {
+                  setDropDownMenuOpen(false)
+                }}
+                trigger={
+                  <IconButton
+                    className="more-button"
+                    onClick={() => {
+                      setDropDownMenuOpen(true)
+                    }}
+                    variant="soft"
+                    radius="full"
+                    color="gray"
+                  >
+                    <DotsHorizontalIcon />
+                  </IconButton>
+                }
               >
-                <DotsHorizontalIcon />
-              </IconButton>
+                <MyDropdownMenu.Item>取消关注</MyDropdownMenu.Item>
+                <MyDropdownMenu.Item danger>加入黑名单</MyDropdownMenu.Item>
+              </MyDropdownMenu>
             </div>
 
             <div className="profile-avatar-layout">

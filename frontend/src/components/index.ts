@@ -8,6 +8,7 @@ import { TitleBar } from './titleBar'
 import { Modal } from './modal'
 import { NavBackButton } from './navBackButton'
 import { ProfileModal } from './profileModal'
+import { MyDropdownMenu } from './dropdownMenu'
 
 export {
   DraggableBar,
@@ -20,4 +21,5 @@ export {
   Modal,
   NavBackButton,
   ProfileModal,
+  MyDropdownMenu,
 }
