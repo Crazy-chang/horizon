@@ -87,6 +87,7 @@ export const ProfileModal: React.FC<IProps> = ({ uid, open, onClose }) => {
                 }}
               />
               <Avatar
+                radius="full"
                 className="profile-avatar"
                 src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
                 fallback="A"
@@ -150,6 +151,26 @@ export const ProfileModal: React.FC<IProps> = ({ uid, open, onClose }) => {
                     <p>收听时长</p>
                   </div>
                 </Flex>
+              </div>
+            </div>
+
+            <div className="pm-podcast-layout">
+              <div className="pm-podcast-content">
+                <h3>她的播客</h3>
+
+                <div className="pm-podcast-item">
+                  <div className="left">
+                    <ColorfulShadow
+                      className="episode-cover"
+                      curPointer
+                      src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?&w=256&h=256&q=70&crop=focalpoint&fp-x=0.5&fp-y=0.3&fp-z=1&fit=crop"
+                    />
+                  </div>
+                  <div className="right">
+                    <p>昭运酒馆</p>
+                    <p>更新至第138期</p>
+                  </div>
+                </div>
               </div>
             </div>
 

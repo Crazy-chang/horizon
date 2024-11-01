@@ -86,6 +86,62 @@
     }
   }
 
+  .pm-podcast-layout {
+    padding-left: 4rem;
+    padding-right: 4rem;
+
+    .pm-podcast-content {
+      margin-top: 1.7rem;
+
+      h3 {
+        font-size: 1rem;
+        margin-bottom: 0.7rem;
+      }
+
+      .pm-podcast-item {
+        height: 10rm;
+        display: flex;
+        margin-bottom: 1.7rem;
+
+        .left {
+          .episode-cover {
+            width: 6rem;
+            height: 6rem;
+          }
+        }
+
+        .right {
+          padding-left: 0.7rem;
+          position: relative;
+
+          p {
+            &:first-child {
+              font-size: 1.2rem;
+              font-weight: bold;
+              overflow: hidden;
+              display: -webkit-box;
+              line-clamp: 2;
+              box-orient: vertical;
+              -webkit-box-orient: vertical;
+              -webkit-line-clamp: 2;
+              cursor: pointer;
+            }
+
+            &:nth-child(2) {
+              color: $secondary-font-color;
+              overflow: hidden;
+              display: -webkit-box;
+              line-clamp: 3;
+              box-orient: vertical;
+              -webkit-box-orient: vertical;
+              -webkit-line-clamp: 3;
+            }
+          }
+        }
+      }
+    }
+  }
+
   .pm-sticker-layout {
     padding-left: 4rem;
     padding-right: 4rem;
@@ -129,14 +185,15 @@
 
       .left {
         .episode-cover {
-          width: 10rem;
-          height: 10rem;
+          width: 6rem;
+          height: 6rem;
         }
       }
 
       .right {
         padding-left: 0.7rem;
         position: relative;
+        height: 6rem;
 
         p {
           &:first-child {
@@ -144,10 +201,10 @@
             font-weight: bold;
             overflow: hidden;
             display: -webkit-box;
-            line-clamp: 2;
+            line-clamp: 1;
             box-orient: vertical;
             -webkit-box-orient: vertical;
-            -webkit-line-clamp: 2;
+            -webkit-line-clamp: 1;
             cursor: pointer;
           }
 
@@ -155,10 +212,10 @@
             color: $secondary-font-color;
             overflow: hidden;
             display: -webkit-box;
-            line-clamp: 3;
+            line-clamp: 2;
             box-orient: vertical;
             -webkit-box-orient: vertical;
-            -webkit-line-clamp: 3;
+            -webkit-line-clamp: 2;
           }
 
           &:last-child {
