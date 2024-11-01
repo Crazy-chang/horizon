@@ -56,5 +56,137 @@
         }
       }
     }
+
+    .pm-follow {
+      display: flex;
+      justify-content: center;
+      margin-top: 0.7rem;
+
+      .chunk {
+        cursor: default;
+
+        p {
+          &:first-child {
+            font-size: 1.3rem;
+
+            span {
+              font-size: 0.8rem;
+            }
+          }
+
+          &:last-child {
+            color: $secondary-font-color;
+          }
+        }
+      }
+
+      .separator {
+        margin: 0 0.5rem;
+      }
+    }
+  }
+
+  .pm-sticker-layout {
+    padding-left: 4rem;
+    padding-right: 4rem;
+
+    .pm-sticker-content {
+      margin-top: 1.7rem;
+
+      h3 {
+        font-size: 1rem;
+        margin-bottom: 0.7rem;
+      }
+
+      .sticker-card {
+        font-size: 1rem;
+        padding: 2rem 4rem;
+        cursor: pointer;
+
+        div {
+          &:last-child {
+            color: $secondary-font-color;
+          }
+        }
+      }
+    }
+  }
+
+  .pm-history-content {
+    margin-top: 1.7rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
+
+    h3 {
+      font-size: 1rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .pm-history-episode-item {
+      height: 10rm;
+      display: flex;
+      margin-bottom: 1.7rem;
+
+      .left {
+        .episode-cover {
+          width: 10rem;
+          height: 10rem;
+        }
+      }
+
+      .right {
+        padding-left: 0.7rem;
+        position: relative;
+
+        p {
+          &:first-child {
+            font-size: 1.2rem;
+            font-weight: bold;
+            overflow: hidden;
+            display: -webkit-box;
+            line-clamp: 2;
+            box-orient: vertical;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            cursor: pointer;
+          }
+
+          &:nth-child(2) {
+            color: $secondary-font-color;
+            overflow: hidden;
+            display: -webkit-box;
+            line-clamp: 3;
+            box-orient: vertical;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+          }
+
+          &:last-child {
+            position: absolute;
+            bottom: 0;
+            color: $secondary-font-color;
+            display: flex;
+            width: 100%;
+
+            span {
+              &:first-child {
+                flex: 1;
+              }
+
+              &:last-child {
+                flex: 1;
+                display: flex;
+                align-items: center;
+
+                svg {
+                  margin-left: 0.8rem;
+                  margin-right: 0.5rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }

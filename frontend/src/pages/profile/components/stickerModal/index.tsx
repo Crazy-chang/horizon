@@ -45,12 +45,10 @@ export const StickerModal: React.FC<modalType> = ({ open, onClose }) => {
 
   return (
     <Modal
-      title="我的贴纸库"
+      title="我的贴纸库(5)" // TODO
       open={open}
       onClose={onClose}
     >
-      <div className="total">共 1 张贴纸</div>
-
       <ScrollArea
         type="auto"
         scrollbars="vertical"

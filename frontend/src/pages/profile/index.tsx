@@ -87,7 +87,7 @@ export const Profile = () => {
                 <p>关注</p>
               </div>
               <Separator
-                className="spearator"
+                className="separator"
                 size="2"
                 orientation="vertical"
               />
@@ -101,7 +101,7 @@ export const Profile = () => {
                 <p>粉丝</p>
               </div>
               <Separator
-                className="spearator"
+                className="separator"
                 size="2"
                 orientation="vertical"
               />

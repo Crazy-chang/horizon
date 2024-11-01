@@ -3,12 +3,14 @@
 .profile-layout {
   padding: 0 14px;
   height: 100%;
+
   .profile-content {
     display: flex;
 
     .profile-info {
       flex: 2;
       padding-left: 1rem;
+
       .profile-nickname {
         font-size: 1.5rem;
         font-weight: bold;
@@ -31,18 +33,20 @@
 
         .chunk {
           cursor: pointer;
+
           p {
             &:first-child {
               font-size: 1.3rem;
               font-weight: bold;
             }
+
             &:last-child {
               color: $secondary-font-color;
             }
           }
         }
 
-        .spearator {
+        .separator {
           margin: 0 0.5rem;
         }
       }
@@ -51,6 +55,7 @@
 
   .time-content {
     margin-top: 1.7rem;
+
     h3 {
       font-size: 1.8rem;
       margin-bottom: 0.7rem;
@@ -71,6 +76,7 @@
 
   .sticker-content {
     margin-top: 1.7rem;
+
     h3 {
       font-size: 1.8rem;
       margin-bottom: 0.7rem;
@@ -91,6 +97,7 @@
 
   .history-content {
     margin-top: 1.7rem;
+
     h3 {
       font-size: 1.8rem;
       margin-bottom: 0.7rem;
@@ -107,6 +114,7 @@
           height: 10rem;
         }
       }
+
       .right {
         padding-left: 0.7rem;
         position: relative;
