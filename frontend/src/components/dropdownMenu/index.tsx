@@ -2,6 +2,14 @@ import React from 'react'
 import { DropdownMenu } from '@radix-ui/themes'
 import { myDropdownMenuType, myDropdownMenuItem } from '@/types/myDropdownMenu'
 
+/**
+ * 弹出式菜单
+ * @param open 是否打开
+ * @param onClose 关闭回调
+ * @param children 菜单项
+ * @param trigger 触发元素
+ * @constructor
+ */
 export const MyDropdownMenu: React.FC<myDropdownMenuType> & {
   Item: React.FC<myDropdownMenuItem>
   Separator: typeof DropdownMenu.Separator

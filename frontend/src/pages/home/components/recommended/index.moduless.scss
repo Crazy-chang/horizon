@@ -1,4 +1,5 @@
 @import '@/assets/global/_common.scss';
+@import '@/assets/global/_variables.scss';
 
 .recommended-layout {
   @include no-select;
@@ -7,6 +8,7 @@
 
   h3 {
     font-size: 1.8rem;
+    color: $secondary-font-color;
   }
 
   .recommended-content {

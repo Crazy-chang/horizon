@@ -1,4 +1,5 @@
 @import '@/assets/global/_common.scss';
+@import '@/assets/global/_variables.scss';
 
 .people-like-layout {
   @include no-select;
@@ -7,6 +8,7 @@
 
   h3 {
     font-size: 1.8rem;
+    color: $secondary-font-color;
   }
 
   .people-like-content {
@@ -24,6 +26,7 @@
         .l {
           width: 3rem;
         }
+
         .m {
           flex: 3;
           padding-left: 0.5rem;
@@ -35,6 +38,7 @@
             }
           }
         }
+
         .r {
           flex: 1;
           height: 3rem;
@@ -75,6 +79,7 @@
           width: 3rem;
           background: rgba(255, 0, 0, 0.236);
         }
+
         .m {
           flex: 1;
           padding-left: 0.5rem;
@@ -94,6 +99,7 @@
             }
           }
         }
+
         .r {
           width: 3rem;
           display: flex;
