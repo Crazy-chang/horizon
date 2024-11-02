@@ -13,6 +13,7 @@
 
   .search-content {
     padding: 0 5rem;
+
     .search-input {
       display: flex;
       justify-items: center;
@@ -21,6 +22,7 @@
       .left {
         flex: 5;
       }
+
       .right {
         margin-left: 1rem;
         flex: 1;
@@ -79,6 +81,7 @@
               }
             }
           }
+
           .right {
             width: 7rem;
 
@@ -103,6 +106,7 @@
               height: 10rem;
             }
           }
+
           .right {
             padding-left: 0.7rem;
             position: relative;
@@ -175,6 +179,7 @@
               cursor: pointer;
             }
           }
+
           .user-info {
             flex: 1;
             padding-left: 0.7rem;
