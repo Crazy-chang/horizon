@@ -13,6 +13,7 @@ import {
 import { QuestionMarkCircledIcon } from '@radix-ui/react-icons'
 import './index.modules.scss'
 import '@/assets/global/animate.css'
+import APP_ICON from '@/assets/images/logo.png'
 
 export const Login = () => {
   const back = useBack()
@@ -33,11 +34,13 @@ export const Login = () => {
       <Container size="1">
         <Section size="3">
           <div className="logo-layout">
-            <div className="logo">logo</div>
+            <div className="logo">
+              <img
+                src={APP_ICON}
+                alt="APP_ICON"
+              />
+            </div>
           </div>
-
-          {/* <p className="title">登录即可</p>
-          <p className="title">登录</p> */}
 
           <div className="form-layout">
             <div className="form">
