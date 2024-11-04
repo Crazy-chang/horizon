@@ -1,5 +1,5 @@
 import { useBack } from '@/hooks'
-import { Button } from '@radix-ui/themes'
+import { IconButton } from '@radix-ui/themes'
 import { ChevronLeftIcon } from '@radix-ui/react-icons'
 import './index.modules.scss'
 
@@ -8,15 +8,17 @@ export const NavBackButton = () => {
 
   return (
     <div className="nav-back-button">
-      <Button
+      <IconButton
         onClick={back}
-        size="1"
-        variant={'ghost'}
-        mt={'1'}
-        mb={'2'}
+        size="3"
+        variant="ghost"
+        mt="1"
+        mb="2"
+        radius="full"
+        color="gray"
       >
         <ChevronLeftIcon />
-      </Button>
+      </IconButton>
     </div>
   )
 }
