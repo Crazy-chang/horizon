@@ -58,7 +58,10 @@ export const Search = () => {
                       </div>
                     </div>
                     <div className="right">
-                      <Button variant="outline">
+                      <Button
+                        variant="soft"
+                        color="gray"
+                      >
                         <PlusIcon />
                         订阅
                       </Button>
@@ -82,7 +85,10 @@ export const Search = () => {
                       </div>
                     </div>
                     <div className="right">
-                      <Button variant="outline">
+                      <Button
+                        variant="soft"
+                        color="gray"
+                      >
                         <PlusIcon />
                         订阅
                       </Button>
@@ -106,7 +112,10 @@ export const Search = () => {
                       </div>
                     </div>
                     <div className="right">
-                      <Button variant="outline">
+                      <Button
+                        variant="soft"
+                        color="gray"
+                      >
                         <PlusIcon />
                         订阅
                       </Button>
@@ -130,7 +139,10 @@ export const Search = () => {
                       </div>
                     </div>
                     <div className="right">
-                      <Button variant="outline">
+                      <Button
+                        variant="soft"
+                        color="gray"
+                      >
                         <PlusIcon />
                         订阅
                       </Button>
@@ -154,7 +166,10 @@ export const Search = () => {
                       </div>
                     </div>
                     <div className="right">
-                      <Button variant="outline">
+                      <Button
+                        variant="soft"
+                        color="gray"
+                      >
                         <PlusIcon />
                         订阅
                       </Button>
