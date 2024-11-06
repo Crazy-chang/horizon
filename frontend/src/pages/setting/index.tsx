@@ -109,6 +109,16 @@ export const Setting = () => {
             <Switch />
           </Box>
         </Flex>
+        <Separator
+          my="3"
+          size="4"
+        />
+        <Flex>
+          <Box width="100%">不展示 IP 属地信息</Box>
+          <Box>
+            <Switch />
+          </Box>
+        </Flex>
       </Card>
 
       <h4>其他</h4>

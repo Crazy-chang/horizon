@@ -52,7 +52,7 @@ export const ProfileModal: React.FC<IProps> = ({ uid, open, onClose }) => {
         </VisuallyHidden.Root>
 
         <ScrollArea
-          type="hover"
+          type="scroll"
           scrollbars="vertical"
           style={{ height }}
         >

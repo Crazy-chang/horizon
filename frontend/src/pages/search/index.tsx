@@ -1,10 +1,19 @@
 import { Box, Button, Tabs, TextField, Avatar } from '@radix-ui/themes'
 import { MagnifyingGlassIcon, PlusIcon } from '@radix-ui/react-icons'
 import { SlEarphones, SlBubble } from 'react-icons/sl'
-import { ColorfulShadow } from '@/components'
+import { ColorfulShadow, ProfileModal } from '@/components'
 import './index.modules.scss'
+import React, { useState } from 'react'
 
 export const Search = () => {
+  const [profileModal, setProfileModal] = useState<{
+    open: boolean
+    uid: string
+  }>({
+    open: false,
+    uid: '',
+  })
+
   return (
     <div className="search-layout">
       <h3>搜索</h3>
@@ -335,7 +344,15 @@ export const Search = () => {
 
               <Tabs.Content value="3">
                 <div className="search-result-user-layout">
-                  <div className="search-result-user-item">
+                  <div
+                    className="search-result-user-item"
+                    onClick={() => {
+                      setProfileModal({
+                        open: true,
+                        uid: '123',
+                      })
+                    }}
+                  >
                     <div className="user-avatar">
                       <Avatar
                         className="avatar-box"
@@ -401,6 +418,17 @@ export const Search = () => {
           </Tabs.Root>
         </div>
       </div>
+
+      <ProfileModal
+        uid={profileModal.uid}
+        open={profileModal.open}
+        onClose={() => {
+          setProfileModal({
+            open: false,
+            uid: '',
+          })
+        }}
+      />
     </div>
   )
 }
