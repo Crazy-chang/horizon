@@ -9,6 +9,7 @@ import { Modal } from './modal'
 import { NavBackButton } from './navBackButton'
 import { ProfileModal } from './profileModal'
 import { MyDropdownMenu } from './dropdownMenu'
+import { StickerModal } from './stickerModal'
 
 export {
   DraggableBar,
@@ -22,4 +23,5 @@ export {
   NavBackButton,
   ProfileModal,
   MyDropdownMenu,
+  StickerModal,
 }

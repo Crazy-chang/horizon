@@ -15,10 +15,18 @@ import {
 import './index.modules.scss'
 import { useDisplayInfo } from '@/hooks'
 
+type IProps = {
+  perspective: '我' | '他' | '她' | 'TA'
+} & modalType
+
 /**
  * 我的贴纸库弹窗
  */
-export const StickerModal: React.FC<modalType> = ({ open, onClose }) => {
+export const StickerModal: React.FC<IProps> = ({
+  open,
+  onClose,
+  perspective,
+}) => {
   const [height] = useState(useDisplayInfo().Height * 0.6)
   const count = [1, 2, 3, 4, 5]
   const [activeImg, setActiveImg] = useState<any>()
@@ -45,7 +53,7 @@ export const StickerModal: React.FC<modalType> = ({ open, onClose }) => {
 
   return (
     <Modal
-      title="我的贴纸库(5)" // TODO
+      title={`${perspective}的贴纸库(5)`} // TODO
       open={open}
       onClose={onClose}
     >

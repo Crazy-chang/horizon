@@ -18,8 +18,7 @@ import {
 import { modalType } from '@/types/modal'
 import { useDisplayInfo } from '@/hooks'
 import './index.modules.scss'
-import { StickerModal } from '@/pages/profile/components/stickerModal'
-import { ColorfulShadow, MyDropdownMenu } from '@/components'
+import { ColorfulShadow, MyDropdownMenu, StickerModal } from '@/components'
 import { SlBubble, SlEarphones } from 'react-icons/sl'
 
 type IProps = {
@@ -240,6 +239,7 @@ export const ProfileModal: React.FC<IProps> = ({ uid, open, onClose }) => {
           </div>
 
           <StickerModal
+            perspective="她"
             open={stickerModalOpen}
             onClose={() => {
               setStickerModalOpen(false)

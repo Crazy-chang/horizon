@@ -2,18 +2,15 @@ import { useState } from 'react'
 import { Avatar, Flex, Separator, Card } from '@radix-ui/themes'
 import { ChevronRightIcon } from '@radix-ui/react-icons'
 import './index.modules.scss'
-import { ColorfulShadow } from '@/components'
+import { ColorfulShadow, StickerModal } from '@/components'
 import {
   SlBubble,
   SlEarphones,
   SlSymbleFemale,
   SlSymbolMale,
 } from 'react-icons/sl'
-
 import { useNavigateTo } from '@/hooks'
-
 import { MileageModal } from './components/mileageModal'
-import { StickerModal } from './components/stickerModal'
 import { FollowModal } from './components/followModal'
 
 export const Profile = () => {
@@ -195,6 +192,7 @@ export const Profile = () => {
       />
 
       <StickerModal
+        perspective="我"
         open={stickerModalOpen}
         onClose={() => {
           setStickerModalOpen(false)
