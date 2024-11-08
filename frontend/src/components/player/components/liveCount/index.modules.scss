@@ -1,0 +1,19 @@
+.live-count-layout {
+  padding: 0.5rem 1rem;
+  margin-left: 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  font-weight: 300;
+
+  .live-dot {
+    width: 10px;
+    height: 10px;
+    background: #7cb305;
+    border-radius: 25px;
+    margin-right: 10px;
+  }
+}

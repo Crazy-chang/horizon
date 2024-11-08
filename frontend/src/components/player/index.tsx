@@ -3,6 +3,7 @@ import { IconButton } from '@radix-ui/themes'
 import { CaretDownIcon } from '@radix-ui/react-icons'
 import { useDisplayInfo } from '@/hooks'
 import { CoverBox } from './components/coverBox'
+import { LiveCount } from './components/liveCount'
 import './index.modules.scss'
 
 const TEMP_BACKGROUND_IMAGE: string =
@@ -48,6 +49,7 @@ export const Player: React.FC<IProps> = ({ open, onClose }) => {
             height={30}
           />
         </IconButton>
+        <LiveCount />
       </div>
 
       <div className="player-content">
