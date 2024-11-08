@@ -2,12 +2,13 @@ import React from 'react'
 import { IconButton } from '@radix-ui/themes'
 import { CaretDownIcon } from '@radix-ui/react-icons'
 import { useDisplayInfo } from '@/hooks'
+import { CoverBox } from './components/coverBox'
 import './index.modules.scss'
 
 const TEMP_BACKGROUND_IMAGE: string =
   'https://image.xyzcdn.net/FnQ-E7VcqLbzqplvdVPGrQRGHmxC.jpg@large'
 
-interface IProps {
+type IProps = {
   open: boolean
   onClose: () => void
 }
@@ -18,14 +19,22 @@ export const Player: React.FC<IProps> = ({ open, onClose }) => {
 
   return (
     <div
-      style={
-        open
-          ? { width, height, transform: `translateY(-${height}px)` }
-          : { width, height, transform: `translateY(${height}px)` }
-      }
+      style={{
+        width,
+        height,
+        transform: open
+          ? `translateY(-${height}px)`
+          : `translateY(${height}px)`,
+      }}
       className="player-drawer-layout"
     >
-      <div className="test" />
+      <div
+        className="player-background-image"
+        style={{
+          background: `url(${TEMP_BACKGROUND_IMAGE}) no-repeat center center / cover`,
+        }}
+      />
+
       <div className="close-button">
         <IconButton
           onClick={onClose}
@@ -41,7 +50,12 @@ export const Player: React.FC<IProps> = ({ open, onClose }) => {
         </IconButton>
       </div>
 
-      <div className="content">content</div>
+      <div className="player-content">
+        <div className="player-left">
+          <CoverBox />
+        </div>
+        <div className="player-right">right</div>
+      </div>
     </div>
   )
 }
