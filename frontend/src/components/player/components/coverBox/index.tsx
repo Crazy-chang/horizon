@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './index.modules.scss'
 
 const TEMP_BACKGROUND_IMAGE: string =
@@ -6,12 +6,24 @@ const TEMP_BACKGROUND_IMAGE: string =
 const TEMP_BACKGROUND_IMAGE_2: string =
   'https://image.xyzcdn.net/FqUrrUGD1YIaeVqrpn9MV0yPz_iY.jpg@large'
 
-export const CoverBox = () => {
-  const [toggle, setToggle] = useState<boolean>(true)
+type IProps = {
+  hasOpen: boolean
+}
+
+export const CoverBox: React.FC<IProps> = ({ hasOpen }) => {
+  const [toggle, setToggle] = useState<boolean>(false)
 
   const handleToggle = () => {
     setToggle(!toggle)
   }
+
+  useEffect(() => {
+    if (hasOpen && !toggle) {
+      setTimeout(() => {
+        setToggle(true)
+      }, 1500)
+    }
+  }, [hasOpen])
 
   return (
     <div className="cover-box-layout">

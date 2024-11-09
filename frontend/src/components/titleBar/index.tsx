@@ -43,6 +43,7 @@ export const TitleBar = () => {
               onClick={() => {
                 WindowMinimise()
               }}
+              title="最小化"
             >
               <MinusIcon />
             </div>
@@ -50,6 +51,7 @@ export const TitleBar = () => {
               onClick={() => {
                 Quit()
               }}
+              title="退出程序"
             >
               <Cross1Icon />
             </div>
