@@ -65,8 +65,8 @@ export const Player: React.FC<IProps> = ({ open, onClose }) => {
             <Text
               as="p"
               size="7"
-              mt="8"
-              mb="3"
+              mt="4"
+              mb="1"
               align="center"
             >
               159.听听孩子的话，别让TA受伤：聊聊亲子关系
@@ -75,7 +75,7 @@ export const Player: React.FC<IProps> = ({ open, onClose }) => {
               as="p"
               align="center"
               size="5"
-              mb="8"
+              mb="6"
               className="podcast-name"
             >
               不开玩笑 Joker Aside

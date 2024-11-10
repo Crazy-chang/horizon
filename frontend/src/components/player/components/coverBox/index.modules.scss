@@ -1,13 +1,10 @@
 .cover-box-layout {
   width: 100%;
-  height: 20rem;
   display: flex;
   justify-content: center;
   align-items: center;
 
   .cover-box {
-    width: 20rem;
-    height: 20rem;
     position: relative;
 
     img {
@@ -18,38 +15,6 @@
       user-select: none;
       -webkit-user-select: none;
       cursor: default;
-    }
-
-    .cb-episode-image {
-      top: 0;
-      left: 0;
-      width: 19rem;
-      height: 19rem;
-      transform: scale(1);
-      opacity: 1;
-    }
-
-    .cb-episode-image-active {
-      top: 0;
-      left: 0;
-      width: 19rem;
-      height: 19rem;
-      transform: scale(0.2);
-      opacity: 0;
-    }
-
-    .cb-podcast-image {
-      width: 5rem;
-      height: 5rem;
-      bottom: 0;
-      right: 0;
-    }
-
-    .cb-podcast-image-active {
-      width: 100%;
-      height: 100%;
-      bottom: 0;
-      right: 0;
     }
   }
 }

@@ -38,13 +38,11 @@
     display: flex;
     height: 100%;
 
-
     .player-left {
       flex: 1;
       display: flex;
       align-items: center;
       cursor: default;
-
 
       .player-left-content {
         margin: 0 auto;
@@ -59,33 +57,34 @@
           display: flex;
           justify-content: center;
 
-          .control-button{
+          .control-button {
             width: 2.5rem;
             height: 2.5rem;
             margin-right: 1rem;
             cursor: pointer;
 
-            &:last-child{
+            &:last-child {
               margin-right: 0;
             }
 
-            svg{
+            svg {
               width: 1.9rem;
               height: 1.9rem;
             }
           }
         }
 
-        .progress-bar-layout{
-          margin-top: 2rem;
+        .progress-bar-layout {
+          margin-top: 1rem;
 
-          .time-flag{
+          .time-flag {
             display: flex;
             justify-content: space-between;
             color: $secondary-font-color;
           }
-          .progress-bar{
-            margin-top: 1rem;
+
+          .progress-bar {
+            margin-top: 0.7rem;
           }
         }
       }
