@@ -151,7 +151,9 @@ export const Player: React.FC<IProps> = ({ open, onClose }) => {
             </div>
           </div>
         </div>
-        <div className="player-right">right</div>
+        <div className="player-right">
+          <div className="player-comment">评论1055</div>
+        </div>
       </div>
     </div>
   )
