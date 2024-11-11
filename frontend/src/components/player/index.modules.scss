@@ -41,12 +41,22 @@
     .player-left {
       flex: 1;
       display: flex;
-      align-items: center;
+      margin-top: 2%;
       cursor: default;
 
       .player-left-content {
+        width: 100%;
         margin: 0 auto;
         padding: 0 3rem;
+
+        .episode-name {
+          overflow: hidden;
+          display: -webkit-box;
+          line-clamp: 2;
+          box-orient: vertical;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+        }
 
         .podcast-name {
           color: $secondary-font-color;

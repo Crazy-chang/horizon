@@ -68,6 +68,7 @@ export const Player: React.FC<IProps> = ({ open, onClose }) => {
               mt="4"
               mb="1"
               align="center"
+              className="episode-name"
             >
               159.听听孩子的话，别让TA受伤：聊聊亲子关系
             </Text>
