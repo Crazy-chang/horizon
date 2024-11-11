@@ -37,6 +37,7 @@
     padding: 0 3rem;
     display: flex;
     height: 100%;
+    //overflow: hidden;
 
     .player-left {
       flex: 1;
@@ -103,8 +104,80 @@
     .player-right {
       flex: 1;
 
-      .player-comment{
+      .player-comment-layout {
 
+        .player-comment-content {
+          margin-top: 0.7rem;
+          padding-right: 1rem;
+
+          .player-comment-item {
+            margin-bottom: 1rem;
+
+            .player-comment-author {
+              display: flex;
+              align-items: center;
+              cursor: default;
+
+              div {
+                &:first-child {
+                  margin-right: 10px;
+                }
+
+                &:nth-child(2) {
+                  flex: 1;
+
+                  p {
+                    &:last-child {
+                      font-size: 0.7rem;
+                      color: $secondary-font-color;
+                    }
+                  }
+                }
+
+                &:last-child {
+                  cursor: pointer;
+                  font-size: 0.9rem;
+
+                  svg {
+                    margin-right: 10px;
+                  }
+                }
+              }
+            }
+
+            .player-comment-body {
+              margin: 0.3rem 0;
+            }
+
+            .player-comment-replies {
+              background: rgba(255, 255, 255, 0.1);
+              border-radius: 4px;
+              font-size: 0.8rem;
+              padding: 0.2rem 0.3rem;
+
+              .player-comment-reply {
+                overflow: hidden;
+                display: -webkit-box;
+                line-clamp: 1;
+                box-orient: vertical;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 1;
+
+                .player-comment-reply-nickname {
+                  color: $secondary-font-color;
+                }
+              }
+
+              .player-comment-more-reply {
+                cursor: pointer;
+              }
+            }
+          }
+
+          .load-more-button {
+            text-align: center;
+          }
+        }
       }
     }
   }

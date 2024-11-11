@@ -1,5 +1,13 @@
 import React from 'react'
-import { IconButton, Slider, Text, Tooltip } from '@radix-ui/themes'
+import {
+  Avatar,
+  Button,
+  IconButton,
+  ScrollArea,
+  Slider,
+  Text,
+  Tooltip,
+} from '@radix-ui/themes'
 import { CaretDownIcon } from '@radix-ui/react-icons'
 import { useDisplayInfo } from '@/hooks'
 import { CoverBox } from './components/coverBox'
@@ -23,6 +31,8 @@ type IProps = {
 export const Player: React.FC<IProps> = ({ open, onClose }) => {
   const [height] = React.useState<number>(useDisplayInfo().Height - 35)
   const [width] = React.useState<number>(useDisplayInfo().Width)
+
+  const count = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
   return (
     <div
@@ -58,7 +68,10 @@ export const Player: React.FC<IProps> = ({ open, onClose }) => {
         <LiveCount />
       </div>
 
-      <div className="player-content">
+      <div
+        className="player-content"
+        style={{ height: `${height - 80}px` }}
+      >
         <div className="player-left">
           <div className="player-left-content">
             <CoverBox hasOpen={open} />
@@ -152,7 +165,81 @@ export const Player: React.FC<IProps> = ({ open, onClose }) => {
           </div>
         </div>
         <div className="player-right">
-          <div className="player-comment">评论1055</div>
+          <div className="player-comment-layout">
+            <Text
+              size="5"
+              style={{ fontWeight: 'bold' }}
+            >
+              1055 条评论
+            </Text>
+
+            <ScrollArea
+              type="always"
+              scrollbars="vertical"
+              style={{ height: `${height - 100}px` }}
+            >
+              <div className="player-comment-content">
+                {count.map((item: any) => (
+                  <div
+                    key={item}
+                    className="player-comment-item"
+                  >
+                    <div className="player-comment-author">
+                      <div>
+                        <Avatar
+                          radius="full"
+                          src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?&w=256&h=256&q=70&crop=focalpoint&fp-x=0.5&fp-y=0.3&fp-z=1&fit=crop"
+                          fallback="A"
+                        />
+                      </div>
+                      <div>
+                        <p>不开玩笑小助手</p>
+                        <p>
+                          10/23 <span>上海</span>
+                        </p>
+                      </div>
+                      <div>
+                        <IoMdThumbsUp />
+                        23
+                      </div>
+                    </div>
+                    <div className="player-comment-body">
+                      窦娥在刑场即将行刑时 看着漫天的大雪 哭诉道：“冤深，启冻！”
+                      后人都称：万冤深导致的 后人悲呼：万冤身亡的
+                      商鞅：原来你也万冤身 有人觉得窦娥不怨
+                      对此我想说：冤身怎么你了？
+                    </div>
+                    <div className="player-comment-replies">
+                      <div className="player-comment-reply">
+                        <span className="player-comment-reply-nickname">
+                          推阿婆下楼
+                        </span>
+                        ：原神怎么你了？😡
+                      </div>
+                      <div className="player-comment-reply">
+                        <span className="player-comment-reply-nickname">
+                          想吃羊肉串儿
+                        </span>
+                        ：说到我心坎儿里说到我心坎儿里说到我心坎儿里说到我心坎儿里
+                      </div>
+                      <div className="player-comment-more-reply">
+                        共 3 条回复 &gt;
+                      </div>
+                    </div>
+                  </div>
+                ))}
+
+                <div className="load-more-button">
+                  <Button
+                    variant="ghost"
+                    color="gray"
+                  >
+                    加载更多
+                  </Button>
+                </div>
+              </div>
+            </ScrollArea>
+          </div>
         </div>
       </div>
     </div>

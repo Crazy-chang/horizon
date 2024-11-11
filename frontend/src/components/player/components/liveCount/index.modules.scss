@@ -12,9 +12,8 @@
   font-weight: 300;
 
   .live-dot {
-    width: 10px;
-    height: 10px;
-    background: #7cb305;
+    width: 5px;
+    height: 5px;
     border-radius: 25px;
     margin-right: 10px;
     animation: light 2s infinite alternate;
@@ -23,10 +22,12 @@
 
 @keyframes light {
   from {
-    box-shadow: 0 0 2px #eaff8f;
+    box-shadow: 0 0 2px #5b8c00;
+    background: #5b8c00;
   }
 
   to {
-    box-shadow: 0 0 10px #eaff8f;
+    box-shadow: 0 0 12px 4px #d3f261;
+    background: #d3f261;
   }
 }
