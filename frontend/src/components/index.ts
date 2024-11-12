@@ -10,6 +10,7 @@ import { NavBackButton } from './navBackButton'
 import { ProfileModal } from './profileModal'
 import { MyDropdownMenu } from './dropdownMenu'
 import { StickerModal } from './stickerModal'
+import { EpisodeDetailModal } from '@/components/episodeDetailModal'
 
 export {
   DraggableBar,
@@ -24,4 +25,5 @@ export {
   ProfileModal,
   MyDropdownMenu,
   StickerModal,
+  EpisodeDetailModal,
 }

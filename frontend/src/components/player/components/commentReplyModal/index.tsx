@@ -18,6 +18,13 @@ type IProps = {
   id: string
 } & modalType
 
+/**
+ * 评论回复弹窗
+ * @param id 评论id
+ * @param open 是否打开
+ * @param onClose 关闭弹窗
+ * @constructor
+ */
 export const CommentReplyModal: React.FC<IProps> = ({ id, open, onClose }) => {
   const [height] = React.useState<number>(useDisplayInfo().Height)
 

@@ -13,6 +13,7 @@ import { useDisplayInfo } from '@/hooks'
 import { CoverBox } from './components/coverBox'
 import { LiveCount } from './components/liveCount'
 import { CommentReplyModal } from './components/commentReplyModal'
+import { EpisodeDetailModal } from '@/components'
 import './index.modules.scss'
 import {
   BsPlayFill,
@@ -36,6 +37,7 @@ export const Player: React.FC<IProps> = ({ open, onClose }) => {
     id: '0',
     open: false,
   })
+  const [episodeDetailModal, setEpisodeDetailModal] = useState<boolean>(false)
 
   const count = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
@@ -114,6 +116,9 @@ export const Player: React.FC<IProps> = ({ open, onClose }) => {
                     variant="ghost"
                     radius="large"
                     className="control-button"
+                    onClick={() => {
+                      setEpisodeDetailModal(true)
+                    }}
                   >
                     <IoMdInformationCircleOutline />
                   </IconButton>
@@ -268,6 +273,13 @@ export const Player: React.FC<IProps> = ({ open, onClose }) => {
             id: '0',
             open: false,
           })
+        }}
+      />
+
+      <EpisodeDetailModal
+        open={episodeDetailModal}
+        onClose={() => {
+          setEpisodeDetailModal(false)
         }}
       />
     </div>
