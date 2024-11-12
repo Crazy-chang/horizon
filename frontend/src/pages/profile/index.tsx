@@ -14,7 +14,6 @@ import { MileageModal } from './components/mileageModal'
 import { FollowModal } from './components/followModal'
 
 export const Profile = () => {
-  // const elementRef = useRef(null)
   const [mileageModalOpen, setMileageModalOpen] = useState<boolean>(false)
   const [stickerModalOpen, setStickerModalOpen] = useState<boolean>(false)
   const [followModal, setFollowModal] = useState<{
@@ -212,8 +211,3 @@ export const Profile = () => {
     </div>
   )
 }
-
-// if (elementRef.current) {
-//   const { width, height } = elementRef.current.getBoundingClientRect()
-//   console.log('bound', width, height)
-// }

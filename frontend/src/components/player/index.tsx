@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   Avatar,
   Button,
@@ -12,6 +12,7 @@ import { CaretDownIcon } from '@radix-ui/react-icons'
 import { useDisplayInfo } from '@/hooks'
 import { CoverBox } from './components/coverBox'
 import { LiveCount } from './components/liveCount'
+import { CommentReplyModal } from './components/commentReplyModal'
 import './index.modules.scss'
 import {
   BsPlayFill,
@@ -31,8 +32,19 @@ type IProps = {
 export const Player: React.FC<IProps> = ({ open, onClose }) => {
   const [height] = React.useState<number>(useDisplayInfo().Height - 35)
   const [width] = React.useState<number>(useDisplayInfo().Width)
+  const [replyModal, setReplyModal] = useState<{ id: string; open: boolean }>({
+    id: '0',
+    open: false,
+  })
 
   const count = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+  const onViewReply = () => {
+    setReplyModal({
+      id: '123',
+      open: true,
+    })
+  }
 
   return (
     <div
@@ -222,7 +234,12 @@ export const Player: React.FC<IProps> = ({ open, onClose }) => {
                         </span>
                         ：说到我心坎儿里说到我心坎儿里说到我心坎儿里说到我心坎儿里
                       </div>
-                      <div className="player-comment-more-reply">
+                      <div
+                        className="player-comment-more-reply"
+                        onClick={() => {
+                          onViewReply()
+                        }}
+                      >
                         共 3 条回复 &gt;
                       </div>
                     </div>
@@ -242,6 +259,17 @@ export const Player: React.FC<IProps> = ({ open, onClose }) => {
           </div>
         </div>
       </div>
+
+      <CommentReplyModal
+        id={replyModal.id}
+        open={replyModal.open}
+        onClose={() => {
+          setReplyModal({
+            id: '0',
+            open: false,
+          })
+        }}
+      />
     </div>
   )
 }

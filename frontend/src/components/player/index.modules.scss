@@ -37,7 +37,6 @@
     padding: 0 3rem;
     display: flex;
     height: 100%;
-    //overflow: hidden;
 
     .player-left {
       flex: 1;
@@ -164,6 +163,7 @@
                 -webkit-line-clamp: 1;
 
                 .player-comment-reply-nickname {
+                  font-weight: 300;
                   color: $secondary-font-color;
                 }
               }
@@ -176,6 +176,7 @@
 
           .load-more-button {
             text-align: center;
+            margin-bottom: 1rem;
           }
         }
       }
