@@ -120,10 +120,15 @@
               div {
                 &:first-child {
                   margin-right: 10px;
+                  cursor: pointer;
                 }
 
                 &:nth-child(2) {
                   flex: 1;
+
+                  span {
+                    cursor: pointer;
+                  }
 
                   p {
                     &:last-child {
@@ -141,6 +146,15 @@
                     margin-right: 10px;
                   }
                 }
+              }
+
+              &:hover{
+                .player-comment-more-action {}
+              }
+
+              .player-comment-more-action {
+                font-size: 0.9rem;
+                margin-right: 10px;
               }
             }
 
@@ -164,6 +178,7 @@
 
                 .player-comment-reply-nickname {
                   color: $secondary-font-color;
+                  cursor: pointer;
                 }
               }
 

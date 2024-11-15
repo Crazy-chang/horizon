@@ -8,12 +8,12 @@ import {
   Text,
   Tooltip,
 } from '@radix-ui/themes'
-import { CaretDownIcon } from '@radix-ui/react-icons'
+import { CaretDownIcon, DotsHorizontalIcon } from '@radix-ui/react-icons'
 import { useDisplayInfo } from '@/hooks'
 import { CoverBox } from './components/coverBox'
 import { LiveCount } from './components/liveCount'
 import { CommentReplyModal } from './components/commentReplyModal'
-import { EpisodeDetailModal } from '@/components'
+import { EpisodeDetailModal, ProfileModal } from '@/components'
 import './index.modules.scss'
 import {
   BsPlayFill,
@@ -38,6 +38,13 @@ export const Player: React.FC<IProps> = ({ open, onClose }) => {
     open: false,
   })
   const [episodeDetailModal, setEpisodeDetailModal] = useState<boolean>(false)
+  const [profileModal, setProfileModal] = useState<{
+    open: boolean
+    uid: string
+  }>({
+    open: false,
+    uid: '',
+  })
 
   const count = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
@@ -202,7 +209,14 @@ export const Player: React.FC<IProps> = ({ open, onClose }) => {
                     className="player-comment-item"
                   >
                     <div className="player-comment-author">
-                      <div>
+                      <div
+                        onClick={() => {
+                          setProfileModal({
+                            open: true,
+                            uid: '123',
+                          })
+                        }}
+                      >
                         <Avatar
                           radius="full"
                           src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?&w=256&h=256&q=70&crop=focalpoint&fp-x=0.5&fp-y=0.3&fp-z=1&fit=crop"
@@ -210,10 +224,28 @@ export const Player: React.FC<IProps> = ({ open, onClose }) => {
                         />
                       </div>
                       <div>
-                        <p>不开玩笑小助手</p>
+                        <span
+                          onClick={() => {
+                            setProfileModal({
+                              open: true,
+                              uid: '123',
+                            })
+                          }}
+                        >
+                          不开玩笑小助手
+                        </span>
                         <p>
                           10/23 <span>上海</span>
                         </p>
+                      </div>
+                      <div className="player-comment-more-action">
+                        <IconButton
+                          variant="ghost"
+                          size="1"
+                          color="gray"
+                        >
+                          <DotsHorizontalIcon />
+                        </IconButton>
                       </div>
                       <div>
                         <IoMdThumbsUp />
@@ -228,7 +260,15 @@ export const Player: React.FC<IProps> = ({ open, onClose }) => {
                     </div>
                     <div className="player-comment-replies">
                       <div className="player-comment-reply">
-                        <span className="player-comment-reply-nickname">
+                        <span
+                          className="player-comment-reply-nickname"
+                          onClick={() => {
+                            setProfileModal({
+                              open: true,
+                              uid: '123',
+                            })
+                          }}
+                        >
                           推阿婆下楼
                         </span>
                         ：原神怎么你了？😡
@@ -280,6 +320,17 @@ export const Player: React.FC<IProps> = ({ open, onClose }) => {
         open={episodeDetailModal}
         onClose={() => {
           setEpisodeDetailModal(false)
+        }}
+      />
+
+      <ProfileModal
+        uid={profileModal.uid}
+        open={profileModal.open}
+        onClose={() => {
+          setProfileModal({
+            open: false,
+            uid: '',
+          })
         }}
       />
     </div>
