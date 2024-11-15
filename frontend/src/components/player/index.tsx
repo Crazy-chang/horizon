@@ -8,7 +8,7 @@ import {
   Text,
   Tooltip,
 } from '@radix-ui/themes'
-import { CaretDownIcon, DotsHorizontalIcon } from '@radix-ui/react-icons'
+import { CaretDownIcon, StarIcon } from '@radix-ui/react-icons'
 import { useDisplayInfo } from '@/hooks'
 import { CoverBox } from './components/coverBox'
 import { LiveCount } from './components/liveCount'
@@ -38,6 +38,7 @@ export const Player: React.FC<IProps> = ({ open, onClose }) => {
     open: false,
   })
   const [episodeDetailModal, setEpisodeDetailModal] = useState<boolean>(false)
+  const [dropDownMenuOpen, setDropDownMenuOpen] = useState<boolean>(false)
   const [profileModal, setProfileModal] = useState<{
     open: boolean
     uid: string
@@ -239,13 +240,18 @@ export const Player: React.FC<IProps> = ({ open, onClose }) => {
                         </p>
                       </div>
                       <div className="player-comment-more-action">
-                        <IconButton
-                          variant="ghost"
-                          size="1"
-                          color="gray"
-                        >
-                          <DotsHorizontalIcon />
-                        </IconButton>
+                        <Tooltip content="收藏评论">
+                          <IconButton
+                            variant="ghost"
+                            size="1"
+                            color="gray"
+                            onClick={() => {
+                              // ...
+                            }}
+                          >
+                            <StarIcon />
+                          </IconButton>
+                        </Tooltip>
                       </div>
                       <div>
                         <IoMdThumbsUp />
@@ -321,6 +327,7 @@ export const Player: React.FC<IProps> = ({ open, onClose }) => {
         onClose={() => {
           setEpisodeDetailModal(false)
         }}
+        width={`${width * 0.7}px`}
       />
 
       <ProfileModal

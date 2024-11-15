@@ -9,9 +9,14 @@ import './index.moduless.scss'
  * 单集详情弹窗
  * @param open    是否打开
  * @param onClose 关闭弹窗
+ * @param width   宽度
  * @constructor
  */
-export const EpisodeDetailModal: React.FC<modalType> = ({ open, onClose }) => {
+export const EpisodeDetailModal: React.FC<modalType> = ({
+  open,
+  onClose,
+  width,
+}) => {
   const [height] = React.useState<number>(useDisplayInfo().Height)
 
   return (
@@ -19,6 +24,7 @@ export const EpisodeDetailModal: React.FC<modalType> = ({ open, onClose }) => {
       title="单集详情"
       open={open}
       onClose={onClose}
+      width={width}
     >
       <div style={{ height: `${height * 0.6}px` }}>123</div>
 

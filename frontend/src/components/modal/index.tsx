@@ -9,6 +9,7 @@ import { modalType } from '@/types/modal'
  * @param open 是否打开
  * @param onClose 关闭回调
  * @param children 子元素
+ * @param width 宽度
  * @constructor
  */
 export const Modal: React.FC<modalType> = ({
@@ -16,6 +17,7 @@ export const Modal: React.FC<modalType> = ({
   open,
   onClose,
   children,
+  width,
 }) => {
   // https://github.com/radix-ui/primitives/discussions/1997
   const avoidDefaultDomBehavior = (e: Event) => {
@@ -30,6 +32,7 @@ export const Modal: React.FC<modalType> = ({
       <Dialog.Content
         onPointerDownOutside={avoidDefaultDomBehavior}
         onInteractOutside={avoidDefaultDomBehavior}
+        maxWidth={width}
       >
         {title ? (
           <Dialog.Title
