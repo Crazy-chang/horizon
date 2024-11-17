@@ -13,9 +13,17 @@ func NewApp() *App {
 func (a *App) Start(ctx context.Context) {
 	a.ctx = ctx
 
-	//Init()
 	err := service.Start()
 	if err != nil {
 		fmt.Println(err.Error())
 	}
+}
+
+func (a *App) ReadConfig() Config {
+	config := ReadConfig()
+
+	fmt.Println("***************************************************************")
+	fmt.Println(config.User.AccessToken)
+
+	return config
 }

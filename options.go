@@ -21,7 +21,7 @@ func AppOptions(app *bridge.App) *options.App {
 	dw, dh := bridge.GetDisplaySize()
 
 	return &options.App{
-		Title:         "horizon",
+		Title:         bridge.APP_NAME,
 		Width:         int(float32(dw) * 0.7),
 		Height:        int(float32(dh) * 0.7),
 		DisableResize: true,
@@ -49,8 +49,8 @@ func AppOptions(app *bridge.App) *options.App {
 			WebviewIsTransparent: true,
 			WindowIsTranslucent:  true,
 			About: &mac.AboutInfo{
-				Title:   "horizon",
-				Message: "© 2024 hexdream",
+				Title:   bridge.APP_NAME,
+				Message: "© 2024 hexdr3am",
 				Icon:    icon,
 			},
 		},
