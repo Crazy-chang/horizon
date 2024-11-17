@@ -1,4 +1,3 @@
-import { DraggableBar } from './draggableBar'
 import { PlayController } from './playerController'
 import { Player } from './player'
 import { NavLogo } from './navLogo'
@@ -13,7 +12,6 @@ import { StickerModal } from './stickerModal'
 import { EpisodeDetailModal } from '@/components/episodeDetailModal'
 
 export {
-  DraggableBar,
   PlayController,
   Player,
   NavLogo,

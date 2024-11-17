@@ -10,6 +10,7 @@ import {
   Profile,
   About,
   PodcastDetail,
+  Launch,
 } from '@/pages'
 import { Root } from '@/layouts'
 
@@ -55,5 +56,9 @@ export const router = createHashRouter([
   {
     path: '/login',
     element: <Login />,
+  },
+  {
+    path: '/launch',
+    element: <Launch />,
   },
 ])
