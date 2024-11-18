@@ -1,14 +1,15 @@
 package bridge
 
 import (
-	"fmt"
-	"github.com/spf13/viper"
 	"log"
+
+	"github.com/spf13/viper"
 )
 
 const (
 	configFileName = "config"
 	configFilePath = "."
+	configFile     = configFilePath + "/" + configFileName + ".yaml"
 )
 
 func initConfig() {
@@ -16,23 +17,20 @@ func initConfig() {
 	viper.AddConfigPath(configFilePath)
 	viper.SetConfigType("yaml")
 
-	viper.SetDefault("user.access_token", "")
-	viper.SetDefault("user.refresh_token", "")
+	viper.SetDefault("user.accessToken", "")
+	viper.SetDefault("user.refreshToken", "")
+	viper.SetDefault("setting.checkUpdateOnStartup", true)
+	viper.SetDefault("setting.isIpLocHidden", false)
 
-	// 检查配置文件是否存在
-	configFile := fmt.Sprintf("%s/%s.yaml", configFilePath, configFileName)
-	if IsExist(configFile) {
-		log.Println("配置文件已存在:", configFile)
-	} else {
-		if err := viper.SafeWriteConfigAs(configFile); err != nil {
-			log.Printf("创建配置文件失败: %v", err)
-		}
-		log.Println("配置文件已创建:", configFile)
+	if err := viper.SafeWriteConfigAs(configFile); err != nil {
+		log.Printf("创建配置文件失败: %v", err)
 	}
 }
 
-func ReadConfig() Config {
-	initConfig()
+func (a *App) ReadConfig() *Config {
+	if !IsExist(configFile) {
+		initConfig()
+	}
 
 	viper.SetConfigName(configFileName)
 	viper.AddConfigPath(configFilePath)
@@ -42,11 +40,24 @@ func ReadConfig() Config {
 		log.Fatalf("读取配置文件失败: %v", err)
 	}
 
-	var c Config
+	var c *Config
 
 	if err := viper.Unmarshal(&c); err != nil {
 		log.Fatalf("解析配置文件失败: %v", err)
 	}
 
 	return c
+}
+
+func (a *App) UpdateConfig(key string, value any) (bool, string) {
+	viper.Set(key, value)
+
+	if err := viper.WriteConfig(); err != nil {
+		log.Println("无法写入配置文件")
+
+		return false, "无法写入配置文件"
+	}
+
+	log.Println("配置文件已更新")
+	return true, "配置文件已更新"
 }

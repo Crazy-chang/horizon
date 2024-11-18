@@ -1,3 +1,6 @@
-User:
-  AccessToken: 12345678
-  RefreshToken: 87654321
+setting:
+  checkupdateonstartup: true
+  isiplochidden: true
+user:
+  accesstoken: 1
+  refreshtoken: 1

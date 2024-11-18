@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import {
   MagnifyingGlassIcon,
   GlobeIcon,
@@ -8,19 +9,46 @@ import {
 import { ScrollArea } from '@radix-ui/themes'
 import { NavLink, Outlet } from 'react-router-dom'
 import { PlayController, NavLogo, NavUser } from '@/components'
+import { useNavigateTo } from '@/hooks'
 import './index.modules.scss'
+import { ReadConfig } from 'wailsjs/go/bridge/App'
 // import { useEffect, useState } from 'react'
 // import { envType } from '@/types/env'
 // import { Environment } from 'wailsjs/runtime'
 
 export const Root = () => {
   // const [envInfo, setEnvInfo] = useState<envType>()
+  const [loading, setLoading] = useState<boolean>(false)
 
-  // useEffect(() => {
-  //   Environment().then((res: envType) => {
-  //     setEnvInfo(res)
-  //   })
-  // }, [])
+  const goLogin = useNavigateTo('/login')
+  const goLaunch = useNavigateTo('/launch')
+  const goHome = useNavigateTo('/')
+
+  const onReadConfigFunc = () => {
+    setLoading(true)
+    goLaunch()
+
+    setTimeout(() => {
+      ReadConfig()
+        .then((res) => {
+          if (res.user.accessToken) {
+            return goHome()
+          } else {
+            return goLogin()
+          }
+        })
+        .catch((err: any) => {
+          console.error('error', err)
+        })
+        .finally(() => {
+          setLoading(false)
+        })
+    }, 3500)
+  }
+
+  useEffect(() => {
+    onReadConfigFunc()
+  }, [])
 
   return (
     <>

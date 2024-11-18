@@ -1,5 +1,5 @@
 import React from 'react'
-import { useBack } from '@/hooks'
+import { useNavigateTo } from '@/hooks'
 import {
   Button,
   Container,
@@ -16,15 +16,16 @@ import '@/assets/global/animate.css'
 import APP_ICON from '@/assets/images/logo.png'
 
 export const Login = () => {
-  const back = useBack()
   const [animate, setAnimate] = React.useState<boolean>(false)
   const [loading, setLoading] = React.useState<boolean>(false)
+
+  const goHome = useNavigateTo('/')
 
   const onLogin = () => {
     setLoading(true)
 
     setTimeout(() => {
-      back()
+      goHome()
       setLoading(false)
     }, 3000)
   }

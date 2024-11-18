@@ -1,8 +1,22 @@
 import { useEffect, useState } from 'react'
 import { Environment } from 'wailsjs/runtime'
+import { ReadConfig, UpdateConfig } from 'wailsjs/go/bridge/App'
 import { envType } from '@/types/env'
-import { Box, Card, Flex, Separator, Switch, Button } from '@radix-ui/themes'
-import { ChevronRightIcon, ExitIcon } from '@radix-ui/react-icons'
+import { settingConfigType, SETTING_CONFIG_ENUM } from '@/types/config'
+import {
+  Box,
+  Card,
+  Flex,
+  Separator,
+  Switch,
+  Button,
+  Tooltip,
+} from '@radix-ui/themes'
+import {
+  ChevronRightIcon,
+  ExitIcon,
+  QuestionMarkCircledIcon,
+} from '@radix-ui/react-icons'
 import { APP_NAME, APP_VERSION } from '@/utils'
 import { useNavigateTo } from '@/hooks'
 import APP_ICON from '@/assets/images/logo.png'
@@ -10,6 +24,10 @@ import './index.modules.scss'
 
 export const Setting = () => {
   const [envInfo, setEnvInfo] = useState<envType>()
+  const [config, setConfig] = useState<settingConfigType>({
+    checkUpdateOnStartup: false,
+    isIpLocHidden: false,
+  })
 
   const goAbout = useNavigateTo('/about')
 
@@ -17,10 +35,22 @@ export const Setting = () => {
     // TODO:  check update
   }
 
+  const onUpdateConfig = (key: string, value: any) => {
+    UpdateConfig(key, value).then()
+  }
+
   useEffect(() => {
     Environment().then((res: envType) => {
       setEnvInfo(res)
     })
+
+    ReadConfig()
+      .then((res) => {
+        setConfig(res.setting)
+      })
+      .catch((err) => {
+        console.error('error', err)
+      })
   }, [])
 
   return (
@@ -114,9 +144,28 @@ export const Setting = () => {
           size="4"
         />
         <Flex>
-          <Box width="100%">不展示 IP 属地信息</Box>
+          <Box width="100%">
+            不展示 IP 属地信息
+            <Tooltip content="关闭后将不显示自己与他人的 IP 属地信息">
+              <QuestionMarkCircledIcon
+                style={{
+                  marginLeft: '6px',
+                  cursor: 'help',
+                }}
+              />
+            </Tooltip>
+          </Box>
           <Box>
-            <Switch />
+            <Switch
+              checked={config?.isIpLocHidden}
+              onCheckedChange={(checked: boolean) => {
+                setConfig({
+                  ...config,
+                  isIpLocHidden: checked,
+                })
+                onUpdateConfig(SETTING_CONFIG_ENUM.isIpLocHidden, checked)
+              }}
+            />
           </Box>
         </Flex>
       </Card>
@@ -143,7 +192,19 @@ export const Setting = () => {
         <Flex>
           <Box width="100%">启动时检查更新</Box>
           <Box>
-            <Switch />
+            <Switch
+              checked={config?.checkUpdateOnStartup}
+              onCheckedChange={(checked: boolean) => {
+                setConfig({
+                  ...config,
+                  checkUpdateOnStartup: checked,
+                })
+                onUpdateConfig(
+                  SETTING_CONFIG_ENUM.checkUpdateOnStartup,
+                  checked,
+                )
+              }}
+            />
           </Box>
         </Flex>
         <Separator
