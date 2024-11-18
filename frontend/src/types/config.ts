@@ -13,5 +13,10 @@ const SETTING_CONFIG_ENUM = {
   isIpLocHidden: 'setting.is_ip_loc_hidden',
 }
 
+const USER_CONFIG_ENUM = {
+  accessToken: 'user.access_token',
+  refreshToken: 'user.refresh_token',
+}
+
 export type { settingConfigType, userConfigType }
-export { SETTING_CONFIG_ENUM }
+export { SETTING_CONFIG_ENUM, USER_CONFIG_ENUM }

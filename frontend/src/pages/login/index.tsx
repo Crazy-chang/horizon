@@ -11,9 +11,11 @@ import {
   Box,
 } from '@radix-ui/themes'
 import { QuestionMarkCircledIcon } from '@radix-ui/react-icons'
-import './index.modules.scss'
-import '@/assets/global/animate.css'
 import APP_ICON from '@/assets/images/logo.png'
+import { UpdateConfig } from 'wailsjs/go/bridge/App'
+import { USER_CONFIG_ENUM } from '@/types/config'
+import '@/assets/global/animate.css'
+import './index.modules.scss'
 
 export const Login = () => {
   const [animate, setAnimate] = React.useState<boolean>(false)
@@ -23,6 +25,9 @@ export const Login = () => {
 
   const onLogin = () => {
     setLoading(true)
+
+    UpdateConfig(USER_CONFIG_ENUM.accessToken, 'access_token').then()
+    UpdateConfig(USER_CONFIG_ENUM.refreshToken, 'refresh_token').then()
 
     setTimeout(() => {
       goHome()
