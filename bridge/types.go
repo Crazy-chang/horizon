@@ -12,11 +12,11 @@ type Config struct {
 }
 
 type User struct {
-	AccessToken  string `yaml:"accessToken" json:"accessToken"`
-	RefreshToken string `yaml:"refreshToken" json:"refreshToken"`
+	AccessToken  string `mapstructure:"access_token" json:"accessToken"`
+	RefreshToken string `mapstructure:"refresh_token" json:"refreshToken"`
 }
 
 type Setting struct {
-	CheckUpdateOnStartup bool `yaml:"checkUpdateOnStartup" json:"checkUpdateOnStartup"`
-	IsIpLocHidden        bool `yaml:"isIpLocHidden" json:"isIpLocHidden"`
+	CheckUpdateOnStartup bool `mapstructure:"check_update_on_startup" json:"checkUpdateOnStartup"`
+	IsIpLocHidden        bool `mapstructure:"is_ip_loc_hidden" json:"isIpLocHidden"`
 }

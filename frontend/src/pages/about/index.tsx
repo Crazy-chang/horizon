@@ -27,7 +27,7 @@ export const About = () => {
           {APP_NAME}
         </Heading>
         <Text mb={'3'}>
-          {APP_NAME} 是一款第三方小宇宙桌面客户端，支持 Windows 与 macOS
+          {APP_NAME} 是一个第三方小宇宙桌面客户端，支持 Windows 与 macOS
         </Text>
         <Text mb={'9'}>
           接口服务：

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Environment } from 'wailsjs/runtime'
 import { ReadConfig, UpdateConfig } from 'wailsjs/go/bridge/App'
 import { envType } from '@/types/env'
@@ -22,7 +22,7 @@ import { useNavigateTo } from '@/hooks'
 import APP_ICON from '@/assets/images/logo.png'
 import './index.modules.scss'
 
-export const Setting = () => {
+export const Setting: React.FC = () => {
   const [envInfo, setEnvInfo] = useState<envType>()
   const [config, setConfig] = useState<settingConfigType>({
     checkUpdateOnStartup: false,

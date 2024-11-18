@@ -17,10 +17,10 @@ func initConfig() {
 	viper.AddConfigPath(configFilePath)
 	viper.SetConfigType("yaml")
 
-	viper.SetDefault("user.accessToken", "")
-	viper.SetDefault("user.refreshToken", "")
-	viper.SetDefault("setting.checkUpdateOnStartup", true)
-	viper.SetDefault("setting.isIpLocHidden", false)
+	viper.SetDefault("user.access_token", "")
+	viper.SetDefault("user.refresh_token", "")
+	viper.SetDefault("setting.check_update_on_startup", true)
+	viper.SetDefault("setting.is_ip_loc_hidden", false)
 
 	if err := viper.SafeWriteConfigAs(configFile); err != nil {
 		log.Printf("创建配置文件失败: %v", err)

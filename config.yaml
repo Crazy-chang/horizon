@@ -1,6 +1,6 @@
 setting:
-  checkupdateonstartup: true
-  isiplochidden: true
+    check_update_on_startup: false
+    is_ip_loc_hidden: true
 user:
-  accesstoken:
-  refreshtoken:
+    access_token: "123"
+    refresh_token: "123"
