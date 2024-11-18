@@ -11,7 +11,7 @@ import { NavLink, Outlet } from 'react-router-dom'
 import { PlayController, NavLogo, NavUser } from '@/components'
 import { useNavigateTo } from '@/hooks'
 import './index.modules.scss'
-import { ReadConfig } from 'wailsjs/go/bridge/App'
+import { ReadConfig, IsStartup } from 'wailsjs/go/bridge/App'
 // import { useEffect, useState } from 'react'
 // import { envType } from '@/types/env'
 // import { Environment } from 'wailsjs/runtime'
@@ -43,11 +43,15 @@ export const Root = () => {
         .finally(() => {
           setLoading(false)
         })
-    }, 3500)
+    }, 2500)
   }
 
   useEffect(() => {
-    onReadConfigFunc()
+    IsStartup().then((res) => {
+      if (res) {
+        return onReadConfigFunc()
+      }
+    })
   }, [])
 
   return (

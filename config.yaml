@@ -2,5 +2,5 @@ setting:
   checkupdateonstartup: true
   isiplochidden: true
 user:
-  accesstoken: 1
-  refreshtoken: 1
+  accesstoken:
+  refreshtoken:
