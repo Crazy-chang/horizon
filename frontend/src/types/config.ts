@@ -4,8 +4,8 @@ type settingConfigType = {
 }
 
 type userConfigType = {
-  access_token: string
-  refresh_token: string
+  accessToken: string
+  refreshToken: string
 }
 
 const SETTING_CONFIG_ENUM = {

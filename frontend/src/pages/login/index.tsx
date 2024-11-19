@@ -15,9 +15,9 @@ import APP_ICON from '@/assets/images/logo.png'
 import { UpdateConfig } from 'wailsjs/go/bridge/App'
 import { USER_CONFIG_ENUM } from '@/types/config'
 import { sendCode, login } from '@/api/login'
+import { isValidPhoneNumber } from '@/utils'
 import '@/assets/global/animate.css'
 import './index.modules.scss'
-import { isValidPhoneNumber } from '@/utils'
 
 export const Login: React.FC = () => {
   const [animate, setAnimate] = React.useState<boolean>(false)
