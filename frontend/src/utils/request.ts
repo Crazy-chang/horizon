@@ -7,6 +7,7 @@ const httpRequest: AxiosInstance = axios.create({
 
 httpRequest.interceptors.response.use(
   (response: AxiosResponse) => {
+    console.log('MAYDAY', response)
     const statusCode = response?.data?.code || response?.data?.retCode
 
     if (!statusCode) {
