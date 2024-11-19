@@ -5,7 +5,7 @@ import React, {
   useCallback,
   useEffect,
 } from 'react'
-import { setToastFunction } from './toast'
+import { setToastFunction } from '@/utils/toast'
 import './index.modules.scss'
 
 export type ToastOptions = {
@@ -18,8 +18,10 @@ type ToastContextType = {
 
 const ToastContext = createContext<ToastContextType | undefined>(undefined)
 
+/** react hook */
 export const useToast = () => useContext(ToastContext)
 
+/** Toast component */
 export const ToastProvider = ({ children }: { children: any }) => {
   const [toasts, setToasts] = useState<any>([])
 

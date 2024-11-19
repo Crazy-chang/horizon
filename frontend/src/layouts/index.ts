@@ -1,4 +1,4 @@
 import { Root } from './root'
-import { toast } from './toast/toast'
+import { ToastProvider } from './toast'
 
-export { Root, toast }
+export { Root, ToastProvider }

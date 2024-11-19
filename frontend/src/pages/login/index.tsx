@@ -16,6 +16,7 @@ import { UpdateConfig } from 'wailsjs/go/bridge/App'
 import { USER_CONFIG_ENUM } from '@/types/config'
 import { sendCode, login } from '@/api/login'
 import { isValidPhoneNumber } from '@/utils'
+import { toast } from '@/utils'
 import '@/assets/global/animate.css'
 import './index.modules.scss'
 
@@ -36,7 +37,12 @@ export const Login: React.FC = () => {
     }
   }
 
+  /**
+   * 登录
+   */
   const onLogin = () => {
+    setLoading(true)
+
     const params = {
       mobilePhoneNumber,
       verifyCode,
@@ -44,31 +50,38 @@ export const Login: React.FC = () => {
 
     login(params)
       .then((res) => {
-        console.log(res.msg)
+        toast(`欢迎，${res.data.data.data.user.nickname}`)
+        UpdateConfig(
+          USER_CONFIG_ENUM.accessToken,
+          res.data['x-jike-access-token'],
+        ).then()
+        UpdateConfig(
+          USER_CONFIG_ENUM.refreshToken,
+          res.data['x-jike-refresh-token'],
+        ).then()
+
+        // TODO 登录成功跳转首页以及更新全局状态
       })
       .catch((err) => {
         console.error('error', err)
       })
-    // setLoading(true)
-    //
-    // UpdateConfig(USER_CONFIG_ENUM.accessToken, 'access_token').then()
-    // UpdateConfig(USER_CONFIG_ENUM.refreshToken, 'refresh_token').then()
-    //
-    // setTimeout(() => {
-    //   goHome()
-    //   setLoading(false)
-    // }, 3000)
+      .finally(() => {
+        setLoading(false)
+      })
   }
 
+  /**
+   * 发送短信验证码
+   */
   const onSendCode = () => {
     if (
       mobilePhoneNumber.length === 11 &&
       isValidPhoneNumber(mobilePhoneNumber)
     ) {
-      onStartCountdown()
-      // sendCode({ mobilePhoneNumber }).then(() => {
-      //   // ...
-      // })
+      sendCode({ mobilePhoneNumber }).then(() => {
+        onStartCountdown()
+        toast(`验证码已发送至 ${mobilePhoneNumber}`)
+      })
     } else {
       setAnimate(true)
       setTimeout(() => {
