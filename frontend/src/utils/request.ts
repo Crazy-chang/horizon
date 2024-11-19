@@ -38,7 +38,6 @@ httpRequest.interceptors.response.use(
     if (response) {
       console.log('网络开小差了')
 
-      // message.error('网络开小差了~')
       return Promise.reject(response.data)
     }
   },

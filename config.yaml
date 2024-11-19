@@ -1,6 +1,0 @@
-setting:
-    check_update_on_startup: false
-    is_ip_loc_hidden: true
-user:
-    access_token: access_token
-    refresh_token: refresh_token

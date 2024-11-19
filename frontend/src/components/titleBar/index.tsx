@@ -51,7 +51,7 @@ export const TitleBar = () => {
               onClick={() => {
                 Quit()
               }}
-              title="退出程序"
+              title="退出"
             >
               <Cross1Icon />
             </div>

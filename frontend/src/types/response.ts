@@ -1,6 +1,6 @@
 type responseType = {
   code: string
-  message: string
+  msg: string
   data: any
 }
 

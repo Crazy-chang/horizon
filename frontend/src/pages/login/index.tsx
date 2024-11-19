@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigateTo } from '@/hooks'
 import {
   Button,
@@ -14,26 +14,80 @@ import { QuestionMarkCircledIcon } from '@radix-ui/react-icons'
 import APP_ICON from '@/assets/images/logo.png'
 import { UpdateConfig } from 'wailsjs/go/bridge/App'
 import { USER_CONFIG_ENUM } from '@/types/config'
+import { sendCode, login } from '@/api/login'
 import '@/assets/global/animate.css'
 import './index.modules.scss'
+import { isValidPhoneNumber } from '@/utils'
 
-export const Login = () => {
+export const Login: React.FC = () => {
   const [animate, setAnimate] = React.useState<boolean>(false)
   const [loading, setLoading] = React.useState<boolean>(false)
+  const [timer, setTimer] = useState<number>(0)
+  const [isCounting, setIsCounting] = useState<boolean>(false)
+  const [mobilePhoneNumber, setMobilePhoneNumber] = useState<string>('')
+  const [verifyCode, setVerifyCode] = useState<string>('')
 
   const goHome = useNavigateTo('/')
 
-  const onLogin = () => {
-    setLoading(true)
-
-    UpdateConfig(USER_CONFIG_ENUM.accessToken, 'access_token').then()
-    UpdateConfig(USER_CONFIG_ENUM.refreshToken, 'refresh_token').then()
-
-    setTimeout(() => {
-      goHome()
-      setLoading(false)
-    }, 3000)
+  const onStartCountdown = (): void => {
+    if (!isCounting) {
+      setTimer(60)
+      setIsCounting(true)
+    }
   }
+
+  const onLogin = () => {
+    const params = {
+      mobilePhoneNumber,
+      verifyCode,
+    }
+
+    login(params)
+      .then((res) => {
+        console.log(res.msg)
+      })
+      .catch((err) => {
+        console.error('error', err)
+      })
+    // setLoading(true)
+    //
+    // UpdateConfig(USER_CONFIG_ENUM.accessToken, 'access_token').then()
+    // UpdateConfig(USER_CONFIG_ENUM.refreshToken, 'refresh_token').then()
+    //
+    // setTimeout(() => {
+    //   goHome()
+    //   setLoading(false)
+    // }, 3000)
+  }
+
+  const onSendCode = () => {
+    if (
+      mobilePhoneNumber.length === 11 &&
+      isValidPhoneNumber(mobilePhoneNumber)
+    ) {
+      onStartCountdown()
+      // sendCode({ mobilePhoneNumber }).then(() => {
+      //   // ...
+      // })
+    } else {
+      setAnimate(true)
+      setTimeout(() => {
+        setAnimate(false)
+      }, 500)
+    }
+  }
+
+  useEffect(() => {
+    let interval: any
+    if (isCounting && timer > 0) {
+      interval = setInterval(() => {
+        setTimer((prev) => prev - 1)
+      }, 1000)
+    } else if (timer === 0) {
+      setIsCounting(false)
+    }
+    return () => clearInterval(interval)
+  }, [isCounting, timer])
 
   return (
     <>
@@ -65,6 +119,10 @@ export const Login = () => {
                 style={{ marginTop: 12, marginBottom: 12 }}
                 maxLength={11}
                 type="tel"
+                value={mobilePhoneNumber}
+                onChange={(e) => {
+                  setMobilePhoneNumber(e.target.value)
+                }}
               >
                 <TextField.Slot>+86</TextField.Slot>
               </TextField.Root>
@@ -76,6 +134,10 @@ export const Login = () => {
                     size="3"
                     style={{ marginBottom: 12 }}
                     maxLength={4}
+                    value={verifyCode}
+                    onChange={(e) => {
+                      setVerifyCode(e.target.value)
+                    }}
                   />
                 </Box>
 
@@ -84,14 +146,10 @@ export const Login = () => {
                     size="3"
                     style={{ width: '100%' }}
                     variant="outline"
-                    onClick={() => {
-                      setAnimate(true)
-                      setTimeout(() => {
-                        setAnimate(false)
-                      }, 500)
-                    }}
+                    onClick={onSendCode}
+                    disabled={isCounting}
                   >
-                    发送验证码
+                    {isCounting ? `${timer}s` : '发送验证码'}
                   </Button>
                 </Box>
               </Flex>

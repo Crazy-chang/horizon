@@ -19,14 +19,12 @@ import { Launch } from '@/pages'
 
 export const Root: React.FC = () => {
   // const [envInfo, setEnvInfo] = useState<envType>()
-  const [loading, setLoading] = useState<boolean>(false)
+  const [loading, setLoading] = useState<boolean>(true)
 
   const goLogin = useNavigateTo('/login')
   const goHome = useNavigateTo('/')
 
   const onReadConfigFunc = () => {
-    setLoading(true)
-
     setTimeout(() => {
       ReadConfig()
         .then((res) => {

@@ -2,7 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { Environment } from 'wailsjs/runtime'
 import { ReadConfig, UpdateConfig } from 'wailsjs/go/bridge/App'
 import { envType } from '@/types/env'
-import { settingConfigType, SETTING_CONFIG_ENUM } from '@/types/config'
+import {
+  settingConfigType,
+  SETTING_CONFIG_ENUM,
+  USER_CONFIG_ENUM,
+} from '@/types/config'
 import {
   Box,
   Card,
@@ -231,7 +235,10 @@ export const Setting: React.FC = () => {
               size={'1'}
               variant="soft"
               style={{ width: '100px' }}
-              onClick={checkUpdate}
+              onClick={() => {
+                UpdateConfig(USER_CONFIG_ENUM.accessToken, '').then()
+                UpdateConfig(USER_CONFIG_ENUM.refreshToken, '').then()
+              }}
               color="red"
             >
               <ExitIcon /> 退出登录
