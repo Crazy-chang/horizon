@@ -1,8 +1,20 @@
-import './index.modules.scss'
 import { useNavigateTo } from '@/hooks'
+import UserStore from '@/store/user'
+import { observer } from 'mobx-react'
+import { Storage } from '@/utils'
+import './index.modules.scss'
+import { useEffect, useState } from 'react'
+import { userType } from '@/types/user'
 
 export const NavUser = () => {
+  const [info, setInfo] = useState<userType>({})
   const goProfile = useNavigateTo('/profile')
+
+  useEffect(() => {
+    const data: userType = Storage.get('user_info')
+
+    setInfo(data)
+  }, [])
 
   return (
     <div
@@ -13,12 +25,12 @@ export const NavUser = () => {
     >
       <div className="left">
         <div className="avatar-box">
-          <img src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?&w=256&h=256&q=70&crop=focalpoint&fp-x=0.5&fp-y=0.3&fp-z=1&fit=crop" />
+          <img src={info.avatar} />
         </div>
       </div>
       <div className="right">
         <div className="user-box">
-          <p className="nickname">nickname</p>
+          <p className="nickname">{info.nickname}</p>
         </div>
       </div>
     </div>

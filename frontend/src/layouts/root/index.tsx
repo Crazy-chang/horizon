@@ -10,9 +10,9 @@ import { ScrollArea } from '@radix-ui/themes'
 import { NavLink, Outlet } from 'react-router-dom'
 import { PlayController, NavUser } from '@/components'
 import { useNavigateTo } from '@/hooks'
-import './index.modules.scss'
 import { ReadConfig, IsStartup } from 'wailsjs/go/bridge/App'
 import { Launch } from '@/pages'
+import './index.modules.scss'
 // import { useEffect, useState } from 'react'
 // import { envType } from '@/types/env'
 // import { Environment } from 'wailsjs/runtime'
@@ -46,7 +46,10 @@ export const Root: React.FC = () => {
   useEffect(() => {
     IsStartup().then((res) => {
       if (res) {
-        return onReadConfigFunc()
+        onReadConfigFunc()
+      } else {
+        setLoading(false)
+        goHome()
       }
     })
   }, [])

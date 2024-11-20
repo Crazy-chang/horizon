@@ -1,7 +1,6 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { Avatar, Flex, Separator, Card } from '@radix-ui/themes'
 import { ChevronRightIcon } from '@radix-ui/react-icons'
-import './index.modules.scss'
 import { ColorfulShadow, StickerModal } from '@/components'
 import {
   SlBubble,
@@ -12,8 +11,11 @@ import {
 import { useNavigateTo } from '@/hooks'
 import { MileageModal } from './components/mileageModal'
 import { FollowModal } from './components/followModal'
+import { Storage } from '@/utils'
+import { userType } from '@/types/user'
+import './index.modules.scss'
 
-export const Profile = () => {
+export const Profile: React.FC = () => {
   const [mileageModalOpen, setMileageModalOpen] = useState<boolean>(false)
   const [stickerModalOpen, setStickerModalOpen] = useState<boolean>(false)
   const [followModal, setFollowModal] = useState<{
@@ -23,6 +25,8 @@ export const Profile = () => {
     type: 'FOLLOWING',
     open: false,
   })
+
+  const userInfo: userType = Storage.get('user_info')
 
   const goMySubscribe = useNavigateTo('/subscription')
 
@@ -46,22 +50,27 @@ export const Profile = () => {
         <div className="profile-avatar">
           <Avatar
             size="9"
-            src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?&w=256&h=256&q=70&crop=focalpoint&fp-x=0.5&fp-y=0.3&fp-z=1&fit=crop"
-            fallback="A"
+            src={userInfo.avatar}
+            fallback={userInfo.nickname || 'avatar'}
+            radius="full"
           />
         </div>
         <div className="profile-info">
           <div className="profile-nickname">
-            hexdream
+            {userInfo.nickname}
             <span className="gender">
-              <SlSymbleFemale
-                fontSize="18"
-                color="pink"
-              />
-              {/* <SlSymbolMale
-                fontSize="18"
-                color="royalblue"
-              /> */}
+              {userInfo.gender === 'MALE' ? (
+                <SlSymbolMale
+                  fontSize="18"
+                  color="royalblue"
+                />
+              ) : null}
+              {userInfo.gender === 'FEMALE' ? (
+                <SlSymbleFemale
+                  fontSize="18"
+                  color="pink"
+                />
+              ) : null}
             </span>
           </div>
           <Separator
@@ -113,7 +122,7 @@ export const Profile = () => {
             </Flex>
           </div>
           <div className="profile-bio">还没有设置签名</div>
-          <div className="profile-ip">IP属地：广东</div>
+          <div className="profile-ip">IP属地：{userInfo.ipLoc}</div>
         </div>
       </div>
 

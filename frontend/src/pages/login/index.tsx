@@ -17,6 +17,9 @@ import { USER_CONFIG_ENUM } from '@/types/config'
 import { sendCode, login } from '@/api/login'
 import { isValidPhoneNumber } from '@/utils'
 import { toast } from '@/utils'
+import UserStore from '@/store/user'
+import { Storage } from '@/utils'
+import { userType } from '@/types/user'
 import '@/assets/global/animate.css'
 import './index.modules.scss'
 
@@ -60,7 +63,26 @@ export const Login: React.FC = () => {
           res.data['x-jike-refresh-token'],
         ).then()
 
-        // TODO 登录成功跳转首页以及更新全局状态
+        const data: userType = {
+          uid: res.data.data.data.user.uid,
+          avatar: res.data.data.data.user.avatar.picture.picUrl,
+          nickname: res.data.data.data.user.nickname,
+          mobilePhoneNumber:
+            res.data.data.data.user.phoneNumber.mobilePhoneNumber,
+          ipLoc: res.data.data.data.user.ipLoc,
+          gender: res.data.data.data.user.gender,
+          industry: res.data.data.data.user.industry,
+          XJikeAccessToken: res.data['x-jike-access-token'],
+          XJikeRefreshToken: res.data['x-jike-refresh-token'],
+          wechatUserInfo: res.data.data.data.user?.wechatUserInfo,
+          jikeUserInfo: res.data.data.data.user?.jikeUserInfo,
+        }
+
+        UserStore.init(data)
+
+        Storage.set('user_info', data)
+
+        goHome()
       })
       .catch((err) => {
         console.error('error', err)
