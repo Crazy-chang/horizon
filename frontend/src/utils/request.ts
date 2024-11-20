@@ -1,30 +1,23 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
+import { toast, Storage } from '@/utils'
+import { userType } from '@/types/user'
 
 const httpRequest: AxiosInstance = axios.create({
   baseURL: '/',
   timeout: 15000,
 })
 
+const { XJikeAccessToken, XJikeRefreshToken } = Storage.get('user_info')
+
 httpRequest.interceptors.response.use(
   (response: AxiosResponse) => {
     console.log('MAYDAY', response)
-    const statusCode = response?.data?.code || response?.data?.retCode
-
-    if (!statusCode) {
-      return Promise.reject(response.data)
-      // return response.data
-    }
+    const statusCode: number = response.status
 
     // if (statusCode === 208) {
     //   return message.error('登录过期,请重新登录', 2, () => {
     //     logOut()
     //   })
-    // }
-
-    // if (statusCode !== 200) {
-    //   message.warning(`${response.data.data || response.data.message}`)
-
-    //   return Promise.reject(response.data)
     // }
 
     if (statusCode == 200) {
@@ -33,11 +26,10 @@ httpRequest.interceptors.response.use(
 
     return response
   },
-  // 请求失败
   (error: any) => {
     const { response } = error
     if (response) {
-      console.log('网络开小差了')
+      toast('网络开小差了')
 
       return Promise.reject(response.data)
     }
@@ -46,6 +38,7 @@ httpRequest.interceptors.response.use(
 
 httpRequest.interceptors.request.use(
   (config: AxiosRequestConfig | any) => {
+    // TODO: check token
     // const ST = getToken('token')
     // const location = useLocation()
 
