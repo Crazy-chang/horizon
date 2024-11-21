@@ -4,8 +4,7 @@ import axios, {
   AxiosResponse,
   AxiosError,
 } from 'axios'
-import { toast, Storage } from '@/utils'
-import { UpdateConfig } from 'wailsjs/go/bridge/App'
+import { toast, Storage, UpdateConfig } from '@/utils'
 import { refreshToken } from '@/api/login'
 import { USER_CONFIG_ENUM } from '@/types/config'
 
@@ -24,8 +23,6 @@ httpRequest.interceptors.response.use(
   (error: AxiosError) => {
     const { response } = error
     const statusCode = response?.status
-
-    console.log(response)
 
     if (statusCode === 401) {
       const XJikeAccessToken: string = Storage.get('x-jike-access-token')
@@ -59,14 +56,14 @@ httpRequest.interceptors.response.use(
 
               if (response) {
                 response.headers['x-jike-access-token'] = XJikeAccessToken
+
+                queue.forEach((cb) => {
+                  cb(response)
+                })
+                queue = []
+
+                return httpRequest(response.config)
               }
-
-              queue.forEach((cb) => {
-                cb(response)
-              })
-              queue = []
-
-              return response
             })
             .catch((err) => {
               console.error(err)
@@ -81,7 +78,7 @@ httpRequest.interceptors.response.use(
             if (response) {
               queue.push((token: string) => {
                 response.headers['x-jike-access-token'] = token
-                resolve(httpRequest(response))
+                resolve(httpRequest(response.config))
               })
             }
           })

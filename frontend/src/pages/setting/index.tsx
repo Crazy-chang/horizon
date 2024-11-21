@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { Environment } from 'wailsjs/runtime'
-import { ReadConfig, UpdateConfig } from 'wailsjs/go/bridge/App'
 import { envType } from '@/types/env'
 import {
   settingConfigType,
@@ -21,12 +20,18 @@ import {
   ExitIcon,
   QuestionMarkCircledIcon,
 } from '@radix-ui/react-icons'
-import { APP_NAME, APP_VERSION } from '@/utils'
+import {
+  APP_NAME,
+  APP_VERSION,
+  ReadConfig,
+  UpdateConfig,
+  Storage,
+} from '@/utils'
 import { ping } from '@/api/ping'
+import { mileageGet } from '@/api/mileage'
 import { useNavigateTo } from '@/hooks'
 import APP_ICON from '@/assets/images/logo.png'
 import { userType } from '@/types/user'
-import { Storage } from '@/utils'
 import './index.modules.scss'
 
 export const Setting: React.FC = () => {
@@ -41,7 +46,7 @@ export const Setting: React.FC = () => {
 
   const checkUpdate = () => {
     // TODO:  check update
-    ping()
+    mileageGet()
       .then((res) => {
         console.log('res', res)
       })
