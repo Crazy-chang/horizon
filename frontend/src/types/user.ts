@@ -6,14 +6,12 @@ type userType = {
   industry?: string
   mobilePhoneNumber?: string
   ipLoc?: string
-  XJikeAccessToken?: string
-  XJikeRefreshToken?: string
   wechatUserInfo?: wechatUserInfoType
   jikeUserInfo?: jikeUserInfoType
 }
 
 type wechatUserInfoType = {
-  nickname?: string
+  nickName?: string
 }
 
 type jikeUserInfoType = {

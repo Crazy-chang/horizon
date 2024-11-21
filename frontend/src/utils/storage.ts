@@ -29,6 +29,25 @@ const Storage = {
   },
 
   /**
+   * 更新已存在的键的部分内容（仅适用于对象）
+   * @param {string} key - 存储的键名
+   * @param {object} updates - 需要更新的字段
+   */
+  update(key: string, updates: any) {
+    try {
+      const currentValue = this.get(key)
+      if (currentValue && typeof currentValue === 'object') {
+        const updatedValue = { ...currentValue, ...updates }
+        this.set(key, updatedValue)
+      } else {
+        console.warn(`更新失败: "${key}" 不是一个对象`)
+      }
+    } catch (error) {
+      console.error('localStorage update error:', error)
+    }
+  },
+
+  /**
    * 从 localStorage 中删除数据
    * @param {string} key - 存储的键名
    */

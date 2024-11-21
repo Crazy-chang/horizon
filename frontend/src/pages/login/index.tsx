@@ -70,10 +70,8 @@ export const Login: React.FC = () => {
           mobilePhoneNumber:
             res.data.data.data.user.phoneNumber.mobilePhoneNumber,
           ipLoc: res.data.data.data.user.ipLoc,
-          gender: res.data.data.data.user.gender,
-          industry: res.data.data.data.user.industry,
-          XJikeAccessToken: res.data['x-jike-access-token'],
-          XJikeRefreshToken: res.data['x-jike-refresh-token'],
+          gender: res.data.data.data.user?.gender,
+          industry: res.data.data.data.user?.industry,
           wechatUserInfo: res.data.data.data.user?.wechatUserInfo,
           jikeUserInfo: res.data.data.data.user?.jikeUserInfo,
         }
@@ -81,10 +79,13 @@ export const Login: React.FC = () => {
         UserStore.init(data)
 
         Storage.set('user_info', data)
+        Storage.set('x-jike-access-token', res.data['x-jike-access-token'])
+        Storage.set('x-jike-refresh-token', res.data['x-jike-refresh-token'])
 
         goHome()
       })
       .catch((err) => {
+        toast('登录失败')
         console.error('error', err)
       })
       .finally(() => {
@@ -100,10 +101,14 @@ export const Login: React.FC = () => {
       mobilePhoneNumber.length === 11 &&
       isValidPhoneNumber(mobilePhoneNumber)
     ) {
-      sendCode({ mobilePhoneNumber }).then(() => {
-        onStartCountdown()
-        toast(`验证码已发送至 ${mobilePhoneNumber}`)
-      })
+      sendCode({ mobilePhoneNumber })
+        .then(() => {
+          onStartCountdown()
+          toast(`验证码已发送至 ${mobilePhoneNumber}`)
+        })
+        .catch(() => {
+          toast('发送验证码失败')
+        })
     } else {
       setAnimate(true)
       setTimeout(() => {
@@ -196,6 +201,7 @@ export const Login: React.FC = () => {
                 onClick={() => {
                   onLogin()
                 }}
+                disabled={mobilePhoneNumber == '' || verifyCode == ''}
               >
                 登录
               </Button>

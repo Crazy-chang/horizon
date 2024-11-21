@@ -1,36 +1,101 @@
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
+import axios, {
+  AxiosInstance,
+  AxiosRequestConfig,
+  AxiosResponse,
+  AxiosError,
+} from 'axios'
 import { toast, Storage } from '@/utils'
-import { userType } from '@/types/user'
+import { UpdateConfig } from 'wailsjs/go/bridge/App'
+import { refreshToken } from '@/api/login'
+import { USER_CONFIG_ENUM } from '@/types/config'
 
 const httpRequest: AxiosInstance = axios.create({
   baseURL: '/',
   timeout: 15000,
 })
 
-const { XJikeAccessToken, XJikeRefreshToken } = Storage.get('user_info')
+let isRefreshing: boolean = false
+let queue: Array<any> = []
 
 httpRequest.interceptors.response.use(
   (response: AxiosResponse) => {
-    console.log('MAYDAY', response)
-    const statusCode: number = response.status
+    return response.data
+  },
+  (error: AxiosError) => {
+    const { response } = error
+    const statusCode = response?.status
 
-    // if (statusCode === 208) {
-    //   return message.error('登录过期,请重新登录', 2, () => {
-    //     logOut()
-    //   })
-    // }
+    console.log(response)
 
-    if (statusCode == 200) {
-      return response.data
+    if (statusCode === 401) {
+      const XJikeAccessToken: string = Storage.get('x-jike-access-token')
+      const XJikeRefreshToken: string = Storage.get('x-jike-refresh-token')
+
+      const params = {
+        'x-jike-access-token': XJikeAccessToken,
+        'x-jike-refresh-token': XJikeRefreshToken,
+      }
+
+      try {
+        if (!isRefreshing) {
+          isRefreshing = true
+
+          return refreshToken(params)
+            .then((res) => {
+              const XJikeAccessToken = res.data['x-jike-access-token']
+              const XJikeRefreshToken = res.data['x-jike-refresh-token']
+
+              UpdateConfig(
+                USER_CONFIG_ENUM.accessToken,
+                XJikeAccessToken,
+              ).then()
+              UpdateConfig(
+                USER_CONFIG_ENUM.refreshToken,
+                XJikeRefreshToken,
+              ).then()
+
+              Storage.set('x-jike-access-token', XJikeAccessToken)
+              Storage.set('x-jike-refresh-token', XJikeRefreshToken)
+
+              if (response) {
+                response.headers['x-jike-access-token'] = XJikeAccessToken
+              }
+
+              queue.forEach((cb) => {
+                cb(response)
+              })
+              queue = []
+
+              return response
+            })
+            .catch((err) => {
+              console.error(err)
+              window.location.href = '/#/login'
+              return Promise.reject(err)
+            })
+            .finally(() => {
+              isRefreshing = false
+            })
+        } else {
+          return new Promise((resolve) => {
+            if (response) {
+              queue.push((token: string) => {
+                response.headers['x-jike-access-token'] = token
+                resolve(httpRequest(response))
+              })
+            }
+          })
+        }
+      } catch (err) {
+        console.error(err)
+      }
     }
 
-    return response
-  },
-  (error: any) => {
-    const { response } = error
-    if (response) {
-      toast('网络开小差了')
+    if (statusCode && statusCode >= 500) {
+      toast('服务器开小差了')
+    }
 
+    if (response) {
       return Promise.reject(response.data)
     }
   },
@@ -38,22 +103,14 @@ httpRequest.interceptors.response.use(
 
 httpRequest.interceptors.request.use(
   (config: AxiosRequestConfig | any) => {
-    // TODO: check token
-    // const ST = getToken('token')
-    // const location = useLocation()
+    const XJikeAccessToken: string = Storage.get('x-jike-access-token')
 
-    // if (!ST) {
-    //   message.error("登录过期，请重新登录")
-    //   setTimeout(() => {
-    //     logOut()
-    //   }, 2000)
-    // }
+    config.headers['x-jike-access-token'] = `${XJikeAccessToken}`
 
-    // config.headers.token = `${ST}`
     return config
   },
   (err) => {
-    console.log(err)
+    console.error(err)
     return Promise.reject(err)
   },
 )

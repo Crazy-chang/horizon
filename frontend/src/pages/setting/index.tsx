@@ -22,8 +22,11 @@ import {
   QuestionMarkCircledIcon,
 } from '@radix-ui/react-icons'
 import { APP_NAME, APP_VERSION } from '@/utils'
+import { ping } from '@/api/ping'
 import { useNavigateTo } from '@/hooks'
 import APP_ICON from '@/assets/images/logo.png'
+import { userType } from '@/types/user'
+import { Storage } from '@/utils'
 import './index.modules.scss'
 
 export const Setting: React.FC = () => {
@@ -32,11 +35,19 @@ export const Setting: React.FC = () => {
     checkUpdateOnStartup: false,
     isIpLocHidden: false,
   })
+  const userInfo: userType = Storage.get('user_info')
 
   const goAbout = useNavigateTo('/about')
 
   const checkUpdate = () => {
     // TODO:  check update
+    ping()
+      .then((res) => {
+        console.log('res', res)
+      })
+      .catch((err) => {
+        console.error('error', err)
+      })
   }
 
   const onUpdateConfig = (key: string, value: any) => {
@@ -65,24 +76,37 @@ export const Setting: React.FC = () => {
       <Card>
         <Flex>
           <Box width="100%">手机号</Box>
-          <Box className="content_text">13111111111</Box>
+          <Box className="content_text">{userInfo.mobilePhoneNumber}</Box>
         </Flex>
-        <Separator
-          my="3"
-          size="4"
-        />
-        <Flex>
-          <Box width="100%">微信</Box>
-          <Box className="content_text">WECHAT_NAME</Box>
-        </Flex>
-        <Separator
-          my="3"
-          size="4"
-        />
-        <Flex>
-          <Box width="100%">即刻</Box>
-          <Box className="content_text">JIKE_NAME</Box>
-        </Flex>
+        {userInfo.wechatUserInfo?.nickName && (
+          <>
+            <Separator
+              my="3"
+              size="4"
+            />
+            <Flex>
+              <Box width="100%">微信</Box>
+              <Box className="content_text">
+                {userInfo.wechatUserInfo?.nickName}
+              </Box>
+            </Flex>
+          </>
+        )}
+
+        {userInfo.jikeUserInfo?.nickname && (
+          <>
+            <Separator
+              my="3"
+              size="4"
+            />
+            <Flex>
+              <Box width="100%">即刻</Box>
+              <Box className="content_text">
+                {userInfo.jikeUserInfo?.nickname}
+              </Box>
+            </Flex>
+          </>
+        )}
       </Card>
 
       <h4>隐私设置</h4>
