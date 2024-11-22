@@ -23,6 +23,7 @@ import './index.modules.scss'
 export const Login: React.FC = () => {
   const [animate, setAnimate] = React.useState<boolean>(false)
   const [loading, setLoading] = React.useState<boolean>(false)
+  const [smsLoading, setSmsLoading] = React.useState<boolean>(false)
   const [timer, setTimer] = useState<number>(0)
   const [isCounting, setIsCounting] = useState<boolean>(false)
   const [mobilePhoneNumber, setMobilePhoneNumber] = useState<string>('')
@@ -98,6 +99,8 @@ export const Login: React.FC = () => {
       mobilePhoneNumber.length === 11 &&
       isValidPhoneNumber(mobilePhoneNumber)
     ) {
+      setSmsLoading(true)
+
       sendCode({ mobilePhoneNumber })
         .then(() => {
           onStartCountdown()
@@ -105,6 +108,9 @@ export const Login: React.FC = () => {
         })
         .catch(() => {
           toast('发送验证码失败')
+        })
+        .finally(() => {
+          setSmsLoading(false)
         })
     } else {
       setAnimate(true)
@@ -185,6 +191,7 @@ export const Login: React.FC = () => {
                     variant="outline"
                     onClick={onSendCode}
                     disabled={isCounting}
+                    loading={smsLoading}
                   >
                     {isCounting ? `${timer}s` : '发送验证码'}
                   </Button>

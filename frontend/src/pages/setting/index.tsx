@@ -28,7 +28,6 @@ import {
   Storage,
 } from '@/utils'
 import { ping } from '@/api/ping'
-import { mileageGet } from '@/api/mileage'
 import { useNavigateTo } from '@/hooks'
 import APP_ICON from '@/assets/images/logo.png'
 import { userType } from '@/types/user'
@@ -46,7 +45,7 @@ export const Setting: React.FC = () => {
 
   const checkUpdate = () => {
     // TODO:  check update
-    mileageGet()
+    ping()
       .then((res) => {
         console.log('res', res)
       })

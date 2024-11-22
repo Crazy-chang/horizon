@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Modal } from '@/components'
 import { modalType } from '@/types/modal'
 import './index.modules.scss'
@@ -15,11 +15,22 @@ import {
 } from '@radix-ui/themes'
 import { useDisplayInfo } from '@/hooks'
 
+type IProps = {
+  data: any
+} & modalType
+
 /**
  * 收听数据弹窗
  */
-export const MileageModal: React.FC<modalType> = ({ open, onClose }) => {
+export const MileageModal: React.FC<IProps> = ({ data, open, onClose }) => {
   const [height] = useState(useDisplayInfo().Height * 0.4)
+  const [playedData, setPlayedData] = useState<any>({})
+
+  useEffect(() => {
+    if (open) {
+      setPlayedData(data)
+    }
+  }, [open])
 
   return (
     <Modal
@@ -29,12 +40,16 @@ export const MileageModal: React.FC<modalType> = ({ open, onClose }) => {
     >
       <div className="tagline-layout">
         <div>
-          <span className="num">144</span>
+          <span className="num">
+            {playedData?.time ? playedData.time[0] : '-'}
+          </span>
           小时
-          <span className="num">52</span>
+          <span className="num">
+            {playedData?.time ? playedData.time[1] : '-'}
+          </span>
           分钟
         </div>
-        <div>木星上已经过去了14天</div>
+        <div>{playedData.tagline}</div>
       </div>
 
       <Separator

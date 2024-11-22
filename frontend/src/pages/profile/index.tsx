@@ -9,14 +9,13 @@ import {
   SlSymbolMale,
 } from 'react-icons/sl'
 import { useNavigateTo } from '@/hooks'
-import { MileageModal } from './components/mileageModal'
 import { FollowModal } from './components/followModal'
+import { MileageDuration } from './components/mileageDuration'
 import { Storage } from '@/utils'
 import { userType } from '@/types/user'
 import './index.modules.scss'
 
 export const Profile: React.FC = () => {
-  const [mileageModalOpen, setMileageModalOpen] = useState<boolean>(false)
   const [stickerModalOpen, setStickerModalOpen] = useState<boolean>(false)
   const [followModal, setFollowModal] = useState<{
     type: 'FOLLOWING' | 'FOLLOWER'
@@ -126,24 +125,7 @@ export const Profile: React.FC = () => {
         </div>
       </div>
 
-      <div className="time-content">
-        <h3>收听时长</h3>
-
-        <Card
-          className="time-card"
-          onClick={() => {
-            setMileageModalOpen(true)
-          }}
-        >
-          <div>
-            <span className="num">143</span>时<span className="num">18</span>分
-          </div>
-          <div>
-            总收听时长
-            <ChevronRightIcon />
-          </div>
-        </Card>
-      </div>
+      <MileageDuration />
 
       <div className="sticker-content">
         <h3>我的贴纸库</h3>
@@ -191,13 +173,6 @@ export const Profile: React.FC = () => {
           </div>
         </div>
       </div>
-
-      <MileageModal
-        open={mileageModalOpen}
-        onClose={() => {
-          setMileageModalOpen(false)
-        }}
-      />
 
       <StickerModal
         perspective="我"
