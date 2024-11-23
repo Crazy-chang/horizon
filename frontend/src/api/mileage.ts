@@ -16,4 +16,4 @@ export const mileageGet = (): Promise<responseType> =>
 
 /** 查询收听数据概览 */
 export const mileageList = (params: mileageListType): Promise<responseType> =>
-  httpRequest.post(api.mileageList)
+  httpRequest.post(api.mileageList, params)

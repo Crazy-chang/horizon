@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Modal } from '@/components'
 import { modalType } from '@/types/modal'
-import './index.modules.scss'
 import {
   Button,
   Dialog,
@@ -14,6 +13,9 @@ import {
   ScrollArea,
 } from '@radix-ui/themes'
 import { useDisplayInfo } from '@/hooks'
+import { mileageList } from '@/api/mileage'
+import { formatTime } from '../mileageDuration'
+import './index.modules.scss'
 
 type IProps = {
   data: any
@@ -25,10 +27,23 @@ type IProps = {
 export const MileageModal: React.FC<IProps> = ({ data, open, onClose }) => {
   const [height] = useState(useDisplayInfo().Height * 0.4)
   const [playedData, setPlayedData] = useState<any>({})
+  const [lists, setLists] = useState<any>([])
+
+  /**
+   * 获取收听数据列表
+   */
+  const getList = () => {
+    mileageList({})
+      .then((res) => setLists(res.data.data))
+      .catch((err) => {
+        console.error(err)
+      })
+  }
 
   useEffect(() => {
     if (open) {
       setPlayedData(data)
+      getList()
     }
   }, [open])
 
@@ -63,28 +78,39 @@ export const MileageModal: React.FC<IProps> = ({ data, open, onClose }) => {
           scrollbars="vertical"
           style={{ maxHeight: height }}
         >
-          <Box
-            width="100%"
-            height="3rem"
-            mb="4"
-          >
-            <Flex gap="2">
-              <Avatar
-                style={{ width: '3rem', height: '3rem' }}
-                src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?&w=256&h=256&q=70&crop=focalpoint&fp-x=0.5&fp-y=0.3&fp-z=1&fit=crop"
-                fallback="A"
-              />
-              <Box>
-                <Heading
-                  mb="1"
-                  size="3"
-                >
-                  不开玩笑 Jokes Aside
-                </Heading>
-                <Text className="played-time">114小时52分钟</Text>
-              </Box>
-            </Flex>
-          </Box>
+          {lists.map((item: any) => (
+            <Box
+              key={item.podcast.pid}
+              width="100%"
+              height="3rem"
+              mb="4"
+            >
+              <Flex gap="2">
+                <Avatar
+                  style={{ width: '3rem', height: '3rem' }}
+                  src={item.podcast.image.picUrl}
+                  fallback={item.podcast.title}
+                />
+                <Box>
+                  <Heading
+                    mb="1"
+                    size="3"
+                  >
+                    {item.podcast.title}
+                  </Heading>
+                  <Text className="played-time">
+                    {formatTime(item.playedSeconds)[0] === 0
+                      ? ''
+                      : formatTime(item.playedSeconds)[0] + '时'}
+                    {formatTime(item.playedSeconds)[1] === 0
+                      ? ''
+                      : formatTime(item.playedSeconds)[1] + '分'}
+                    {formatTime(item.playedSeconds)[2]}秒
+                  </Text>
+                </Box>
+              </Flex>
+            </Box>
+          ))}
         </ScrollArea>
       </div>
 

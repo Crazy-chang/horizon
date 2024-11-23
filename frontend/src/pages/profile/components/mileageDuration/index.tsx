@@ -5,16 +5,17 @@ import { MileageModal } from '@/pages/profile/components/mileageModal'
 import { mileageGet } from '@/api/mileage'
 import './index.modules.scss'
 
-const formatTime = (seconds: number): number[] => {
-  const hours: number = Math.floor(seconds / 3600)
-  const minutes: number = Math.floor(seconds / 3600 / 60)
+export const formatTime = (totalSeconds: number): number[] => {
+  const hours: number = Math.floor(totalSeconds / 3600)
+  const minutes: number = Math.floor((totalSeconds % 3600) / 60)
+  const seconds: number = Math.floor(totalSeconds % 60)
 
-  return [hours, minutes]
+  return [hours, minutes, seconds]
 }
 
 export const MileageDuration: React.FC = () => {
   const [mileageModalOpen, setMileageModalOpen] = useState<boolean>(false)
-  const [time, setTime] = useState<number[]>([0, 0])
+  const [time, setTime] = useState<number[]>([0, 0, 0])
   const [data, setData] = useState<any>({})
 
   useEffect(() => {

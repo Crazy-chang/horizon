@@ -36,7 +36,13 @@ export const Modal: React.FC<modalType> = ({
       >
         {title ? (
           <Dialog.Title
-            style={{ '--wails-draggable': 'drag', userSelect: 'none' } as any}
+            style={
+              {
+                '--wails-draggable': 'drag',
+                userSelect: 'none',
+                cursor: 'default',
+              } as any
+            }
           >
             {title}
           </Dialog.Title>
