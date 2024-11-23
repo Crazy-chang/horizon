@@ -1,5 +1,5 @@
 type userType = {
-  uid?: string
+  uid: string
   avatar?: string
   nickname?: string
   gender?: string

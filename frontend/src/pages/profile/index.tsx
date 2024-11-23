@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Avatar, Flex, Separator, Card } from '@radix-ui/themes'
-import { ChevronRightIcon } from '@radix-ui/react-icons'
-import { ColorfulShadow, StickerModal } from '@/components'
+import { ColorfulShadow } from '@/components'
 import {
   SlBubble,
   SlEarphones,
@@ -11,12 +10,12 @@ import {
 import { useNavigateTo } from '@/hooks'
 import { FollowModal } from './components/followModal'
 import { MileageDuration } from './components/mileageDuration'
+import { Sticker } from './components/sticker'
 import { Storage } from '@/utils'
 import { userType } from '@/types/user'
 import './index.modules.scss'
 
 export const Profile: React.FC = () => {
-  const [stickerModalOpen, setStickerModalOpen] = useState<boolean>(false)
   const [followModal, setFollowModal] = useState<{
     type: 'FOLLOWING' | 'FOLLOWER'
     open: boolean
@@ -127,22 +126,7 @@ export const Profile: React.FC = () => {
 
       <MileageDuration />
 
-      <div className="sticker-content">
-        <h3>我的贴纸库</h3>
-
-        <Card
-          className="sticker-card"
-          onClick={() => {
-            setStickerModalOpen(true)
-          }}
-        >
-          <div>
-            7张贴纸
-            <ChevronRightIcon />
-          </div>
-          <div>最新：过了一个播客日</div>
-        </Card>
-      </div>
+      <Sticker />
 
       <div className="history-content">
         <h3>最近听过</h3>
@@ -173,14 +157,6 @@ export const Profile: React.FC = () => {
           </div>
         </div>
       </div>
-
-      <StickerModal
-        perspective="我"
-        open={stickerModalOpen}
-        onClose={() => {
-          setStickerModalOpen(false)
-        }}
-      />
 
       <FollowModal
         type={followModal.type}

@@ -12,11 +12,14 @@ import {
   Separator,
   Text,
 } from '@radix-ui/themes'
-import './index.modules.scss'
 import { useDisplayInfo } from '@/hooks'
+import { stickerType } from '@/types/sticker'
+import './index.modules.scss'
+import dayjs from 'dayjs'
 
 type IProps = {
   perspective: '我' | '他' | '她' | 'TA'
+  stickerLists: stickerType[]
 } & modalType
 
 /**
@@ -26,24 +29,38 @@ export const StickerModal: React.FC<IProps> = ({
   open,
   onClose,
   perspective,
+  stickerLists,
 }) => {
   const [height] = useState(useDisplayInfo().Height * 0.6)
-  const count = [1, 2, 3, 4, 5]
   const [activeImg, setActiveImg] = useState<any>()
   const [transformStyle, setTransformStyle] = useState({})
   const [maskOpen, setMaskOpen] = useState<boolean>(false)
+  const [currentActive, setCurrentActive] = useState<{
+    name: string
+    description: string
+    issuer: string
+    ownedAt: string
+    number: string
+  }>({
+    name: '',
+    description: '',
+    issuer: '',
+    ownedAt: '',
+    number: '',
+  })
 
   const handleClick = (event: any, index: number) => {
     const img = event.target
     const rect = img.getBoundingClientRect()
-    const windowWidth = window.innerWidth
-    const windowHeight = window.innerHeight
+    const windowWidth: number = window.innerWidth
+    const windowHeight: number = window.innerHeight
 
-    const translateX = windowWidth / 2 - (rect.left + rect.width / 2)
-    const translateY = windowHeight / 2 - (rect.top + rect.height / 2) - 50
+    const translateX: number = windowWidth / 2 - (rect.left + rect.width / 2)
+    const translateY: number =
+      windowHeight / 2 - (rect.top + rect.height / 2) - 50
 
     setTransformStyle({
-      transform: `translate(${translateX}px, ${translateY}px) rotateY(360deg) scale(3.7)`,
+      transform: `translate(${translateX}px, ${translateY}px) rotateY(360deg) scale(3)`,
       transition: 'transform 0.8s ease-out-in',
     })
 
@@ -53,7 +70,7 @@ export const StickerModal: React.FC<IProps> = ({
 
   return (
     <Modal
-      title={`${perspective}的贴纸库(5)`} // TODO
+      title={`${perspective}的贴纸库(${stickerLists.length})`}
       open={open}
       onClose={onClose}
     >
@@ -68,29 +85,43 @@ export const StickerModal: React.FC<IProps> = ({
           gap="3"
           width="auto"
         >
-          {count.map((item: any, index: number) => (
+          {stickerLists.map((sticker: stickerType, index: number) => (
             <Box
               width="100%"
-              key={item}
+              key={sticker.id}
               className="sticker-box"
             >
               <AspectRatio ratio={6 / 6}>
                 <img
-                  src="https://image.xyzcdn.net/stickers/statics/2024.png@large"
-                  alt="A house in a forest"
+                  src={sticker.image.largePicUrl}
+                  alt={sticker.name}
                   className={`sticker-image ${activeImg === index ? 'active' : ''}`}
                   onClick={(event) => {
                     if (!maskOpen) {
                       handleClick(event, index)
+                      setCurrentActive({
+                        name: sticker.name,
+                        description: sticker.description,
+                        issuer: sticker.issuer,
+                        ownedAt: sticker.ownedAt,
+                        number: sticker.number,
+                      })
                     } else {
                       setMaskOpen(false)
                       setActiveImg(undefined)
+                      setCurrentActive({
+                        name: '',
+                        description: '',
+                        issuer: '',
+                        ownedAt: '',
+                        number: '',
+                      })
                     }
                   }}
                   style={activeImg === index ? transformStyle : {}}
                 />
               </AspectRatio>
-              <Text className="sticker-name">2024年快乐</Text>
+              <Text className="sticker-name">{sticker.name}</Text>
             </Box>
           ))}
         </Grid>
@@ -104,13 +135,13 @@ export const StickerModal: React.FC<IProps> = ({
               size="6"
               mb="1"
             >
-              2024年快乐
+              {currentActive.name}
             </Text>
             <Text
               as="p"
               className="secondary"
             >
-              希望播客能让你快乐
+              {currentActive.description}
             </Text>
 
             <div className="sticker-copy">
@@ -120,7 +151,7 @@ export const StickerModal: React.FC<IProps> = ({
                 align="center"
               >
                 <Flex direction="column">
-                  <Text size="3">小宇宙</Text>
+                  <Text size="3">{currentActive.issuer}</Text>
                   <Text
                     size="2"
                     className="secondary"
@@ -133,7 +164,9 @@ export const StickerModal: React.FC<IProps> = ({
                   size="2"
                 />
                 <Flex direction="column">
-                  <Text size="3">2024.03.13</Text>
+                  <Text size="3">
+                    {dayjs(currentActive.ownedAt).format('YYYY.MM.DD')}
+                  </Text>
                   <Text
                     size="2"
                     className="secondary"
@@ -146,7 +179,7 @@ export const StickerModal: React.FC<IProps> = ({
                   size="2"
                 />
                 <Flex direction="column">
-                  <Text size="3">AN-246353965</Text>
+                  <Text size="3">{currentActive.number}</Text>
                   <Text
                     size="2"
                     className="secondary"

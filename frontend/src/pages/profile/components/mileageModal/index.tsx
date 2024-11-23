@@ -15,10 +15,11 @@ import {
 import { useDisplayInfo } from '@/hooks'
 import { mileageList } from '@/api/mileage'
 import { formatTime } from '../mileageDuration'
+import { mileageType } from '@/types/mileage'
 import './index.modules.scss'
 
 type IProps = {
-  data: any
+  data: mileageType & { time: number[] }
 } & modalType
 
 /**
@@ -26,7 +27,15 @@ type IProps = {
  */
 export const MileageModal: React.FC<IProps> = ({ data, open, onClose }) => {
   const [height] = useState(useDisplayInfo().Height * 0.4)
-  const [playedData, setPlayedData] = useState<any>({})
+  const [playedData, setPlayedData] = useState<
+    mileageType & { time: number[] }
+  >({
+    totalPlayedSeconds: 0,
+    lastSevenDayPlayedSeconds: 0,
+    lastThirtyDayPlayedSeconds: 0,
+    tagline: '',
+    time: [0, 0, 0],
+  })
   const [lists, setLists] = useState<any>([])
 
   /**
@@ -55,13 +64,9 @@ export const MileageModal: React.FC<IProps> = ({ data, open, onClose }) => {
     >
       <div className="tagline-layout">
         <div>
-          <span className="num">
-            {playedData?.time ? playedData.time[0] : '-'}
-          </span>
+          <span className="num">{playedData.time[0]}</span>
           小时
-          <span className="num">
-            {playedData?.time ? playedData.time[1] : '-'}
-          </span>
+          <span className="num">{playedData.time[1]}</span>
           分钟
         </div>
         <div>{playedData.tagline}</div>

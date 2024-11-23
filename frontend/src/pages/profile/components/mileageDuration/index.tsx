@@ -3,6 +3,7 @@ import { Card } from '@radix-ui/themes'
 import { ChevronRightIcon } from '@radix-ui/react-icons'
 import { MileageModal } from '@/pages/profile/components/mileageModal'
 import { mileageGet } from '@/api/mileage'
+import { mileageType } from '@/types/mileage'
 import './index.modules.scss'
 
 export const formatTime = (totalSeconds: number): number[] => {
@@ -16,7 +17,13 @@ export const formatTime = (totalSeconds: number): number[] => {
 export const MileageDuration: React.FC = () => {
   const [mileageModalOpen, setMileageModalOpen] = useState<boolean>(false)
   const [time, setTime] = useState<number[]>([0, 0, 0])
-  const [data, setData] = useState<any>({})
+  const [data, setData] = useState<mileageType & { time: number[] }>({
+    totalPlayedSeconds: 0,
+    lastSevenDayPlayedSeconds: 0,
+    lastThirtyDayPlayedSeconds: 0,
+    tagline: '',
+    time: [0, 0, 0],
+  })
 
   useEffect(() => {
     mileageGet().then((res) => {
