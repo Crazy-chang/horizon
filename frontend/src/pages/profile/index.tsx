@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Avatar, Flex, Separator, Card } from '@radix-ui/themes'
+import React, { useEffect, useState } from 'react'
+import { Avatar, Flex, Separator } from '@radix-ui/themes'
 import { ColorfulShadow } from '@/components'
 import {
   SlBubble,
@@ -12,7 +12,8 @@ import { FollowModal } from './components/followModal'
 import { MileageDuration } from './components/mileageDuration'
 import { Sticker } from './components/sticker'
 import { Storage } from '@/utils'
-import { userType } from '@/types/user'
+import { userType, userStats } from '@/types/user'
+import { getUserStats } from '@/api/user'
 import './index.modules.scss'
 
 export const Profile: React.FC = () => {
@@ -23,24 +24,42 @@ export const Profile: React.FC = () => {
     type: 'FOLLOWING',
     open: false,
   })
+  const [stats, setStats] = useState<userStats>({
+    followerCount: 0,
+    followingCount: 0,
+    subscriptionCount: 0,
+    totalPlayedSeconds: 0,
+  })
 
   const userInfo: userType = Storage.get('user_info')
 
   const goMySubscribe = useNavigateTo('/subscription')
 
   const onFollowHandle = (type: 'FOLLOWING' | 'FOLLOWER') => {
-    if (type === 'FOLLOWING') {
-      setFollowModal({
-        type: 'FOLLOWING',
-        open: true,
-      })
-    } else {
-      setFollowModal({
-        type: 'FOLLOWER',
-        open: true,
-      })
-    }
+    setFollowModal({
+      type,
+      open: true,
+    })
   }
+
+  /**
+   * 获取用户统计数据
+   */
+  const onGetUserStats = () => {
+    const params = {
+      uid: userInfo.uid,
+    }
+
+    getUserStats(params)
+      .then((res) => setStats(res.data.data))
+      .catch((err) => {
+        console.error(err)
+      })
+  }
+
+  useEffect(() => {
+    onGetUserStats()
+  }, [])
 
   return (
     <div className="profile-layout">
@@ -86,7 +105,7 @@ export const Profile: React.FC = () => {
                   onFollowHandle('FOLLOWING')
                 }}
               >
-                <p>1</p>
+                <p>{stats.followingCount}</p>
                 <p>关注</p>
               </div>
               <Separator
@@ -100,7 +119,7 @@ export const Profile: React.FC = () => {
                   onFollowHandle('FOLLOWER')
                 }}
               >
-                <p>0</p>
+                <p>{stats.followerCount}</p>
                 <p>粉丝</p>
               </div>
               <Separator
@@ -114,7 +133,7 @@ export const Profile: React.FC = () => {
                   goMySubscribe()
                 }}
               >
-                <p>9</p>
+                <p>{stats.subscriptionCount}</p>
                 <p>订阅</p>
               </div>
             </Flex>

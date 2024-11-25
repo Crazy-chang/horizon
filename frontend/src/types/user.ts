@@ -18,4 +18,11 @@ type jikeUserInfoType = {
   nickname?: string
 }
 
-export type { userType }
+type userStats = {
+  followerCount: number
+  followingCount: number
+  subscriptionCount: number
+  totalPlayedSeconds: number
+}
+
+export type { userType, userStats }
