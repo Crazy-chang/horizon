@@ -239,6 +239,7 @@ export const ProfileModal: React.FC<IProps> = ({ uid, open, onClose }) => {
           </div>
 
           <StickerModal
+            stickerLists={[]}
             perspective="她"
             open={stickerModalOpen}
             onClose={() => {

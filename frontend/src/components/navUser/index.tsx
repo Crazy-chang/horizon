@@ -1,13 +1,13 @@
 import { useNavigateTo } from '@/hooks'
-import UserStore from '@/store/user'
-import { observer } from 'mobx-react'
 import { Storage } from '@/utils'
 import './index.modules.scss'
 import { useEffect, useState } from 'react'
 import { userType } from '@/types/user'
 
 export const NavUser = () => {
-  const [info, setInfo] = useState<userType>({})
+  const [info, setInfo] = useState<userType>({
+    uid: '',
+  })
   const goProfile = useNavigateTo('/profile')
 
   useEffect(() => {

@@ -2,7 +2,9 @@ import { makeAutoObservable } from 'mobx'
 import { userType } from '@/types/user'
 
 class UserStore {
-  user: userType = {}
+  user: userType = {
+    uid: '',
+  }
 
   constructor() {
     makeAutoObservable(this)
