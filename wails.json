@@ -7,7 +7,7 @@
   "frontend:dev:watcher": "pnpm dev",
   "frontend:dev:serverUrl": "auto",
   "author": {
-    "name": "2bit",
+    "name": "hexdr3am",
     "email": "742005790@qq.com"
   }
 }

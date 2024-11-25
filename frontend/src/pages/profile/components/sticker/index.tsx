@@ -53,6 +53,12 @@ export const Sticker = () => {
           setStickerModalOpen(true)
         }}
       >
+        <div
+          className="sticker-bgi"
+          style={{
+            backgroundImage: `url(${data.records.length === 0 ? '' : data.records[0].image.picUrl})`,
+          }}
+        />
         <div>
           {data.total}张贴纸
           <ChevronRightIcon />

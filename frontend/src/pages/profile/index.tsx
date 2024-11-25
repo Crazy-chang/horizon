@@ -14,6 +14,8 @@ import { Sticker } from './components/sticker'
 import { Storage } from '@/utils'
 import { userType, userStats } from '@/types/user'
 import { getUserStats } from '@/api/user'
+import { playedList } from '@/api/played'
+import dayjs from 'dayjs'
 import './index.modules.scss'
 
 export const Profile: React.FC = () => {
@@ -30,6 +32,7 @@ export const Profile: React.FC = () => {
     subscriptionCount: 0,
     totalPlayedSeconds: 0,
   })
+  const [playedLists, setPlayedLists] = useState<any>([])
 
   const userInfo: userType = Storage.get('user_info')
 
@@ -57,8 +60,24 @@ export const Profile: React.FC = () => {
       })
   }
 
+  /**
+   * 获取最近听过列表
+   */
+  const onGetPlayedList = () => {
+    const params = {
+      uid: userInfo.uid,
+    }
+
+    playedList(params)
+      .then((res) => setPlayedLists(res.data.data))
+      .catch((err) => {
+        console.error(err)
+      })
+  }
+
   useEffect(() => {
     onGetUserStats()
+    onGetPlayedList()
   }, [])
 
   return (
@@ -150,31 +169,37 @@ export const Profile: React.FC = () => {
       <div className="history-content">
         <h3>最近听过</h3>
 
-        <div className="history-episode-item">
-          <div className="left">
-            <ColorfulShadow
-              className="episode-cover"
-              curPointer
-              mask
-              src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?&w=256&h=256&q=70&crop=focalpoint&fp-x=0.5&fp-y=0.3&fp-z=1&fit=crop"
-            />
+        {playedLists.map((item: any) => (
+          <div
+            className="history-episode-item"
+            key={item.eid}
+          >
+            <div className="left">
+              <ColorfulShadow
+                className="episode-cover"
+                curPointer
+                mask
+                src={item.image.picUrl}
+              />
+            </div>
+            <div className="right">
+              <p>{item.title}</p>
+              <p>{item.description}</p>
+              <p>
+                <span>
+                  {Math.floor(item.duration / 60)}分钟 ·{' '}
+                  {dayjs(item.pubDate).format('MM/DD')}
+                </span>
+                <span>
+                  <SlEarphones />
+                  {item.playCount}
+                  <SlBubble />
+                  {item.commentCount}
+                </span>
+              </p>
+            </div>
           </div>
-          <div className="right">
-            <p>小米SU7营销复盘：你所知道的为什么都是错的-Vol 46</p>
-            <p>
-              本期节目关注风口上的小米汽车，主播借助在营销、产品上的经验解答。欢迎在评论区留言发表你对小米汽车的感受与看法，对于节目话题的更多观点，获取更多未呈现在节目中的扩展阅读，欢迎加群讨论
-            </p>
-            <p>
-              <span>30分钟 · 03/29</span>
-              <span>
-                <SlEarphones />
-                4.3万+
-                <SlBubble />
-                349
-              </span>
-            </p>
-          </div>
-        </div>
+        ))}
       </div>
 
       <FollowModal
