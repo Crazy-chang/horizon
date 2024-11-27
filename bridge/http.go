@@ -20,7 +20,7 @@ func NewHttpRequest() *HttpRequest {
 
 func (h *HttpRequest) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	r.ContentLength = 1
-	u, err := url.Parse("http://localhost:8080")
+	u, err := url.Parse("http://localhost:23020")
 	if err != nil {
 		log.Println(err.Error())
 		return
