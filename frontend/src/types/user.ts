@@ -25,4 +25,22 @@ type userStats = {
   totalPlayedSeconds: number
 }
 
-export type { userType, userStats }
+type userPreferenceType = {
+  isRecentPlayedHidden: boolean
+  isListenMileageHiddenInComment: boolean
+  isStickerLibraryHidden: boolean
+  isStickerBoardHidden: boolean
+  rejectHotPush: boolean
+  rejectRecommendation: boolean
+}
+
+export const USER_PREFERENCE_ENUM = {
+  isRecentPlayedHidden: 'isRecentPlayedHidden',
+  isListenMileageHiddenInComment: 'isListenMileageHiddenInComment',
+  isStickerLibraryHidden: 'isStickerLibraryHidden',
+  isStickerBoardHidden: 'isStickerBoardHidden',
+  rejectHotPush: 'rejectHotPush',
+  rejectRecommendation: 'rejectRecommendation',
+}
+
+export type { userType, userStats, userPreferenceType }

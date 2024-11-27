@@ -28,9 +28,14 @@ import {
   Storage,
 } from '@/utils'
 import { ping } from '@/api/ping'
+import { getUserPreference, updateUserPreference } from '@/api/user'
 import { useNavigateTo } from '@/hooks'
 import APP_ICON from '@/assets/images/logo.png'
-import { userType } from '@/types/user'
+import {
+  userType,
+  userPreferenceType,
+  USER_PREFERENCE_ENUM,
+} from '@/types/user'
 import './index.modules.scss'
 
 export const Setting: React.FC = () => {
@@ -38,6 +43,14 @@ export const Setting: React.FC = () => {
   const [config, setConfig] = useState<settingConfigType>({
     checkUpdateOnStartup: false,
     isIpLocHidden: false,
+  })
+  const [preferenceLists, setPreferenceLists] = useState<userPreferenceType>({
+    isRecentPlayedHidden: false,
+    isListenMileageHiddenInComment: false,
+    isStickerLibraryHidden: false,
+    isStickerBoardHidden: false,
+    rejectHotPush: false,
+    rejectRecommendation: false,
   })
   const userInfo: userType = Storage.get('user_info')
 
@@ -54,6 +67,35 @@ export const Setting: React.FC = () => {
       })
   }
 
+  /**
+   * 获取用户偏好设置
+   */
+  const onGetUserPreference = () => {
+    getUserPreference()
+      .then((res) => setPreferenceLists({ ...res.data.data }))
+      .catch((err) => {
+        console.error(err)
+      })
+  }
+
+  /**
+   * 更新用户偏好设置
+   * @param type 类型
+   * @param flag 状态
+   */
+  const onUpdateUserPreference = (type: string, flag: boolean) => {
+    const params = {
+      type,
+      flag,
+    }
+
+    updateUserPreference(params)
+      .then((res) => setPreferenceLists({ ...res.data.data }))
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
   const onUpdateConfig = (key: string, value: any) => {
     UpdateConfig(key, value).then()
   }
@@ -62,6 +104,8 @@ export const Setting: React.FC = () => {
     Environment().then((res: envType) => {
       setEnvInfo(res)
     })
+
+    onGetUserPreference()
 
     ReadConfig()
       .then((res) => {
@@ -118,7 +162,15 @@ export const Setting: React.FC = () => {
         <Flex>
           <Box width="100%">不让他人看到我的收听记录</Box>
           <Box>
-            <Switch />
+            <Switch
+              checked={preferenceLists.isRecentPlayedHidden}
+              onCheckedChange={(checked) => {
+                onUpdateUserPreference(
+                  USER_PREFERENCE_ENUM.isRecentPlayedHidden,
+                  checked,
+                )
+              }}
+            />
           </Box>
         </Flex>
         <Separator
@@ -128,7 +180,15 @@ export const Setting: React.FC = () => {
         <Flex>
           <Box width="100%">不在评论区展示收听时长标签</Box>
           <Box>
-            <Switch />
+            <Switch
+              checked={preferenceLists.isListenMileageHiddenInComment}
+              onCheckedChange={(checked) => {
+                onUpdateUserPreference(
+                  USER_PREFERENCE_ENUM.isListenMileageHiddenInComment,
+                  checked,
+                )
+              }}
+            />
           </Box>
         </Flex>
         <Separator
@@ -138,7 +198,15 @@ export const Setting: React.FC = () => {
         <Flex>
           <Box width="100%">不让他人看到我的贴纸库</Box>
           <Box>
-            <Switch />
+            <Switch
+              checked={preferenceLists.isStickerLibraryHidden}
+              onCheckedChange={(checked) => {
+                onUpdateUserPreference(
+                  USER_PREFERENCE_ENUM.isStickerLibraryHidden,
+                  checked,
+                )
+              }}
+            />
           </Box>
         </Flex>
         <Separator
@@ -148,7 +216,15 @@ export const Setting: React.FC = () => {
         <Flex>
           <Box width="100%">不让他人看到我的贴纸装扮</Box>
           <Box>
-            <Switch />
+            <Switch
+              checked={preferenceLists.isStickerBoardHidden}
+              onCheckedChange={(checked) => {
+                onUpdateUserPreference(
+                  USER_PREFERENCE_ENUM.isStickerBoardHidden,
+                  checked,
+                )
+              }}
+            />
           </Box>
         </Flex>
         <Separator
@@ -158,7 +234,15 @@ export const Setting: React.FC = () => {
         <Flex>
           <Box width="100%">接受热门内容推送</Box>
           <Box>
-            <Switch />
+            <Switch
+              checked={preferenceLists.rejectHotPush}
+              onCheckedChange={(checked) => {
+                onUpdateUserPreference(
+                  USER_PREFERENCE_ENUM.rejectHotPush,
+                  checked,
+                )
+              }}
+            />
           </Box>
         </Flex>
         <Separator
@@ -168,7 +252,15 @@ export const Setting: React.FC = () => {
         <Flex>
           <Box width="100%">个性化推荐</Box>
           <Box>
-            <Switch />
+            <Switch
+              checked={preferenceLists.rejectRecommendation}
+              onCheckedChange={(checked) => {
+                onUpdateUserPreference(
+                  USER_PREFERENCE_ENUM.rejectRecommendation,
+                  checked,
+                )
+              }}
+            />
           </Box>
         </Flex>
         <Separator
