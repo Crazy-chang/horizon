@@ -6,9 +6,23 @@ import PeopleLike from './components/peopleLike'
 import { discovery, refreshEpisodeCommend } from '@/api/discover'
 import { DISCOVERY_TYPE_ENUM } from '@/types/discovery'
 import './index.modules.scss'
+import { EpisodeType } from '@/types/episode'
+
+export type PopularType = {
+  target?: TargetType[]
+  recommendation?: string
+}
+
+export type TargetType = {
+  episode: EpisodeType
+  recommendation: string
+}
 
 export const Home: React.FC = () => {
-  const [popular, setPopular] = useState<{ records: {}; loading: boolean }>({
+  const [popular, setPopular] = useState<{
+    records: PopularType
+    loading: boolean
+  }>({
     records: {},
     loading: false,
   }) // 大家都在听

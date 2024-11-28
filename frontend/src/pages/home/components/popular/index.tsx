@@ -3,9 +3,10 @@ import { ColorfulShadow } from '@/components'
 import { QuoteIcon, UpdateIcon } from '@radix-ui/react-icons'
 import { Button, Spinner } from '@radix-ui/themes'
 import './index.modules.scss'
+import { PopularType, TargetType } from '@/pages/home'
 
 type IProps = {
-  data: any
+  data: PopularType
   loading: boolean
   onRefresh: () => void
 }
@@ -17,13 +18,13 @@ type IProps = {
 const PopularPart: React.FC<IProps> = ({ data, loading, onRefresh }) => {
   return (
     <div className="popular-layout">
-      <h3>{data.title}</h3>
+      <h3>大家都在听</h3>
 
       {loading ? (
         <Spinner />
       ) : (
         <div className="popular-content">
-          {data?.target?.map((item: any) => (
+          {data?.target?.map((item: TargetType) => (
             <div
               className="popular-item"
               key={item.episode.eid}
