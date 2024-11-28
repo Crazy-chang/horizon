@@ -1,70 +1,83 @@
+import React, { useEffect, useState } from 'react'
 import { ColorfulShadow } from '@/components'
 import { QuoteIcon, UpdateIcon } from '@radix-ui/react-icons'
-import { Button } from '@radix-ui/themes'
+import { Button, Spinner } from '@radix-ui/themes'
+import { discovery } from '@/api/discover'
+import { DISCOVERY_TYPE_ENUM } from '@/types/discovery'
 import './index.modules.scss'
-
-const mockData = [
-  {
-    id: 1,
-    episode_img:
-      'https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?&w=256&h=256&q=70&crop=focalpoint&fp-x=0.5&fp-y=0.3&fp-z=1&fit=crop',
-    title: 'Vol.29 有声书 | 行李箱碎尸案背后的真相',
-    podcast: '没药花园',
-    description: '3 天前发布',
-  },
-  {
-    id: 2,
-    episode_img:
-      'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-    title: 'Vol.55 如何拯救自己的倾诉欲',
-    podcast: '不把天聊si',
-    description: '评论数 99+',
-  },
-  {
-    id: 3,
-    episode_img:
-      'https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?&w=256&h=256&q=70&crop=focalpoint&fp-x=0.5&fp-y=0.3&fp-z=1&fit=crop',
-    title: '搞笑女01. 《奇葩说》选手的跨国恋情笑料分享会',
-    podcast: '东七门',
-    description: '评论数 99+',
-  },
-]
 
 /**
  * 发现-大家都在听
  * @constructor
  */
-const PopularPart = () => {
+const PopularPart: React.FC = () => {
+  const [popular, setPopular] = useState<any>({}) // 大家都在听
+  const [loading, setLoading] = useState<boolean>(false)
+
+  /**
+   * 获取「大家都在听」
+   */
+  const getPopularAndRecommended = () => {
+    setLoading(true)
+
+    discovery({ loadMoreKey: '' })
+      .then((res) => {
+        res.data.data.forEach((item: any) => {
+          if (item.type === DISCOVERY_TYPE_ENUM.POPULAR) {
+            setPopular(item.data)
+          }
+        })
+      })
+      .catch((err) => {
+        console.error(err)
+      })
+      .finally(() => {
+        setLoading(false)
+      })
+  }
+
+  useEffect(() => {
+    getPopularAndRecommended()
+  }, [])
+
   return (
     <div className="popular-layout">
-      <h3>大家都在听</h3>
+      <h3>{popular.title}</h3>
 
-      <div className="popular-content">
-        {mockData.map((item: any) => (
-          <div
-            className="popular-item"
-            key={item.id}
-          >
-            <div className="popular-info">
-              <div className="cover-box">
-                <ColorfulShadow
-                  src={item.episode_img}
-                  mask
-                  curPointer
-                />
-              </div>
-              <div className="info-box">
-                <p>{item.podcast}</p>
-                <p>{item.title}</p>
-                <p>
-                  <QuoteIcon />
-                  {item.description}
-                </p>
+      {loading ? (
+        <Spinner />
+      ) : (
+        <div className="popular-content">
+          {popular?.target?.map((item: any) => (
+            <div
+              className="popular-item"
+              key={item.episode.eid}
+            >
+              <div className="popular-info">
+                <div className="cover-box">
+                  <ColorfulShadow
+                    src={
+                      item.episode?.image
+                        ? item.episode.image.picUrl
+                        : item.episode.podcast.image.picUrl
+                    }
+                    mask
+                    curPointer
+                  />
+                </div>
+                <div className="info-box">
+                  <p>{item.episode.podcast.title}</p>
+                  <p>{item.episode.title}</p>
+                  <p>
+                    <QuoteIcon />
+                    {item.recommendation}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
 
       <div className="reload-button">
         <Button

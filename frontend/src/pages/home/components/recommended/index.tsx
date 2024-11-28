@@ -94,7 +94,7 @@ const Recommended = () => {
 
       <div className="recommended-content">
         <ScrollArea
-          size="1"
+          size="2"
           type="hover"
           scrollbars="horizontal"
         >
