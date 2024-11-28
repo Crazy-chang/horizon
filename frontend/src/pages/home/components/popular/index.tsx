@@ -1,54 +1,29 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { ColorfulShadow } from '@/components'
 import { QuoteIcon, UpdateIcon } from '@radix-ui/react-icons'
 import { Button, Spinner } from '@radix-ui/themes'
-import { discovery } from '@/api/discover'
-import { DISCOVERY_TYPE_ENUM } from '@/types/discovery'
 import './index.modules.scss'
+
+type IProps = {
+  data: any
+  loading: boolean
+  onRefresh: () => void
+}
 
 /**
  * 发现-大家都在听
  * @constructor
  */
-const PopularPart: React.FC = () => {
-  const [popular, setPopular] = useState<any>({}) // 大家都在听
-  const [loading, setLoading] = useState<boolean>(false)
-
-  /**
-   * 获取「大家都在听」
-   */
-  const getPopularAndRecommended = () => {
-    setLoading(true)
-
-    discovery({ loadMoreKey: '' })
-      .then((res) => {
-        res.data.data.forEach((item: any) => {
-          if (item.type === DISCOVERY_TYPE_ENUM.POPULAR) {
-            setPopular(item.data)
-          }
-        })
-      })
-      .catch((err) => {
-        console.error(err)
-      })
-      .finally(() => {
-        setLoading(false)
-      })
-  }
-
-  useEffect(() => {
-    getPopularAndRecommended()
-  }, [])
-
+const PopularPart: React.FC<IProps> = ({ data, loading, onRefresh }) => {
   return (
     <div className="popular-layout">
-      <h3>{popular.title}</h3>
+      <h3>{data.title}</h3>
 
       {loading ? (
         <Spinner />
       ) : (
         <div className="popular-content">
-          {popular?.target?.map((item: any) => (
+          {data?.target?.map((item: any) => (
             <div
               className="popular-item"
               key={item.episode.eid}
@@ -83,6 +58,7 @@ const PopularPart: React.FC = () => {
         <Button
           size="1"
           variant="soft"
+          onClick={() => onRefresh()}
         >
           <UpdateIcon />
           换一换
