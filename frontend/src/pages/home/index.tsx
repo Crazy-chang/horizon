@@ -7,6 +7,7 @@ import { discovery, refreshEpisodeCommend } from '@/api/discover'
 import { DISCOVERY_TYPE_ENUM } from '@/types/discovery'
 import './index.modules.scss'
 import { EpisodeType } from '@/types/episode'
+import { PodcastType } from '@/types/podcast'
 
 export type PopularType = {
   target?: TargetType[]
@@ -16,6 +17,12 @@ export type PopularType = {
 export type TargetType = {
   episode: EpisodeType
   recommendation: string
+}
+
+export type RecommendedType = {
+  target?: {
+    podcast: PodcastType
+  }[]
 }
 
 export const Home: React.FC = () => {
@@ -33,6 +40,13 @@ export const Home: React.FC = () => {
     records: {},
     loading: false,
   }) // 编辑精选
+  const [recommended, setRecommended] = useState<{
+    records: RecommendedType
+    loading: boolean
+  }>({
+    records: {},
+    loading: false,
+  }) // 精选节目
 
   const onRefreshEpisodeCommend = () => {
     setPopular({
@@ -45,6 +59,38 @@ export const Home: React.FC = () => {
         setPopular({
           records: res.data.data,
           loading: false,
+        })
+      })
+      .catch((err) => {
+        console.error(err)
+      })
+  }
+
+  /**
+   * 获取「精选节目」
+   */
+  const getRecommended = () => {
+    setRecommended({
+      records: {},
+      loading: true,
+    })
+
+    discovery({ loadMoreKey: 'discoveryTopic' })
+      .then((res) => {
+        console.log('MAYDAY', res.data)
+        res.data.data.forEach((item: any) => {
+          if (item.type === DISCOVERY_TYPE_ENUM.RECOMMENDED) {
+            console.log('item', item)
+            item.data.forEach((i: any) => {
+              if (i.displayType === 'PODCAST_DEFAULT') {
+                console.log('get it', i)
+                setRecommended({
+                  records: i,
+                  loading: false,
+                })
+              }
+            })
+          }
         })
       })
       .catch((err) => {
@@ -71,7 +117,6 @@ export const Home: React.FC = () => {
             })
           }
           if (item.type === DISCOVERY_TYPE_ENUM.EDITOR_RECOMMENDED) {
-            console.log(item.data)
             setEditorRecommended({
               records: item.data,
               loading: false,
@@ -86,6 +131,7 @@ export const Home: React.FC = () => {
 
   useEffect(() => {
     getPopularAndRecommended()
+    getRecommended()
   }, [])
 
   return (
@@ -97,7 +143,10 @@ export const Home: React.FC = () => {
           onRefreshEpisodeCommend()
         }}
       />
-      <Recommended />
+      <Recommended
+        data={recommended.records}
+        loading={recommended.loading}
+      />
       <EditorRecommended
         data={editorRecommended.records}
         loading={editorRecommended.loading}

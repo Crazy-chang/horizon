@@ -79,7 +79,7 @@ const PeopleLike = () => {
 
       <div className="people-like-content">
         <ScrollArea
-          size="1"
+          size="2"
           type="hover"
           scrollbars="horizontal"
         >
