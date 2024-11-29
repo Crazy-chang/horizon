@@ -12,10 +12,10 @@ type IProps = {
 
 const Recommended: React.FC<IProps> = ({ data, loading }) => {
   const navigateTo = useNavigate()
-  const goPodcastDetail = (id: string) => {
+  const goPodcastDetail = (pid: string) => {
     navigateTo('/podcast/detail', {
       state: {
-        id,
+        pid,
       },
     })
   }

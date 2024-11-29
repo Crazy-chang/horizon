@@ -65,7 +65,7 @@ const EditorRecommended: React.FC<IProps> = ({ data, loading }) => {
                         <Box>
                           <Text
                             as="div"
-                            size="2"
+                            size="4"
                             color="gray"
                             mb="1"
                           >
@@ -73,7 +73,7 @@ const EditorRecommended: React.FC<IProps> = ({ data, loading }) => {
                           </Text>
                           <Text
                             as="div"
-                            size="1"
+                            size="3"
                           >
                             {item.comment.text}
                           </Text>
