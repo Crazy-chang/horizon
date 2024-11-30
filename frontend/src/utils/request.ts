@@ -102,6 +102,10 @@ httpRequest.interceptors.request.use(
   (config: AxiosRequestConfig | any) => {
     const XJikeAccessToken: string = Storage.get('x-jike-access-token')
 
+    if (XJikeAccessToken == null) {
+      window.location.href = '/#/login'
+    }
+
     config.headers['x-jike-access-token'] = `${XJikeAccessToken}`
 
     return config
